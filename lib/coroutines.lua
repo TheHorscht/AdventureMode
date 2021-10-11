@@ -49,8 +49,13 @@ local function get_coroutine(id)
   return c
 end
 
-function async(f)
-  local c = coroutine.create(f)
+function async(f, doneCallback)
+  local c = coroutine.create(function()
+    f()
+    if doneCallback then
+      doneCallback()
+    end
+  end)
 
   local id = alloc_id(c)
   coroutines_by_id[id] = c
@@ -60,7 +65,6 @@ function async(f)
 
   return {
     stop = function()
-      -- waiting_coroutines = {}
       waiting_coroutines[c] = nil
       coroutines_by_id[id] = nil
       ids_by_coroutine[c] = nil
@@ -109,4 +113,22 @@ function wake_up_waiting_threads(frames_delta)
       resume_unprot(c)
     end
   end
+end
+
+function sequence(...)
+  local funcs = {...}
+  local func_count = select("#", ...)
+  return {
+    onDone = function(onDoneCallback)
+      local doneCount = 0
+      for i, func in ipairs(funcs) do
+        async(func, function()
+          doneCount = doneCount + 1
+          if doneCount == func_count then
+            onDoneCallback()
+          end
+        end)
+      end
+    end
+  }
 end

@@ -1,0 +1,53 @@
+dofile_once("mods/AdventureMode/lib/coroutines.lua")
+dofile_once("mods/AdventureMode/files/util.lua")
+dofile_once("mods/AdventureMode/files/camera.lua")
+
+set_controls_enabled(false)
+sequence(function()
+  set_camera_manual(true)
+  -- camera_tracking_shot(400, -800, 400, -580, 0.0025)
+  camera_tracking_shot(400, -800, 400, -630, 0.0025)
+  wait(300)
+  -- camera_tracking_shot(400, -580, 600, -580, 0.002)
+  camera_tracking_shot(400, -630, 570, -630, 0.002)
+  camera_tracking_shot(570, -630, 570, -580, 0.007)
+end,
+function()
+  local player = EntityGetWithTag("player_unit")[1]
+  local character_data_component = EntityGetFirstComponentIncludingDisabled(player, "CharacterDataComponent")
+  local controls_component = EntityGetFirstComponentIncludingDisabled(player, "ControlsComponent")
+  local platform_shooter_player_component = EntityGetFirstComponentIncludingDisabled(player, "PlatformShooterPlayerComponent")
+  local wand_angle = 15
+  local vx, vy = math.cos(math.rad(wand_angle)), math.sin(math.rad(wand_angle))
+  -- ComponentSetValue2(platform_shooter_player_component, "camera_max_distance_from_character", vx, vy)
+  -- ComponentSetValue2(platform_shooter_player_component, "center_camera_on_this_entity", vx, vy)    <-- set this to false
+  -- ComponentSetValue2(platform_shooter_player_component, "move_camera_with_aim", vx, vy)
+  -- ComponentSetValue2(platform_shooter_player_component, "mSmoothedCameraPosition", vx, vy)
+  -- ComponentSetValue2(platform_shooter_player_component, "mSmoothedAimingVector", vx, vy)
+  -- ComponentSetValue2(platform_shooter_player_component, "mCameraDistanceLerped", vx, vy)
+  ComponentSetValue2(platform_shooter_player_component, "mItemTemporarilyHidden", 7)
+  -- ComponentSetValue2(platform_shooter_player_component, "mDesiredCameraPos", vx, vy)          <---- this ocntrols camera pos
+  ComponentSetValue2(controls_component, "mAimingVector", vx, vy)
+  ComponentSetValue2(controls_component, "mAimingVectorNormalized", vx, vy)
+  ComponentSetValue2(controls_component, "mAimingVectorNonZeroLatest", vx, vy)
+  ComponentSetValue2(controls_component, "mMousePosition", 5000, 0)
+  ComponentSetValue2(controls_component, "mMousePositionRaw", 5000, 0)
+  ComponentSetValue2(controls_component, "mMousePositionRawPrev", 5000, 0)
+  ComponentSetValue2(controls_component, "mFlyingTargetY", -9999)
+  -- ComponentSetValue2(character_data_component, "effect_hit_ground", false)
+  wait(400)
+  for i=1, 800 do
+    ComponentSetValue2(character_data_component, "mVelocity", 35, 0)
+    ComponentSetValue2(character_data_component, "is_on_ground", true)
+    wait(0)
+  end
+  wait(160)
+  -- ComponentSetValue2(character_data_component, "effect_hit_ground", true)
+  -- local controls_component = EntityGetComponentIncludingDisabled(player, "ControlsComponent")
+  -- ComponentSetValue2(controls_component, "mButtonFrameRight", GameGetFrameNum())
+  -- ComponentSetValue2(controls_component, "mButtonDownRight", true)
+end
+).onDone(function()
+  set_camera_manual(false)
+  set_controls_enabled(true)
+end)

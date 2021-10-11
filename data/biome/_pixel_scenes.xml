@@ -1,6 +1,19 @@
 <PixelScenes>
+  <PixelSceneFiles>
+    <File>mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full.xml</File>
+  </PixelSceneFiles>
   <mBufferedPixelScenes>
-  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="0" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" >
-		  </PixelScene>
+  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="0" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
+  		<!-- <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance.png" pos_x="512" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" /> -->
+  		<!-- <PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance.png" pos_x="1024" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" /> -->
   </mBufferedPixelScenes>
 </PixelScenes>
+
+<!-- noita.exe -splice_pixel_scene mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full.png -x 512 -y -1536 -debug 0 -->
+<!-- C:\Program Files (x86)\Steam\steamapps\common\Noita\data\biome_impl\spliced\pyramid_entrance_full\ -->
+<!-- C:\Program Files (x86)\Steam\steamapps\common\Noita\data\biome_impl\spliced\pyramid_entrance_full.xml -->
+<!-- D:\Projekte\NoitaMods\AdventureMode\files\pixel_scenes\ -->
+<!-- 
+noita.exe -splice_pixel_scene mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full.png -x 512 -y -1536 -debug 0 &
+copy "C:\Program Files (x86)\Steam\steamapps\common\Noita\data\biome_impl\spliced\pyramid_entrance_full\" "D:\Projekte\NoitaMods\AdventureMode\files\pixel_scenes\"
+-->

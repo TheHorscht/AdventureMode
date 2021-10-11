@@ -1,0 +1,10 @@
+<Entity>
+
+  <PixelSpriteComponent
+    image_file="data/vegetation/cactus_02.png"
+    anchor_x="32"
+    anchor_y="123"
+    material="cactus"
+  ></PixelSpriteComponent>
+
+</Entity>

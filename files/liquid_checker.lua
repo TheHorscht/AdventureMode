@@ -7,7 +7,8 @@ end
 local entity_id = GetUpdatedEntityID()
 local x, y = EntityGetTransform(entity_id)
 local potion = EntityGetInRadiusWithTag(x, y, 500, "potion")
-if #potion == 0 then
+local players = EntityGetWithTag("player_unit")
+if #potion == 0 and #players > 0 then
   local door = EntityGetWithName("door2")
   local lua_component = EntityGetFirstComponentIncludingDisabled(door, "LuaComponent")
   EntitySetComponentIsEnabled(door, lua_component, true)

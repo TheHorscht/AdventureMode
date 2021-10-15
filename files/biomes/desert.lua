@@ -7,6 +7,8 @@ RegisterSpawnFunction(0xff32d6e7, "spawn_electricity_trap")
 RegisterSpawnFunction(0xff37aab6, "spawn_pressure_plate")
 RegisterSpawnFunction(0xff784249, "spawn_flamethrower_turret")
 RegisterSpawnFunction(0xffec2b42, "spawn_chain_torch")
+RegisterSpawnFunction(0xffd1b400, "spawn_slab_01")
+RegisterSpawnFunction(0xffd1b499, "spawn_pile_of_bones")
 
 local i = 0
 function spawn_cactus(x, y)
@@ -23,13 +25,13 @@ function spawn_door2(x, y)
 end
 
 function spawn_liquid_checker(x, y)
-  EntityLoad("mods/AdventureMode/files/liquid_checker.xml", x, y)
-  EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 10)
-  EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 20)
-  EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 30)
-  EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 40)
-  EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 50)
-  EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 60)
+  -- EntityLoad("mods/AdventureMode/files/liquid_checker.xml", x, y)
+  -- EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 10)
+  -- EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 20)
+  -- EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 30)
+  -- EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 40)
+  -- EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 50)
+  -- EntityLoad("mods/AdventureMode/files/platform.xml", x + 70, y - 60)
 end
 
 function spawn_pickup_jetpack(x, y)
@@ -53,3 +55,10 @@ function spawn_chain_torch(x, y)
   -- data/entities/props/physics_chain_torch.xml
 end
 
+function spawn_slab_01(x, y)
+  EntityLoad("mods/AdventureMode/files/slab.xml", x, y)
+end
+
+function spawn_pile_of_bones(x, y)
+  EntityLoad("mods/AdventureMode/files/pile_of_bones.xml", x, y)
+end

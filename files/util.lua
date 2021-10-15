@@ -8,10 +8,6 @@ function set_controls_enabled(enabled)
         ComponentSetValue2(controls_component, prop, false)
       end
     end
-    -- ComponentSetValue2(controls_component, "enabled", enabled)
-    -- ComponentSetValue2(controls_component, "enabled", enabled)
-    -- ComponentSetValue2(controls_component, "enabled", enabled)
-    -- ComponentSetValue2(controls_component, "enabled", enabled)
   end
 end
 

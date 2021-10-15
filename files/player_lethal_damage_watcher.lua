@@ -56,9 +56,18 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "InventoryGuiComponent")
     EntitySetComponentIsEnabled(entity_id, comp, false)
 
+    -- Hide cape
+    local cape_entity = EntityGetWithName("cape")
+    local comp = EntityGetFirstComponentIncludingDisabled(cape_entity, "VerletPhysicsComponent")
+    EntitySetComponentIsEnabled(cape_entity, comp, false)
+    
+    -- Hide arm
+    local arm_r_entity = EntityGetWithName("arm_r")
+    local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
+    EntitySetComponentIsEnabled(arm_r_entity, comp, false)
+
     -- Reset all game effects
     remove_game_effects(entity_id)
-
 
     -- local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "GunComponent")
     -- EntitySetComponentIsEnabled(entity_id, comp, false)
@@ -84,6 +93,17 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       EntitySetComponentIsEnabled(entity_id, comp, true)
       local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
       ComponentSetValue2(damage_model_component, "hp", ComponentGetValue2(damage_model_component, "max_hp"))
+
+      -- Show cape
+      local cape_entity = EntityGetWithName("cape")
+      local comp = EntityGetFirstComponentIncludingDisabled(cape_entity, "VerletPhysicsComponent")
+      EntitySetComponentIsEnabled(cape_entity, comp, true)
+      
+      -- Show arm
+      local arm_r_entity = EntityGetWithName("arm_r")
+      local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
+      EntitySetComponentIsEnabled(arm_r_entity, comp, true)
+
       set_controls_enabled(true)
       bla = false
     end)

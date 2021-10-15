@@ -4,7 +4,7 @@
     type="BIOME_PROCEDURAL"
     background_edge_priority="10"     
     background_use_neighbor="0"
-    
+    lua_script="mods/AdventureMode/files/biomes/desert.lua"
     noise_biome_edges="0"
     skip_edge_textures="1"
 >

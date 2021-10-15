@@ -1,0 +1,25 @@
+<Entity tags="hittable" >
+    <HitboxComponent 
+        aabb_min_x="-10" 
+        aabb_max_x="10" 
+        aabb_min_y="-1" 
+        aabb_max_y="1" >
+    </HitboxComponent>
+
+    <VelocityComponent />
+
+    <SimplePhysicsComponent can_go_up="0" />
+
+    <SpriteComponent 
+        image_file="data/props_gfx/pressure_plate.xml" 
+        offset_x="12"
+        offset_y="0" >
+    </SpriteComponent>
+    
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/pressure_plate.lua"
+    execute_every_n_frame="1"
+    >
+  </LuaComponent>
+
+</Entity>

@@ -1,0 +1,47 @@
+<Entity name="door2">
+
+  <SpriteParticleEmitterComponent
+    _enabled="0"
+    sprite_file="data/particles/jetpack_smoke.xml"
+		delay="0"
+		additive="1"
+		randomize_position.min_x="0"
+		randomize_position.max_x="40"
+		randomize_position.min_y="-2"
+		randomize_position.max_y="0"
+		randomize_velocity.min_x="-10"
+		randomize_velocity.max_x="10"
+		randomize_velocity.min_y="0"
+		randomize_velocity.max_y="5"
+    count_min="1"
+    count_max="2"
+    emission_interval_min_frames="1"
+    emission_interval_max_frames="2"
+    is_emitting="1" 
+		render_back="0"
+  ></SpriteParticleEmitterComponent>
+
+  <PixelSceneComponent
+    pixel_scene="mods/AdventureMode/files/temple_door_materials.png"
+    pixel_scene_visual="mods/AdventureMode/files/temple_door.png"
+    offset_y="0"
+    skip_biome_checks="1"
+  ></PixelSceneComponent>
+
+  <SpriteComponent
+    _enabled="0"
+    image_file="mods/AdventureMode/files/temple_door.png"
+    offset_y="0"
+    >
+  </SpriteComponent>
+
+  <LuaComponent
+    _enabled="0"
+    script_source_file="mods/AdventureMode/files/door2.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+    enable_coroutines="1"
+    >
+  </LuaComponent>
+
+</Entity>

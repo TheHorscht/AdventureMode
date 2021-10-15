@@ -1,0 +1,37 @@
+<Entity>
+
+  <VelocityComponent
+  ></VelocityComponent>
+
+  <SimplePhysicsComponent
+  ></SimplePhysicsComponent>
+
+  <SpriteComponent
+    image_file="data/debug/circle_16.png"
+    offset_x="8"
+    offset_y="8"
+    >
+  </SpriteComponent>
+
+  <SpriteComponent
+    image_file="data/enemies_gfx/player.xml" 
+    next_rect_animation="" 
+    offset_x="6" 
+    offset_y="14" 
+    rect_animation="walk" 
+    z_index="0.6"
+  ></SpriteComponent>
+
+  <!-- <PhysicsRagdollComponent
+    filename="data/ragdolls/player/filenames.txt"
+  ></PhysicsRagdollComponent> -->
+
+  <DamageModelComponent
+    hp="0"
+    max_hp="0"
+    air_in_lungs="0"
+    air_in_lungs_max="0"
+    ragdoll_filenames_file="data/ragdolls/player/filenames.txt"
+  ></DamageModelComponent>
+
+</Entity>

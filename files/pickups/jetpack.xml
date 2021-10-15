@@ -1,0 +1,25 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/pickups/base.xml">
+
+    <SpriteComponent
+      image_file="mods/AdventureMode/files/pickups/jetpack.png"
+      offset_x="7"
+      offset_y="4"
+    ></SpriteComponent>
+
+    <UIInfoComponent
+      name="Gift of Flight"
+    ></UIInfoComponent>
+
+    <ItemComponent
+      item_name="Gift of Flight"
+    ></ItemComponent>
+
+  </Base>
+	
+	<LuaComponent 
+		script_item_picked_up="mods/AdventureMode/files/pickups/jetpack_pickup.lua"
+  ></LuaComponent>
+
+</Entity>

@@ -8,7 +8,7 @@
   </SpriteComponent>
 
   <InteractableComponent
-    radius="5"
+    radius="8"
     ui_text="Press $0 to interact"
   ></InteractableComponent>
 

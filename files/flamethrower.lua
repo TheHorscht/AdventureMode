@@ -9,12 +9,14 @@ EntitySetTransform(entity_id, x, y, math.pi/2 + math.sin(phase) * (math.pi/2 - 0
 
 if GameGetFrameNum() % 100 == 0 then --and math.abs(dir - actual_dir) < 0.5 then
   async(function()
-    for i=1, 30 do          
+    for i=1, 50 do          
       local x, y, r = EntityGetTransform(entity_id)
-      local dir_x = math.cos(r)
-      local dir_y = math.sin(r)
-      shoot_projectile(entity_id, "mods/AdventureMode/files/projectiles/flame_beam.xml", x + dir_x * 7, y + dir_y * 7, dir_x * 200, dir_y * 200, true)
-      wait(0)
+      if x then
+        local dir_x = math.cos(r)
+        local dir_y = math.sin(r)
+        shoot_projectile(entity_id, "mods/AdventureMode/files/projectiles/flame_beam.xml", x + dir_x * 7, y + dir_y * 7, dir_x * 200, dir_y * 200, true)
+        wait(0)
+      end
     end
   end)
 end

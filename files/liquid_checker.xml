@@ -1,16 +1,4 @@
-<Entity>
-
-  <!-- <SpriteComponent
-    image_file="mods/AdventureMode/files/box_10x10.png"
-    offset_x="5"
-    offset_y="10"
-    has_special_scale="1"
-    special_scale_x="1.8"
-    special_scale_y="1.7"
-    alpha="0.5"
-    z_index="-99"
-    >
-  </SpriteComponent> -->
+<Entity name="liquid_checker">
 
   <!-- <LuaComponent
     script_source_file="mods/AdventureMode/files/visualize_aabb.lua"
@@ -19,32 +7,14 @@
     >
   </LuaComponent> -->
 
-  <PixelSceneComponent
+  <!-- <PixelSceneComponent
     pixel_scene="mods/AdventureMode/files/pixel_scenes/liquid_checker.png"
     offset_x="-40"
     offset_y="-33"
     skip_biome_checks="1"
-  ></PixelSceneComponent>
+  ></PixelSceneComponent> -->
 
-    <!-- lifetime -->
-	<!-- <SpriteParticleEmitterComponent
-    sprite_file="mods/AdventureMode/files/pixel.png"
-		delay="0"
-		additive="1"
-    lifetime="120"
-		randomize_position.min_x="-9"
-		randomize_position.max_x="9"
-		randomize_position.min_y="-21"
-		randomize_position.max_y="-4"
-    count_min="1"
-    count_max="1"
-    emission_interval_min_frames="0"
-    emission_interval_max_frames="1"
-    is_emitting="1" 
-		render_back="1"
-  ></SpriteParticleEmitterComponent> -->
-
-  <MaterialAreaCheckerComponent
+  <!-- <MaterialAreaCheckerComponent
     look_for_failure="0"
     material="water"
     material2="water"
@@ -53,7 +23,7 @@
     area_aabb.max_x="3"
     area_aabb.min_y="-20"
     area_aabb.max_y="-4"
-  ></MaterialAreaCheckerComponent>
+  ></MaterialAreaCheckerComponent> -->
 
   <LuaComponent
     script_material_area_checker_success="mods/AdventureMode/files/liquid_checker.lua"

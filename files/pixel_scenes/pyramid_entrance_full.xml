@@ -2,11 +2,11 @@
   <mBufferedPixelScenes>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/0_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/0.plz" pos_x="1024" pos_y="-1024" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/1_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/1.plz" pos_x="512" pos_y="-915" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/1_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/1.plz" pos_x="512" pos_y="-1017" skip_biome_checks="1" >
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/2_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/2.plz" pos_x="512" pos_y="-512" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/3_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/3.plz" pos_x="1133" pos_y="-1427" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/3_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/3.plz" pos_x="1031" pos_y="-1529" skip_biome_checks="1" >
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/4_background.png" colors_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/4_visual.plz" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/4.plz" pos_x="1024" pos_y="-1024" skip_biome_checks="1" >
     </PixelScene>

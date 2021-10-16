@@ -25,8 +25,9 @@ local starting_positions = {
   { x = 715, y = -600 }, -- In front of Main door
   { x = 1173, y = -553 }, -- Lava room
   { x = 1341, y = -891 }, -- Electricity door room
+  { x = 1412, y = -895 }, -- Pressure plate puzzle
 }
-local starting_position = 2
+local starting_position = 1
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -41,7 +42,7 @@ ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.fo
 ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 
 function OnPlayerSpawned(player)
-  -- EntityLoad("mods/AdventureMode/files/intro.xml")
+  EntityLoad("mods/AdventureMode/files/intro.xml")
   local world_state_entity = GameGetWorldStateEntity()
   local world_state_component = EntityGetFirstComponentIncludingDisabled(world_state_entity, "WorldStateComponent")
   ComponentSetValue2(world_state_component, "intro_weather", true)
@@ -68,11 +69,12 @@ function OnPlayerSpawned(player)
 
   -- Prepare Inventory
   local inventory_quick = EntityGetWithName("inventory_quick")
-  local items = EntityGetAllChildren(inventory_quick)
+  local items = EntityGetAllChildren(inventory_quick) or {}
   for i, item in ipairs(items) do
     EntityKill(item)
   end
   local water_potion = EntityLoad("data/entities/items/pickup/potion_water.xml")
+  AddMaterialInventoryMaterial(water_potion, "water", 300)
   GamePickUpInventoryItem(player, water_potion, false)
   -- EntityAddChild(inventory_quick, water_potion)
   -- EntityAddChild(inventory_quick)

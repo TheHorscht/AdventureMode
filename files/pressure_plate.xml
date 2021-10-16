@@ -1,4 +1,4 @@
-<Entity tags="hittable" >
+<Entity tags="pressure_plate" >
     <HitboxComponent 
         aabb_min_x="-10" 
         aabb_max_x="10" 

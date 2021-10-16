@@ -1,4 +1,4 @@
-<Entity name="door">
+<Entity name="door3">
 
   <SpriteParticleEmitterComponent
     _enabled="0"
@@ -6,7 +6,7 @@
 		delay="0"
 		additive="1"
 		randomize_position.min_x="0"
-		randomize_position.max_x="40"
+		randomize_position.max_x="20"
 		randomize_position.min_y="-2"
 		randomize_position.max_y="0"
 		randomize_velocity.min_x="-10"
@@ -21,16 +21,23 @@
 		render_back="0"
   ></SpriteParticleEmitterComponent>
 
+  <PixelSceneComponent
+    pixel_scene="mods/AdventureMode/files/door_cool_materials.png"
+    pixel_scene_visual="mods/AdventureMode/files/door_cool.png"
+    offset_y="0"
+    skip_biome_checks="1"
+  ></PixelSceneComponent>
+
   <SpriteComponent
-    image_file="mods/AdventureMode/files/temple_door.png"
-    offset_y="80"
+    _enabled="0"
+    image_file="mods/AdventureMode/files/door_cool.png"
+    offset_y="0"
     >
   </SpriteComponent>
-    <!-- offset_x="8"
-    offset_y="8" -->
 
   <LuaComponent
-    script_source_file="mods/AdventureMode/files/door.lua"
+    _enabled="0"
+    script_source_file="mods/AdventureMode/files/door3.lua"
     execute_every_n_frame="-1"
     execute_on_added="1"
     enable_coroutines="1"

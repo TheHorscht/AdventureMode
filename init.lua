@@ -26,8 +26,9 @@ local starting_positions = {
   { x = 1173, y = -553 }, -- Lava room
   { x = 1341, y = -891 }, -- Electricity door room
   { x = 1412, y = -895 }, -- Pressure plate puzzle
+  { x = 1834, y = -913 }, -- Spike corridor
 }
-local starting_position = 1
+local starting_position = 6
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -42,7 +43,9 @@ ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.fo
 ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 
 function OnPlayerSpawned(player)
-  EntityLoad("mods/AdventureMode/files/intro.xml")
+  if starting_position == 1 then
+    EntityLoad("mods/AdventureMode/files/intro.xml")
+  end
   local world_state_entity = GameGetWorldStateEntity()
   local world_state_component = EntityGetFirstComponentIncludingDisabled(world_state_entity, "WorldStateComponent")
   ComponentSetValue2(world_state_component, "intro_weather", true)

@@ -1,0 +1,32 @@
+<Entity>
+
+  <!-- <InheritTransformComponent>
+    <Transform
+      rotation="3.1415926535897932384626433832795"
+    ></Transform>
+  </InheritTransformComponent> -->
+
+  <AreaDamageComponent
+    aabb_min.x="-3"
+    aabb_min.y="37"
+    aabb_max.x="3"
+    aabb_max.y="49"
+    death_cause="Stabbed"
+    damage_type="DAMAGE_MELEE"
+  ></AreaDamageComponent>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/spike_ceiling.png"
+    update_transform_rotation="1"
+    offset_x="4"
+  ></SpriteComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/spike_ceiling.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+    enable_coroutines="1"
+  ></LuaComponent>
+    <!-- vm_type="ONE_PER_COMPONENT_INSTANCE" -->
+
+</Entity>

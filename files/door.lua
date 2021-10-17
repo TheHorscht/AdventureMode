@@ -84,7 +84,7 @@ async(function()
 -- ></SpriteParticleEmitterComponent>
 
   -- EntityConvertToMaterial(entity_id, "templebrick_static")
-  LoadPixelScene("mods/AdventureMode/files/temple_door_materials.png", "mods/AdventureMode/files/temple_door.png", door_x, door_y - 1, "", true)
+  LoadPixelScene("mods/AdventureMode/files/temple_door_materials.png", "mods/AdventureMode/files/temple_door.png", door_x, door_y, "", true)
   EntityRemoveComponent(entity_id, sprite_component)
   -- LoadPixelScene( materials_filename:string, colors_filename:string, x:number, y:number, background_file:string, skip_biome_checks:bool = false, skip_edge_textures:bool = false, color_to_material_table:{string-string} = {}, background_z_index:int = 50 )
   wait(60)

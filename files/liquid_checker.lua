@@ -1,5 +1,3 @@
-print("RUNNING")
-
 function get_distance( x1, y1, x2, y2 )
 	local result = math.sqrt( ( x2 - x1 ) ^ 2 + ( y2 - y1 ) ^ 2 )
 	return result
@@ -19,7 +17,6 @@ local distance_to_player = 9999999
 if #players > 0 then
   local px, py = EntityGetTransform(players[1])
   distance_to_player = get_distance(x, y, px, py)
-  print("distance_to_player: " .. tostring(distance_to_player))
 end
 if #potion == 0 and distance_to_player < 100 then
   local door = EntityGetWithName("door2")

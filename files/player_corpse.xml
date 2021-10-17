@@ -22,15 +22,12 @@
     z_index="0.6"
   ></SpriteComponent>
 
-  <!-- <PhysicsRagdollComponent
-    filename="data/ragdolls/player/filenames.txt"
-  ></PhysicsRagdollComponent> -->
-
   <DamageModelComponent
     hp="0"
     max_hp="0"
     air_in_lungs="0"
     air_in_lungs_max="0"
+    ragdoll_offset_y="-5"
     ragdoll_filenames_file="data/ragdolls/player/filenames.txt"
   ></DamageModelComponent>
 

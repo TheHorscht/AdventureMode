@@ -18,4 +18,12 @@ for i=1, #directions do
     name = "direction",
     value_int = directions[i]
   })
+  local area_damage_component = EntityAddComponent2(spike, "AreaDamageComponent", {
+    death_cause="Stabbed",
+    damage_type="DAMAGE_MELEE",
+    damage_per_frame=0.001,
+    update_every_n_frame=2,
+  })
+  ComponentSetValue2(area_damage_component, "aabb_min", -5, 0 + math.min(0, directions[i]) * 50)
+  ComponentSetValue2(area_damage_component, "aabb_max", 5, 50 + math.min(0, directions[i]) * 50)
 end

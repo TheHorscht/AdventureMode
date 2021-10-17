@@ -6,14 +6,14 @@
     ></Transform>
   </InheritTransformComponent> -->
 
-  <AreaDamageComponent
+  <!-- <AreaDamageComponent
     aabb_min.x="-3"
     aabb_min.y="37"
     aabb_max.x="3"
     aabb_max.y="49"
     death_cause="Stabbed"
     damage_type="DAMAGE_MELEE"
-  ></AreaDamageComponent>
+  ></AreaDamageComponent> -->
 
   <SpriteComponent
     image_file="mods/AdventureMode/files/spike_ceiling.png"

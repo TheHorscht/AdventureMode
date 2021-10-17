@@ -22,7 +22,7 @@ async(function()
       EntitySetTransform(entity_id, x, y + 5 * direction)
       wait(0)
     end
-    wait(50 + 60)
+    wait(50 + 30)
     for i=1, 10 do
       local x, y, r = EntityGetTransform(entity_id)
       EntitySetTransform(entity_id, x, y - 5 * direction)
@@ -34,6 +34,6 @@ async(function()
     --   wait(0)
     -- end
     -- wait(80)
-    wait(50 + 60)
+    wait(50 + 30)
   end
 end)

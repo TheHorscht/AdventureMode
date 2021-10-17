@@ -2,7 +2,7 @@
 
   <SpriteComponent
     image_file="mods/AdventureMode/files/pile_of_bones.png"
-    offset_x="16"
+    offset_x="5"
     offset_y="12"
     >
   </SpriteComponent>

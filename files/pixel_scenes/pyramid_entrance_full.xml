@@ -1,6 +1,6 @@
 <PixelScenes>
   <mBufferedPixelScenes>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/0_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/0.plz" pos_x="1024" pos_y="-1024" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/0_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/0.plz" pos_x="725" pos_y="-1413" skip_biome_checks="1" >
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/1_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/pyramid_entrance_full/1.plz" pos_x="512" pos_y="-1017" skip_biome_checks="1" >
     </PixelScene>

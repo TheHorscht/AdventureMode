@@ -15,7 +15,7 @@
 
   <!-- Needs to be frozen early, so execute_on_removed runs, which will kill the spawned sub-entities -->
   <CameraBoundComponent
-    distance="300"
+    distance="600"
     freeze_on_max_count_kill="0"
     freeze_on_distance_kill="1"
   ></CameraBoundComponent>

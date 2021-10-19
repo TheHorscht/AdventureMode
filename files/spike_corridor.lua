@@ -18,7 +18,7 @@ function make_spike(distance_to_previous_spike, direction, delay, pause_out, pau
   }
 end
 
-local spikes = {
+spikes = spikes or {
   make_spike(0, DOWN, 0, 80, 80),
   make_spike(10, DOWN, 10, 80, 80),
   make_spike(10, DOWN, 20, 80, 80),
@@ -48,42 +48,35 @@ local spikes = {
   make_spike(10, DOWN, 70, 60, 0),
   make_spike(10, DOWN, 80, 60, 0),
   make_spike(10, DOWN, 90, 60, 0),
-  
-
 }
+
 print("== Corridor script runs ==")
 
-if shit then
+if spikes[1].entity_id then
   print("== Corridor script: OnRemoved ==")
-  EntityKill(shit)
-  shit = nil
+  for i, v in ipairs(spikes) do
+    EntityKill(v.entity_id)
+    v.entity_id = nil
+  end
 else
   print("== Corridor script: OnAdded ==")
-  shit = EntityLoad("mods/AdventureMode/files/async_test.xml", x, y)
+  for i, v in ipairs(spikes) do
+    local spike = EntityLoad("mods/AdventureMode/files/spike_ceiling.xml")
+    v.entity_id = spike
+    EntitySetTransform(spike, x + v.x, y - 50 - 150 * math.min(0, v.direction), v.direction == -1 and math.pi or 0)
+    set_var_store_int(spike, "order", i)
+    set_var_store_int(spike, "delay", v.delay)
+    set_var_store_int(spike, "direction", v.direction)
+    set_var_store_int(spike, "pause_out", v.pause_out)
+    set_var_store_int(spike, "pause_in", v.pause_in)
+    local area_damage_component = EntityAddComponent2(spike, "AreaDamageComponent", {
+      death_cause="Stabbed",
+      damage_type="DAMAGE_MELEE",
+      damage_per_frame=0.001,
+      update_every_n_frame=2,
+    })
+    ComponentSetValue2(area_damage_component, "aabb_min", -5, 0 + math.min(0, v.direction) * 50)
+    ComponentSetValue2(area_damage_component, "aabb_max", 5, 50 + math.min(0, v.direction) * 50)
+  end
 end
--- local a = EntityLoad("mods/AdventureMode/files/async_test.xml", x, y)
--- EntityAddComponent2(a, "SpriteComponent", {
---   image_file="data/debug/circle_16.png",
---   offset_x = 8,
---   offset_y = 8,
--- })
--- EntityLoad("mods/AdventureMode/files/async_test.xml", x, y)
-do return end
 
-for i, v in ipairs(spikes) do
-  local spike = EntityLoad("mods/AdventureMode/files/spike_ceiling.xml")--, x + (i-1) * 10, y - 50)
-  EntitySetTransform(spike, x + v.x, y - 50 - 150 * math.min(0, v.direction), v.direction == -1 and math.pi or 0)
-  set_var_store_int(spike, "order", i)
-  set_var_store_int(spike, "delay", v.delay)
-  set_var_store_int(spike, "direction", v.direction)
-  set_var_store_int(spike, "pause_out", v.pause_out)
-  set_var_store_int(spike, "pause_in", v.pause_in)
-  local area_damage_component = EntityAddComponent2(spike, "AreaDamageComponent", {
-    death_cause="Stabbed",
-    damage_type="DAMAGE_MELEE",
-    damage_per_frame=0.001,
-    update_every_n_frame=2,
-  })
-  ComponentSetValue2(area_damage_component, "aabb_min", -5, 0 + math.min(0, v.direction) * 50)
-  ComponentSetValue2(area_damage_component, "aabb_max", 5, 50 + math.min(0, v.direction) * 50)
-end

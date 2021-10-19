@@ -93,8 +93,10 @@ function OnWorldPreUpdate()
   -- local player = EntityGetWithTag("player_unit")[1]
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
-  if GuiButton(gui, 2, 0, 0, "boop") then
-    BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")
+  if GuiButton(gui, 2, 0, 50, "boop") then
+    -- BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")
+    local x, y = GameGetCameraPos()
+    EntityLoad("mods/AdventureMode/files/async_test.xml", x, y)
   end
 
   -- Make sure arm doesn't hang weirdly without items

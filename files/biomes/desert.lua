@@ -12,6 +12,7 @@ RegisterSpawnFunction(0xffec2b42, "spawn_chain_torch")
 RegisterSpawnFunction(0xffd1b400, "spawn_slab_01")
 RegisterSpawnFunction(0xffd1b499, "spawn_pile_of_bones")
 RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
+RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -130,4 +131,8 @@ end
 
 function spawn_spike_corridor(x, y)
   EntityLoad("mods/AdventureMode/files/spike_corridor.xml", x, y)
+end
+
+function spawn_spike_corridor_skeleton(x, y)
+  EntityLoad("mods/AdventureMode/files/spike_corridor_skeleton.xml", x, y)
 end

@@ -1,5 +1,11 @@
 <Entity>
 
+    <!-- <_Transform 
+        rotation="0" 
+        scale.x="1" 
+        scale.y="1" >
+    </_Transform> -->
+
   <!-- <InheritTransformComponent>
     <Transform
       rotation="3.1415926535897932384626433832795"
@@ -25,8 +31,15 @@
     script_source_file="mods/AdventureMode/files/spike_ceiling.lua"
     execute_every_n_frame="-1"
     execute_on_added="1"
+    execute_on_removed="1"
     enable_coroutines="1"
   ></LuaComponent>
     <!-- vm_type="ONE_PER_COMPONENT_INSTANCE" -->
+
+  <!-- <CameraBoundComponent
+    distance="1000"
+    freeze_on_max_count_kill="0"
+    freeze_on_distance_kill="0"
+  ></CameraBoundComponent> -->
 
 </Entity>

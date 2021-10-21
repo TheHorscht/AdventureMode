@@ -14,7 +14,7 @@
   </PhysicsBodyComponent>
   
   <PhysicsImageShapeComponent 
-	body_id="1"
+		body_id="1"
     centered="1"
     image_file="data/props_gfx/torch_hang_unlit.png"
     material="metal_nohit" >

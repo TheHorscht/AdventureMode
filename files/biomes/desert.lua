@@ -14,6 +14,7 @@ RegisterSpawnFunction(0xffd1b499, "spawn_pile_of_bones")
 RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
 RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton01")
 RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton02")
+RegisterSpawnFunction(0xffea238a, "spawn_golem")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -140,4 +141,8 @@ end
 
 function spawn_spike_corridor_skeleton02(x, y)
   EntityLoad("mods/AdventureMode/files/spike_corridor_skeleton02.xml", x, y)
+end
+
+function spawn_golem(x, y)
+  EntityLoad("mods/AdventureMode/files/golem.xml", x, y)
 end

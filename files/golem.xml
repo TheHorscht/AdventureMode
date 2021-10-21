@@ -1,0 +1,48 @@
+<Entity name="Strange Statue" tags="ui_use_raw_name">
+
+  <SpriteComponent
+    _tags="character"
+    image_file="mods/AdventureMode/files/golem_sprite.xml"
+  ></SpriteComponent>
+    <!-- rect_animation="walk" -->
+    <!-- next_rect_animation="walk" -->
+
+  <SpriteAnimatorComponent>
+  </SpriteAnimatorComponent>
+
+  <InteractableComponent
+    radius="8"
+    ui_text="Press $0 to interact"
+  ></InteractableComponent>
+
+  <SpriteParticleEmitterComponent
+    _enabled="0"
+    sprite_file="data/particles/jetpack_smoke.xml"
+		delay="0"
+		additive="1"
+		randomize_position.min_x="-9"
+		randomize_position.max_x="9"
+		randomize_position.min_y="-25"
+		randomize_position.max_y="0"
+		randomize_velocity.min_x="-10"
+		randomize_velocity.max_x="10"
+		randomize_velocity.min_y="0"
+		randomize_velocity.max_y="5"
+    count_min="1"
+    count_max="2"
+    emission_interval_min_frames="3"
+    emission_interval_max_frames="5"
+    is_emitting="1" 
+		render_back="0"
+  ></SpriteParticleEmitterComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/golem_interact.lua"
+    script_interacting="mods/AdventureMode/files/golem_interact.lua"
+    execute_every_n_frame="1"
+    execute_on_added="1"
+    enable_coroutines="1"
+    >
+  </LuaComponent>
+
+</Entity>

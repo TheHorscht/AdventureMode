@@ -12,8 +12,9 @@ RegisterSpawnFunction(0xffec2b42, "spawn_chain_torch")
 RegisterSpawnFunction(0xffd1b400, "spawn_slab_01")
 RegisterSpawnFunction(0xffd1b499, "spawn_pile_of_bones")
 RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
-RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton01")
-RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton02")
+RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
+RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton_02")
+RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
 RegisterSpawnFunction(0xffea238a, "spawn_golem")
 
 local function shuffle(tbl)
@@ -128,19 +129,23 @@ function spawn_slab_01(x, y)
 end
 
 function spawn_pile_of_bones(x, y)
-  EntityLoad("mods/AdventureMode/files/pile_of_bones.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/skeletons/pile_of_bones.xml", x, y)
 end
 
 function spawn_spike_corridor(x, y)
   EntityLoad("mods/AdventureMode/files/spike_corridor.xml", x, y)
 end
 
-function spawn_spike_corridor_skeleton01(x, y)
-  EntityLoad("mods/AdventureMode/files/spike_corridor_skeleton01.xml", x, y)
+function spawn_spike_corridor_skeleton_01(x, y)
+  EntityLoad("mods/AdventureMode/files/skeletons/spike_corridor_01.xml", x, y)
 end
 
-function spawn_spike_corridor_skeleton02(x, y)
-  EntityLoad("mods/AdventureMode/files/spike_corridor_skeleton02.xml", x, y)
+function spawn_spike_corridor_skeleton_02(x, y)
+  EntityLoad("mods/AdventureMode/files/skeletons/spike_corridor_02.xml", x, y)
+end
+
+function spawn_maze_skeleton_01(x, y)
+  EntityLoad("mods/AdventureMode/files/skeletons/maze_01.xml", x, y)
 end
 
 function spawn_golem(x, y)

@@ -1,0 +1,24 @@
+<Entity>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/skeletons/sitting.png"
+    offset_x="5"
+    offset_y="12"
+    >
+  </SpriteComponent>
+
+  <InteractableComponent
+    radius="8"
+    ui_text="Press $0 to interact"
+  ></InteractableComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/skeletons/pile_of_bones_interact.lua"
+    script_interacting="mods/AdventureMode/files/skeletons/pile_of_bones_interact.lua"
+    execute_every_n_frame="1"
+    execute_on_added="1"
+    enable_coroutines="1"
+    >
+  </LuaComponent>
+
+</Entity>

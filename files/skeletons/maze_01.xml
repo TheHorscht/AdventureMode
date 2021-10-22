@@ -1,8 +1,8 @@
 <Entity>
 
   <SpriteComponent
-    image_file="mods/AdventureMode/files/pile_of_bones.png"
-    offset_x="5"
+    image_file="mods/AdventureMode/files/skeletons/sitting.png"
+    offset_x="10"
     offset_y="12"
     >
   </SpriteComponent>
@@ -13,8 +13,8 @@
   ></InteractableComponent>
 
   <LuaComponent
-    script_source_file="mods/AdventureMode/files/pile_of_bones_interact.lua"
-    script_interacting="mods/AdventureMode/files/pile_of_bones_interact.lua"
+    script_source_file="mods/AdventureMode/files/skeletons/maze_01_interact.lua"
+    script_interacting="mods/AdventureMode/files/skeletons/maze_01_interact.lua"
     execute_every_n_frame="1"
     execute_on_added="1"
     enable_coroutines="1"

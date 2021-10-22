@@ -1,9 +1,11 @@
 <Entity>
 
   <SpriteComponent
-    image_file="mods/AdventureMode/files/skeleton2.png"
+    image_file="mods/AdventureMode/files/skeletons/lying.png"
     offset_x="10"
     offset_y="7"
+    has_special_scale="1"
+    special_scale_x="-1"
     >
   </SpriteComponent>
 
@@ -13,8 +15,8 @@
   ></InteractableComponent>
 
   <LuaComponent
-    script_source_file="mods/AdventureMode/files/spike_corridor_skeleton01_interact.lua"
-    script_interacting="mods/AdventureMode/files/spike_corridor_skeleton01_interact.lua"
+    script_source_file="mods/AdventureMode/files/skeletons/spike_corridor_02_interact.lua"
+    script_interacting="mods/AdventureMode/files/skeletons/spike_corridor_02_interact.lua"
     execute_every_n_frame="1"
     execute_on_added="1"
     enable_coroutines="1"

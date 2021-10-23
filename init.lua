@@ -17,6 +17,16 @@ xml:add_children(nxml.parse_many([[
   height_index="0"
   color="ff877531">
 </Biome>
+<Biome
+  biome_filename="mods/AdventureMode/files/biomes/dark.xml" 
+  height_index="0"
+  color="ff282620">
+</Biome>
+<Biome
+  biome_filename="mods/AdventureMode/files/biomes/pyramid.xml" 
+  height_index="0"
+  color="ffec2b42">
+</Biome>
 ]]))
 ModTextFileSetContent("data/biome/_biomes_all.xml", tostring(xml))
 
@@ -43,6 +53,8 @@ ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.fo
 -- DESIGN_PLAYER_START_POS_X="715"
 -- DESIGN_PLAYER_START_POS_Y="-600"
 ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
+
+-- ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/AdventureMode/files/gun_actions_append.lua")
 
 function OnPlayerSpawned(player)
   if starting_position == 1 then
@@ -82,6 +94,13 @@ function OnPlayerSpawned(player)
   local water_potion = EntityLoad("data/entities/items/pickup/potion_water.xml")
   AddMaterialInventoryMaterial(water_potion, "water", 300)
   GamePickUpInventoryItem(player, water_potion, false)
+
+  -- local torch = EntityLoad("data/entities/base_torch.xml")
+  local torch = EntityLoad("mods/AdventureMode/files/torch2.xml")
+  -- local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
+  GamePickUpInventoryItem(player, torch, false)
+
+
   -- EntityAddChild(inventory_quick, water_potion)
   -- EntityAddChild(inventory_quick)
   -- EntityKill(items[1])

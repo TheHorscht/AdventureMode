@@ -50,16 +50,12 @@ spikes = spikes or {
   make_spike(10, DOWN, 90, 60, 0),
 }
 
-print("== Corridor script runs ==")
-
 if spikes[1].entity_id then
-  print("== Corridor script: OnRemoved ==")
   for i, v in ipairs(spikes) do
     EntityKill(v.entity_id)
     v.entity_id = nil
   end
 else
-  print("== Corridor script: OnAdded ==")
   for i, v in ipairs(spikes) do
     local spike = EntityLoad("mods/AdventureMode/files/spike_ceiling.xml")
     v.entity_id = spike

@@ -1,0 +1,91 @@
+<Entity tags="mortal,prey" name="Camel">
+  
+	<Base file="data/entities/base_helpless_animal.xml" >
+
+        <AnimalAIComponent 
+        	preferred_job="Escaping"
+			attack_melee_enabled="0"
+			attack_ranged_entity_file=""
+			attack_ranged_predict="1"
+			attack_ranged_enabled="0"
+			attack_melee_enabled="0"
+			sense_creatures="1"
+			creature_detection_range_x="128"
+			creature_detection_range_y="160"
+			attack_melee_damage_min="0"
+			attack_melee_damage_max="0"
+			can_fly="0"
+            >
+        </AnimalAIComponent >
+		
+		<DamageModelComponent 
+			ragdoll_filenames_file="data/ragdolls/camel/filenames.txt" 
+			fire_probability_of_ignition="0.05"
+			ragdoll_offset_x="6"
+			ragdoll_offset_y="-12"
+			hp="10"
+			>
+		</DamageModelComponent>
+
+		<SpriteComponent 
+			_enabled="1" 
+			alpha="1" 
+			image_file="data/enemies_gfx/camel.xml" 
+			next_rect_animation="" 
+			offset_x="0" 
+			offset_y="0" 
+			rect_animation="stand" 
+			transform_offset.y="-10"
+			 
+			 >
+		</SpriteComponent>
+
+		<PathFindingGridMarkerComponent
+			marker_work_flag="24" >
+		</PathFindingGridMarkerComponent>
+		
+		<GenomeDataComponent 
+			herd_id="helpless"
+			food_chain_rank="20"
+			is_predator="0" >
+		</GenomeDataComponent>
+		
+		<CharacterPlatformingComponent 
+			jump_velocity_y="-12" 
+			run_velocity="12"  
+			>
+		</CharacterPlatformingComponent>
+		
+		<HitboxComponent 
+			_enabled="1" 
+			aabb_min_x="-11.5" 
+			aabb_max_x="11.5" 
+			aabb_min_y="-24" 
+			aabb_max_y="4" 
+			>
+		</HitboxComponent>
+		
+		<CharacterDataComponent
+			collision_aabb_min_x="-5.6" 
+			collision_aabb_max_x="5.6" 
+			collision_aabb_min_y="-23" 
+			collision_aabb_max_y="3" 
+			mass="2.7"
+			>
+		</CharacterDataComponent>
+		
+		<CameraBoundComponent
+			max_count="30"
+			distance="160000">
+		</CameraBoundComponent>
+	</Base>
+	
+	<LuaComponent 
+		_enabled="1" 
+		script_source_file="data/scripts/animals/terrain_dependent_sprite_rotator.lua" 
+		execute_every_n_frame="1"
+			>
+	</LuaComponent>
+
+</Entity>
+

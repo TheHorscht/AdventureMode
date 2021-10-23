@@ -16,6 +16,8 @@ RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
 RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton_02")
 RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
 RegisterSpawnFunction(0xffea238a, "spawn_golem")
+RegisterSpawnFunction(0xff0aff90, "spawn_statue_pointing_right")
+RegisterSpawnFunction(0xfffaff90, "spawn_statue_pointing_left")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -81,16 +83,6 @@ function spawn_pressure_plate(x, y)
         name="order",
         value_int=i
       })
-      -- EntityAddComponent2(pressure_plates[v], "SpriteComponent", {
-      --   image_file="data/fonts/font_pixel_white.xml",
-      --   is_text_sprite=true,
-      --   offset_x=7,
-      --   offset_y=15,
-      --   update_transform=true,
-      --   update_transform_rotation=false,
-      --   text=i,
-      --   z_index=-1,
-      -- })
     end
   end
 end
@@ -150,4 +142,12 @@ end
 
 function spawn_golem(x, y)
   EntityLoad("mods/AdventureMode/files/golem.xml", x, y)
+end
+
+function spawn_statue_pointing_right(x, y)
+  EntityLoad("mods/AdventureMode/files/statue_pointing_right.xml", x, y)
+end
+
+function spawn_statue_pointing_left(x, y)
+  EntityLoad("mods/AdventureMode/files/statue_pointing_left.xml", x, y)
 end

@@ -1,5 +1,5 @@
 <Sprite
- filename="data/enemies_gfx/camel.png"
+ filename="mods/AdventureMode/files/camel.png"
  offset_x="11"
  offset_y="16"
  default_animation="stand" 

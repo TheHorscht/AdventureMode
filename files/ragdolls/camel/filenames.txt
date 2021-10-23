@@ -1,0 +1,13 @@
+mods/AdventureMode/files/ragdolls/camel/right_arm.png
+mods/AdventureMode/files/ragdolls/camel/right_hand.png
+mods/AdventureMode/files/ragdolls/camel/left_arm.png
+mods/AdventureMode/files/ragdolls/camel/left_hand.png
+mods/AdventureMode/files/ragdolls/camel/torso.png
+mods/AdventureMode/files/ragdolls/camel/neck1.png
+mods/AdventureMode/files/ragdolls/camel/neck2.png
+mods/AdventureMode/files/ragdolls/camel/neck3.png
+mods/AdventureMode/files/ragdolls/camel/head.png
+mods/AdventureMode/files/ragdolls/camel/left_thigh.png
+mods/AdventureMode/files/ragdolls/camel/left_leg.png
+mods/AdventureMode/files/ragdolls/camel/right_thigh.png
+mods/AdventureMode/files/ragdolls/camel/right_leg.png

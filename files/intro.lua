@@ -11,14 +11,17 @@ sequence(function()
   camera_tracking_shot(400, -800, 400, -800, 0.01)
   wait(180)
   camera_tracking_shot(400, -800, 400, -630, 0.0025)
-  wait(300)
+  wait(250)
   -- camera_tracking_shot(400, -580, 600, -580, 0.002)
   camera_tracking_shot(400, -630, 570, -630, 0.002)
   camera_tracking_shot(570, -630, 570, -580, 0.007)
 end,
 function()
   local player = EntityGetWithTag("player_unit")[1]
+  local x, y = EntityGetTransform(player)
+  local camel = EntityLoad("mods/AdventureMode/files/camel.xml", x - 30, y)
   local character_data_component = EntityGetFirstComponentIncludingDisabled(player, "CharacterDataComponent")
+  local character_data_component_camel = EntityGetFirstComponentIncludingDisabled(camel, "CharacterDataComponent")
   local controls_component = EntityGetFirstComponentIncludingDisabled(player, "ControlsComponent")
   local platform_shooter_player_component = EntityGetFirstComponentIncludingDisabled(player, "PlatformShooterPlayerComponent")
   local wand_angle = 15
@@ -43,13 +46,34 @@ function()
   for i=1, 800 do
     ComponentSetValue2(character_data_component, "mVelocity", 35, 0)
     ComponentSetValue2(character_data_component, "is_on_ground", true)
+
+    ComponentSetValue2(character_data_component_camel, "mVelocity", 35 - 15 * (i/800), 0)
+    ComponentSetValue2(character_data_component_camel, "is_on_ground", true)
     wait(0)
   end
-  wait(160)
-  -- ComponentSetValue2(character_data_component, "effect_hit_ground", true)
-  -- local controls_component = EntityGetComponentIncludingDisabled(player, "ControlsComponent")
-  -- ComponentSetValue2(controls_component, "mButtonFrameRight", GameGetFrameNum())
-  -- ComponentSetValue2(controls_component, "mButtonDownRight", true)
+  -- Camel keeps walking but slows down more
+  for i=1, 160 do
+    ComponentSetValue2(character_data_component_camel, "mVelocity", 20 - 15 * (i/160), 0)
+    ComponentSetValue2(character_data_component_camel, "is_on_ground", true)
+    wait(0)
+  end
+
+  local damage_model_component_camel = EntityGetFirstComponentIncludingDisabled(camel, "DamageModelComponent")
+  ComponentSetValue2(damage_model_component_camel, "air_in_lungs", -1)
+  ComponentSetValue2(damage_model_component_camel, "air_in_lungs_max", 0)
+  wait(100)
+  -- The Noita turns around to look at the dead camel
+  ComponentSetValue2(controls_component, "mAimingVector", -1, vy)
+  ComponentSetValue2(controls_component, "mAimingVectorNormalized", -5000, vy)
+  ComponentSetValue2(controls_component, "mAimingVectorNonZeroLatest", -5000, vy)
+  ComponentSetValue2(controls_component, "mMousePosition", -5000, 0)
+  wait(120)
+  -- And turns back to the temple
+  ComponentSetValue2(controls_component, "mAimingVector", 1, vy)
+  ComponentSetValue2(controls_component, "mAimingVectorNormalized", 5000, vy)
+  ComponentSetValue2(controls_component, "mAimingVectorNonZeroLatest", 5000, vy)
+  ComponentSetValue2(controls_component, "mMousePosition", 5000, 0)
+  wait(120)
 end
 ).onDone(function()
   set_camera_manual(false)

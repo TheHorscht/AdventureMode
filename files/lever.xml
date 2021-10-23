@@ -1,0 +1,40 @@
+<Entity>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/lever_base.png"
+    offset_x="6"
+    offset_y="5"
+  ></SpriteComponent>
+
+  <SimplePhysicsComponent
+  ></SimplePhysicsComponent>
+
+  <VelocityComponent
+  ></VelocityComponent>
+
+  <Entity>
+
+    <InheritTransformComponent
+      only_position="1">
+    </InheritTransformComponent>
+
+    <SpriteComponent
+      image_file="mods/AdventureMode/files/lever_handle.png"
+      offset_x="1"
+      offset_y="13"
+    ></SpriteComponent>
+
+  </Entity>
+
+  <InteractableComponent
+    radius="8"
+    ui_text="Press $0 to activate"
+  ></InteractableComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/lever_interact.lua"
+    script_interacting="mods/AdventureMode/files/lever_interact.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+</Entity>

@@ -1,0 +1,50 @@
+<Entity >
+
+	<SpriteComponent
+    _tags="character"
+		image_file="mods/AdventureMode/files/intro_logo/aloittaa_sprite.xml"
+    offset_x="78" 
+    offset_y="28"
+    rect_animation="logo"
+		>
+	</SpriteComponent>
+
+	<SpriteComponent
+		image_file="mods/AdventureMode/files/intro_logo/aloittaa_shade.png"
+    offset_x="78" 
+    offset_y="28"
+		>
+	</SpriteComponent>
+	
+  <SpriteAnimatorComponent>
+  </SpriteAnimatorComponent>
+
+  <!-- <ParticleEmitterComponent
+    emitted_material_name="blood_fading"
+    emission_chance="30"
+    image_animation_file="mods/AdventureMode/files/intro_logo/aloittaa_particles.png"
+    image_animation_colors_file="mods/AdventureMode/files/intro_logo/aloittaa_colours.png"
+    gravity.y="-5.0"
+    lifetime_min="0.5"
+    lifetime_max="2.5"
+    count_min="1"
+    count_max="2"
+    render_on_grid="1"
+    fade_based_on_lifetime="1"
+    area_circle_radius.min="0"
+    area_circle_radius.max="0"
+    cosmetic_force_create="0"
+    emission_interval_min_frames="0"
+    emission_interval_max_frames="1"
+    emit_cosmetic_particles="1"
+    image_animation_speed="20"
+    image_animation_loop="1"
+    is_emitting="1"
+    render_back="1"
+  ></ParticleEmitterComponent> -->
+	
+	<LifetimeComponent
+	lifetime="1800">
+	</LifetimeComponent>
+
+</Entity>

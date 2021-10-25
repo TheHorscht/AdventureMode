@@ -132,3 +132,11 @@ function sequence(...)
     end
   }
 end
+
+-- will call func() and if the return value is false, wait check_delay frames
+function wait_until(func, check_delay)
+  check_delay = check_delay or 1
+  while not func() do
+    wait(check_delay-1)
+  end
+end

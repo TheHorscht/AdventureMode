@@ -1,16 +1,11 @@
-<Entity>
+<Entity serialize="0">
 
   <SpriteComponent
     image_file="mods/AdventureMode/files/lever_base.png"
     offset_x="6"
     offset_y="5"
+    z_index="0.9"
   ></SpriteComponent>
-
-  <SimplePhysicsComponent
-  ></SimplePhysicsComponent>
-
-  <VelocityComponent
-  ></VelocityComponent>
 
   <Entity>
 
@@ -22,6 +17,7 @@
       image_file="mods/AdventureMode/files/lever_handle.png"
       offset_x="1"
       offset_y="13"
+      z_index="1"
     ></SpriteComponent>
 
   </Entity>
@@ -32,8 +28,8 @@
   ></InteractableComponent>
 
   <LuaComponent
-    script_source_file="mods/AdventureMode/files/lever_interact.lua"
-    script_interacting="mods/AdventureMode/files/lever_interact.lua"
+    script_source_file="mods/AdventureMode/files/lever.lua"
+    script_interacting="mods/AdventureMode/files/lever.lua"
     execute_every_n_frame="1"
   ></LuaComponent>
 

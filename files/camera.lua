@@ -33,6 +33,12 @@ function set_camera_manual(is_manual)
   ComponentSetValue2(platform_shooter_player_component, "center_camera_on_this_entity", not is_manual)
 end
 
+function camera_get_position(x, y)
+  local player = EntityGetWithTag("player_unit")[1]
+  local platform_shooter_player_component = EntityGetFirstComponentIncludingDisabled(player, "PlatformShooterPlayerComponent")
+  return ComponentGetValue2(platform_shooter_player_component, "mDesiredCameraPos")
+end
+
 function camera_set_position(x, y)
   local player = EntityGetWithTag("player_unit")[1]
   local platform_shooter_player_component = EntityGetFirstComponentIncludingDisabled(player, "PlatformShooterPlayerComponent")

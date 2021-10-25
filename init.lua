@@ -39,8 +39,9 @@ local starting_positions = {
   { x = 1722, y = -910 }, -- Spike corridor
   { x = 2450, y = -910 }, -- Golem
   { x = 2138, y = -844 }, -- After spike corridor
+  { x = 1565, y = -285 }, -- Lever puzzle
 }
-local starting_position = 8
+local starting_position = 9
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -72,7 +73,7 @@ function OnPlayerSpawned(player)
   -- Disable jetpack
   -- entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 0)
   entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
-  entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0)
+  entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0.4)
   entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd_ground", 0.4)
 
   -- Make immortal
@@ -95,10 +96,8 @@ function OnPlayerSpawned(player)
   AddMaterialInventoryMaterial(water_potion, "water", 300)
   GamePickUpInventoryItem(player, water_potion, false)
 
-  -- local torch = EntityLoad("data/entities/base_torch.xml")
-  local torch = EntityLoad("mods/AdventureMode/files/torch2.xml")
   -- local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
-  GamePickUpInventoryItem(player, torch, false)
+  -- GamePickUpInventoryItem(player, torch, false)
 
 
   -- EntityAddChild(inventory_quick, water_potion)

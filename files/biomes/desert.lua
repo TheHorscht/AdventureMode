@@ -18,6 +18,8 @@ RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
 RegisterSpawnFunction(0xffea238a, "spawn_golem")
 RegisterSpawnFunction(0xff0aff90, "spawn_statue_pointing_right")
 RegisterSpawnFunction(0xfffaff90, "spawn_statue_pointing_left")
+RegisterSpawnFunction(0xff427800, "spawn_lever_puzzle")
+RegisterSpawnFunction(0xff74b722, "spawn_lever_puzzle_reward")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -150,4 +152,12 @@ end
 
 function spawn_statue_pointing_left(x, y)
   EntityLoad("mods/AdventureMode/files/statue_pointing_left.xml", x, y)
+end
+
+function spawn_lever_puzzle(x, y)
+  EntityLoad("mods/AdventureMode/files/lever_puzzle.xml", x, y)
+end
+
+function spawn_lever_puzzle_reward(x, y)
+  EntityLoad("mods/AdventureMode/files/lever_puzzle_reward.xml", x, y)
 end

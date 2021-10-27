@@ -2,6 +2,7 @@ RegisterSpawnFunction(0xffc626dc, "spawn_cactus")
 RegisterSpawnFunction(0xffbba86b, "spawn_door")
 RegisterSpawnFunction(0xffbba86c, "spawn_door2")
 RegisterSpawnFunction(0xffbba86d, "spawn_door3")
+RegisterSpawnFunction(0xffa03232, "spawn_heart_fullhp")
 RegisterSpawnFunction(0xff7f56cf, "spawn_liquid_checker")
 RegisterSpawnFunction(0xffffff1b, "spawn_pickup_jetpack")
 RegisterSpawnFunction(0xff32d6e7, "spawn_electricity_trap")
@@ -45,6 +46,10 @@ end
 
 function spawn_door3(x, y)
   EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
+end
+
+function spawn_heart_fullhp(x, y)
+  EntityLoad("data/entities/items/pickup/heart_fullhp.xml", x, y)
 end
 
 function spawn_liquid_checker(x, y)

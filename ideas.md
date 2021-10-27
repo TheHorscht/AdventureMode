@@ -9,6 +9,8 @@ Wands:
 Golem and gem to activate golem, which breaks wall
 Money:
   Buy items
+Heavy Stone:
+  Let's you fall quicker in water
 Underwater breathing:
   Swim through areas (Start with very little breathing)
 Ability to talk to dead things?

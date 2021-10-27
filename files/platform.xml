@@ -2,7 +2,15 @@
 
   <SpriteComponent
     image_file="mods/AdventureMode/files/platform.png"
+    offset_x="5"
+    has_special_scale="1"
+    special_scale_x="2"
   ></SpriteComponent>
+
+  <HitboxComponent
+    aabb_min_x="-10"
+    aabb_max_x="10"
+  ></HitboxComponent>
 
   <LuaComponent
     script_source_file="mods/AdventureMode/files/platform.lua"

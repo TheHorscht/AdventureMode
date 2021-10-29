@@ -16,6 +16,11 @@ function entity_set_component_value(entity_id, component_name, property, value)
   ComponentSetValue2(comp, property, value)
 end
 
+function entity_set_component_is_enabled(entity_id, component_name, enabled)
+  local comp = EntityGetFirstComponentIncludingDisabled(entity_id, component_name)
+  EntitySetComponentIsEnabled(entity_id, comp, enabled)
+end
+
 -- Returns true if an existing var store was updated or false if a new one was created
 local function set_var_store(entity_id, name, value_type, value)
   local updated = false

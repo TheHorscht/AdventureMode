@@ -114,11 +114,33 @@ function OnWorldPreUpdate()
   -- local player = EntityGetWithTag("player_unit")[1]
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
-  if GuiButton(gui, 2, 0, 50, "boop") then
-    -- BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")
-    local x, y = GameGetCameraPos()
-    EntityLoad("mods/AdventureMode/files/async_test.xml", x, y)
+  GuiLayoutBeginVertical(gui, 0, 20)
+  if GuiButton(gui, 2, 0, 0, "Give torch") then
+    local inventory_quick = EntityGetWithName("inventory_quick")
+    local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
+    local player = EntityGetWithTag("player_unit")[1]
+    GamePickUpInventoryItem(player, torch, false)
   end
+  if GuiButton(gui, 3, 0, 0, "Die") then
+    local player = EntityGetWithTag("player_unit")[1]
+    EntityInflictDamage(player, 999, "DAMAGE_MELEE", "", "NORMAL", 0, 0)
+  end
+  if not old_pos then
+    if GuiButton(gui, 4, 0, 0, "Teleport far away") then
+      local player = EntityGetWithTag("player_unit")[1]
+      local x, y = EntityGetTransform(player)
+      
+      EntitySetTransform(player, x - 50000, y - 50000)
+      old_pos = { x = x, y = y }
+    end
+  else
+    if GuiButton(gui, 4, 0, 0, "Teleport back") then
+      local player = EntityGetWithTag("player_unit")[1]
+      EntitySetTransform(player, old_pos.x, old_pos.y)
+      old_pos = nil
+    end
+  end
+  GuiLayoutEnd(gui)
 
   -- Make sure arm doesn't hang weirdly without items
   local arm_r_entity = EntityGetWithName("arm_r")

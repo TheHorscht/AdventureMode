@@ -6,9 +6,9 @@
         aabb_max_y="1" >
     </HitboxComponent>
 
-    <VelocityComponent />
-
-    <SimplePhysicsComponent can_go_up="0" />
+    <!-- <VelocityComponent /> -->
+<!-- 
+    <SimplePhysicsComponent can_go_up="0" /> -->
 
     <SpriteComponent 
         image_file="data/props_gfx/pressure_plate.xml" 

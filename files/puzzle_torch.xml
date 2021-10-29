@@ -1,4 +1,4 @@
-<Entity tags="puzzle_torch" >
+<Entity>
 
   <PhysicsBodyComponent 
     uid="1" 
@@ -9,64 +9,57 @@
     linear_damping="0"
     auto_clean="0" 
     update_entity_transform="1"
-    on_death_leave_physics_body="1"
-    >
-  </PhysicsBodyComponent>
+    on_death_leave_physics_body="0"
+	></PhysicsBodyComponent>
   
   <PhysicsImageShapeComponent 
 		body_id="1"
     centered="1"
     image_file="data/props_gfx/torch_hang_unlit.png"
-    material="metal_nohit" >
-  </PhysicsImageShapeComponent>
+    material="metal_nohit"
+	></PhysicsImageShapeComponent>
 
   <LuaComponent 
-      execute_every_n_frame="1"
-      remove_after_executed="1"
-      script_source_file="data/scripts/props/physics_chain_torch.lua"
-      >
-  </LuaComponent>
+		execute_every_n_frame="1"
+		remove_after_executed="1"
+		script_source_file="data/scripts/props/physics_chain_torch.lua"
+	></LuaComponent>
 
-  <Entity>
+  <!-- <Entity> -->
 
 		<InheritTransformComponent>
 			<Transform 
 				position.x="0"
 				position.y="0" 
-			>
-			</Transform>
+			></Transform>
 		</InheritTransformComponent>
 
 		<LightComponent 
 			_tags="enabled_in_world,enabled_in_hand,fire"
 			radius="96"
 			fade_out_time="1.5"
-			>
-		</LightComponent>
+		></LightComponent>
 
-		<TorchComponent
+		<!-- <TorchComponent
 			_tags="enabled_in_world,enabled_in_hand"
 			fire_audio_weight="0.5"
 			suffocation_check_offset_y="-1"
-			>
-		</TorchComponent>
+		></TorchComponent>
 
 		<SpriteAnimatorComponent>
-		</SpriteAnimatorComponent>
+		</SpriteAnimatorComponent> -->
 		
 		<Base file="data/entities/base_torch_particle.xml" >
 			<ParticleEmitterComponent 
         is_emitting="0"
-				>
-			</ParticleEmitterComponent>
+			></ParticleEmitterComponent>
 			<ParticleEmitterComponent 
         is_emitting="0"
 				x_pos_offset_min="-3"
 				x_pos_offset_max="2" 
 				y_pos_offset_min="0"
 				y_pos_offset_max="2"
-				>
-			</ParticleEmitterComponent>
+			></ParticleEmitterComponent>
 
 			<ParticleEmitterComponent 
         is_emitting="0"
@@ -76,8 +69,7 @@
 				x_pos_offset_max="2"
 				y_pos_offset_min="0"
 				y_pos_offset_max="2"
-				>
-			</ParticleEmitterComponent>
+			></ParticleEmitterComponent>
 
 			<ParticleEmitterComponent 
         is_emitting="0"
@@ -86,14 +78,14 @@
 				y_pos_offset_min="0"
 				y_pos_offset_max="2"
 				emitted_material_name="spark_blue"
-				>
-			</ParticleEmitterComponent>
+			></ParticleEmitterComponent>
 		</Base>
-	</Entity>
 
-  <VariableStorageComponent
-    name="active"
-    value_bool="0"
-  ></VariableStorageComponent>
+	<!-- </Entity> -->
+
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/puzzle_torch.lua"
+		execute_every_n_frame="10"
+	></LuaComponent>
 
 </Entity>

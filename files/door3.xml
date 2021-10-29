@@ -44,4 +44,10 @@
     >
   </LuaComponent>
 
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/door3_checker.lua"
+    execute_every_n_frame="10"
+    >
+  </LuaComponent>
+
 </Entity>

@@ -94,24 +94,15 @@ function spawn_pressure_plate(x, y)
   end
 end
 
-local puzzle_torches_spawned = 0
 function spawn_puzzle_torch(x, y)
+  local puzzle_torches_spawned = tonumber(GlobalsGetValue("AdventureMode_puzzle_torches_spawned", "0"))
   if puzzle_torches_spawned == 0 then
-    EntityLoad("mods/AdventureMode/files/puzzle_torch_checker.xml", x, y)
+    EntityLoad("mods/AdventureMode/files/puzzle_torch_spawner.xml", x, y)
   end
   puzzle_torches_spawned = puzzle_torches_spawned + 1
-  EntityLoad("mods/AdventureMode/files/puzzle_torch.xml", x, y)
-  if puzzle_torches_spawned == 5 then
-    local torches = EntityGetWithTag("puzzle_torch")
-    table.sort(torches, function(a, b)
-      local xa = EntityGetTransform(a)
-      local xb = EntityGetTransform(b)
-      return xa < xb
-    end)
-    for i, v in ipairs(torches) do
-      EntitySetName(v, "puzzle_torch_" .. i)
-    end
-  end
+  GlobalsSetValue("AdventureMode_puzzle_torches_spawned", puzzle_torches_spawned)
+  GlobalsSetValue("AdventureMode_puzzle_torch_pos_x_" .. puzzle_torches_spawned, x)
+  GlobalsSetValue("AdventureMode_puzzle_torch_pos_y_" .. puzzle_torches_spawned, y)
 end
 
 function spawn_flamethrower_turret(x, y)

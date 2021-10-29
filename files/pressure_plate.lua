@@ -15,12 +15,7 @@ end
 function down()
   local var_store_order = get_variable_storage_component(entity_id, "order")
   local order = ComponentGetValue2(var_store_order, "value_int")
-  local torch = EntityGetWithName("puzzle_torch_" .. order)
-  EntityAddComponent2(torch, "LuaComponent", {
-    script_source_file = "mods/AdventureMode/files/puzzle_torch_turn_on.lua",
-    execute_every_n_frame=1,
-    remove_after_executed=true,
-  })
+  GlobalsSetValue("AdventureMode_puzzle_torch_active_" .. order, "1")
   local last_order_pressed = tonumber(GlobalsGetValue("AdventureMode_torch_puzzle_last_order_pressed", "0"))
   if (last_order_pressed + 1) ~= order then
     turn_all_torches_off_and_reset_plates()
@@ -32,12 +27,7 @@ end
 function up()
   local var_store_order = get_variable_storage_component(entity_id, "order")
   local order = ComponentGetValue2(var_store_order, "value_int")
-  local torch = EntityGetWithName("puzzle_torch_" .. order)
-  EntityAddComponent2(torch, "LuaComponent", {
-    script_source_file = "mods/AdventureMode/files/puzzle_torch_turn_off.lua",
-    execute_every_n_frame=1,
-    remove_after_executed=true,
-  })
+  GlobalsSetValue("AdventureMode_puzzle_torch_active_" .. order, "0")
 end
 
 local var_store_reset = get_variable_storage_component(entity_id, "reset")

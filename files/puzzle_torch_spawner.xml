@@ -1,0 +1,14 @@
+<Entity>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/puzzle_torch_spawner.lua"
+    execute_every_n_frame="30"
+    execute_on_removed="1"
+  ></LuaComponent>
+
+	<CameraBoundComponent
+		distance="500"
+		freeze_on_max_count_kill="0"
+	></CameraBoundComponent>
+
+</Entity>

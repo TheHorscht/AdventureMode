@@ -74,3 +74,41 @@ end
 function get_var_store_string(entity_id, name)
   return get_var_store(entity_id, name, "string")
 end
+
+function visualize_aabb(entity_id, component_type)
+  local component = EntityGetFirstComponentIncludingDisabled(entity_id, component_type)
+  local aabb = {}
+  local a, b, c, d
+  if component_type == "MaterialAreaCheckerComponent" then
+    a, b, c, d = ComponentGetValue2(component, "area_aabb")
+  elseif component_type == "AreaDamageComponent" then
+    a, b = ComponentGetValue2(component, "aabb_min")
+    c, d = ComponentGetValue2(component, "aabb_max")
+  end
+  aabb.min_x = a
+  aabb.min_y = b
+  aabb.max_x = c
+  aabb.max_y = d
+  local width = aabb.max_x - aabb.min_x
+  local height = aabb.max_y - aabb.min_y
+  local scale_x = width / 10
+  local scale_y = height / 10
+  local ent = EntityCreateNew()
+  -- local x, y, rot = EntityGetTransform(entity_id)
+  -- EntitySetTransform(ent, x, y, rot)
+  EntityAddComponent2(ent, "InheritTransformComponent", {
+    rotate_based_on_x_scale=true
+  })
+  EntityAddChild(entity_id, ent)
+  EntityAddComponent2(ent, "SpriteComponent", {
+    image_file="mods/AdventureMode/files/box_10x10.png",
+    special_scale_x=scale_x,
+    special_scale_y=scale_y,
+    offset_x=-aabb.min_x / scale_x,
+    offset_y=-aabb.min_y / scale_y,
+    has_special_scale=true,
+    alpha=0.5,
+    z_index=-99,
+    smooth_filtering=true,
+  })
+end

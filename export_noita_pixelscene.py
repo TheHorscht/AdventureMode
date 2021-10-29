@@ -1,8 +1,16 @@
 #! /usr/bin/env python
 
-# GIMP script to export and splice pixel scenes
+# GIMP script to crop, export and splice pixel scenes
 # Written for GIMP 2.10.14
 # Use at your own risk :)
+# Prefix your layers with (V), (B) or (M) to mark them as visual, background or materials for exporting
+# all other layers will be ignored, no need to manually toggle their visibility
+# This plugin will:
+# 1. Split your image into 3072x3072 chunks
+# 2. Export filename.png, filename_visual.png, filename_background.png
+# 3. Run those through Noita -splice_pixel_scene
+# 4. Replace the path in the generated XML with the path to your pixel scenes in your mod folder
+# After this you will still need to insert your pixel scene XMLs to your _pixel_scenes.xml
 
 from gimpfu import *
 from shutil import copyfile
@@ -125,7 +133,7 @@ register(
     (PF_INT, "start_x", "Start X", 512),
     (PF_INT, "start_y", "Start Y", -3072),
     (PF_DIRNAME, "noita_path", "Noita Path", "C:/Program Files (x86)/Steam/steamapps/common/Noita"),
-    (PF_DIRNAME, "output_path", "Ouput Path", "D:/Projekte/NoitaMods/AdventureMode/files/pixel_scenes"), #"D:/pixelscenetest"),
+    (PF_DIRNAME, "output_path", "Ouput Path", "D:/Projekte/NoitaMods/AdventureMode/files/pixel_scenes"),
     (PF_STRING, "filename", "Filename", "world"),
     (PF_STRING, "pixel_scenes_mods_folder", "Path to pixel scene in your mod", "mods/AdventureMode/files/pixel_scenes/"),
   ],

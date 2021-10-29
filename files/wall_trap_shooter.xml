@@ -1,0 +1,20 @@
+<Entity>
+
+  <!-- <SpriteComponent
+    image_file="mods/AdventureMode/files/spitter_face.png"
+    offset_x="0"
+    offset_y="14"
+  ></SpriteComponent>   -->
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/wall_trap_shoot.lua"
+    execute_every_n_frame="1"
+    >
+  </LuaComponent>
+
+  <VariableStorageComponent
+    name="frame"
+    value_int="60"
+  ></VariableStorageComponent>
+
+</Entity>

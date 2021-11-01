@@ -40,19 +40,17 @@ local starting_positions = {
   { x = 2450, y = -910 }, -- Golem
   { x = 2138, y = -844 }, -- After spike corridor
   { x = 1565, y = -285 }, -- Lever puzzle
+  { x = 2203, y = -910 }, -- Brazier
+  { x = 2253, y = -707 }, -- Above chase
 }
-local starting_position = 9
+local starting_position = 11
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
   DESIGN_PLAYER_START_POS_Y="%d"
 ></MagicNumbers>
 ]], starting_positions[starting_position].x, starting_positions[starting_position].y))
--- DESIGN_PLAYER_START_POS_X="150"
--- DESIGN_PLAYER_START_POS_Y="-768"
 
--- DESIGN_PLAYER_START_POS_X="715"
--- DESIGN_PLAYER_START_POS_Y="-600"
 ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 
 -- ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/AdventureMode/files/gun_actions_append.lua")

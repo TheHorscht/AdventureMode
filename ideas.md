@@ -1,3 +1,4 @@
+Riddle that tells you to "look at" something, meaning put the mouse cursor on top of it
 Make a skeleton head chase player through the maze
 Potion:
   Reactions

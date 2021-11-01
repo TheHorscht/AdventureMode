@@ -21,6 +21,9 @@ RegisterSpawnFunction(0xff0aff90, "spawn_statue_pointing_right")
 RegisterSpawnFunction(0xfffaff90, "spawn_statue_pointing_left")
 RegisterSpawnFunction(0xff427800, "spawn_lever_puzzle")
 RegisterSpawnFunction(0xff74b722, "spawn_lever_puzzle_reward")
+RegisterSpawnFunction(0xffe33750, "spawn_temple_skeleton_spawner")
+RegisterSpawnFunction(0xffe33751, "spawn_temple_skeleton")
+RegisterSpawnFunction(0xffe33752, "spawn_temple_skeleton_kill_trigger")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -156,4 +159,21 @@ end
 
 function spawn_lever_puzzle_reward(x, y)
   EntityLoad("mods/AdventureMode/files/lever_puzzle_reward.xml", x, y)
+end
+
+function spawn_temple_skeleton_spawner(x, y)
+  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/temple_skeleton_spawner.xml", x, y)
+end
+
+function spawn_temple_skeleton(x, y)
+  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
+  GlobalsSetValue("AdventureMode_temple_skeleton_spawn_x", x)
+  GlobalsSetValue("AdventureMode_temple_skeleton_spawn_y", y)
+  -- EntityLoad("mods/AdventureMode/files/temple_skeleton/temple_skeleton.xml", x, y)
+end
+
+function spawn_temple_skeleton_kill_trigger(x, y)
+  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/temple_skeleton_kill_trigger.xml", x, y)
 end

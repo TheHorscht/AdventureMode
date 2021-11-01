@@ -1,0 +1,70 @@
+<Sprite 
+	filename="mods/AdventureMode/files/temple_skeleton/temple_skeleton.png" 
+	offset_x="10" 
+	offset_y="31" 
+	default_animation="stand"
+	>
+	
+  <RectAnimation 
+	name="stand" 
+	pos_x="0" 
+	pos_y="0" 
+	frame_count="6" 
+	frame_width="40" 
+	frame_height="34" 
+	frame_wait="0.09" 
+	frames_per_row="7" 
+	loop="1"  >
+  </RectAnimation>
+  
+  <RectAnimation 
+	name="attack" 
+	next_animation="stand"
+	pos_x="0" 
+	pos_y="34"
+	frame_count="6" 
+	frame_width="40" 
+	frame_height="34" 
+	frame_wait="0.09" 
+	frames_per_row="7" 
+	loop="0"  >
+	
+    <Event 
+      check_physics_material="0" 
+      frame="8" 
+      max_distance="500" 
+      name="attack_melee" 
+      on_finished="0" 
+      probability="1" >
+
+    </Event>
+	
+  </RectAnimation>
+  
+  <RectAnimation 
+	name="attack_ranged" 
+	next_animation="stand"
+	pos_x="0" 
+	pos_y="68"
+	frame_count="6" 
+	frame_width="40" 
+	frame_height="34" 
+	frame_wait="0.09" 
+	frames_per_row="7" 
+	loop="0"  >
+	
+<!--     <Event 
+      check_physics_material="0" 
+      frame="3" 
+      max_distance="500" 
+      name="attack_melee" 
+      on_finished="0" 
+      probability="1" >
+
+    </Event> -->
+	
+	<Event frame="3" name="attack_shoot" probability="1" check_physics_material="0"/>
+	
+  </RectAnimation>
+  
+</Sprite>

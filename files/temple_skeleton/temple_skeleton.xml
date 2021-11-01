@@ -1,0 +1,212 @@
+<Entity tags="ui_use_raw_name" name="Ancient Resurrection">
+	
+
+<!-- 	<LimbBossComponent
+		state = "1">
+	</LimbBossComponent> -->
+
+	<IKLimbsAnimatorComponent>
+	</IKLimbsAnimatorComponent>
+
+	<VariableStorageComponent
+		_tags="no_gold_drop">
+	</VariableStorageComponent>
+
+
+<!-- 	<PhysicsAIComponent
+		target_vec_max_len="24.0"
+		force_coeff="16.0"
+		force_balancing_coeff="0.9"
+		force_max="200"
+		torque_coeff="50"
+		torque_balancing_coeff="1"
+		torque_max="50.0"
+		damage_deactivation_probability="0"
+		damage_deactivation_time_min="2"
+		damage_deactivation_time_max="10" >
+	</PhysicsAIComponent> -->
+	
+<!-- 	<LuaComponent
+		script_source_file="data/scripts/animals/physics_anti_gravity.lua"
+		execute_every_n_frame="1" >
+	</LuaComponent> -->
+
+<!-- 	<PhysicsBodyComponent 
+		force_add_update_areas="1"
+		allow_sleep="1" 
+		angular_damping="0.02" 
+		fixed_rotation="1" 
+		is_bullet="0" 
+		linear_damping="0"  >
+	</PhysicsBodyComponent>
+
+	<PhysicsShapeComponent
+		is_circle="1"
+		radius_x="18"
+		radius_y="18"
+		friction="0.0"
+		restitution="0.3">
+	</PhysicsShapeComponent> -->
+	
+	<Base file="data/entities/base_enemy_flying.xml" >
+		<AnimalAIComponent 
+			_enabled="1" 
+			escape_if_damaged_probability="0"
+			food_material="blood"
+			attack_ranged_enabled="1"
+			attack_ranged_entity_file="mods/AdventureMode/files/temple_skeleton/power_orb.xml"
+			attack_ranged_frames_between="60"
+			attack_ranged_action_frame="4"
+			attack_ranged_min_distance="30" 
+    		attack_ranged_max_distance="300" 
+			attack_ranged_offset_y="-31"
+			attack_ranged_offset_x="4"
+			eye_offset_y="-31"
+			eye_offset_x="0"
+			attack_melee_enabled="1" 
+			attack_melee_damage_min="0.4" 
+			attack_melee_damage_max="0.7"
+			attack_melee_max_distance="30"
+			attack_melee_action_frame="3"
+			attack_dash_enabled="0"
+			attack_dash_distance="10"
+			attack_dash_damage="0"
+			creature_detection_range_x="650"
+			creature_detection_range_y="650"
+			can_fly="0"
+			needs_food="0"
+			>
+		</AnimalAIComponent>
+
+	<DamageModelComponent 
+		_enabled="1"
+		hp="25" 
+		air_needed="0" 
+		falling_damages="0" 
+		fire_damage_amount="0.2" 
+		fire_probability_of_ignition="0" 
+		blood_material=""
+		blood_spray_material=""
+		is_on_fire="0" 
+		materials_damage="1" 
+		materials_how_much_damage="0.00001" 
+		materials_that_damage="lava" 
+		ragdoll_filenames_file=""
+		materials_create_messages="0" 
+        ragdoll_material="bone"
+		ragdoll_offset_y="-9"
+		ragdoll_offset_x="8"
+		create_ragdoll="1"
+		ragdollify_child_entity_sprites="1" 
+		ragdollify_root_angular_damping="2"
+		>
+	</DamageModelComponent>
+
+		<SpriteComponent 
+			image_file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_sprite.xml" 
+			offset_x="0"
+			offset_y="0">
+		</SpriteComponent>
+
+		<PathFindingComponent
+			distance_to_reach_node_x="40"
+			distance_to_reach_node_y="40"
+			can_jump="0"
+			can_fly="1" 
+			can_swim_on_surface="1"
+		    can_dive="1"
+			space_required="5">
+		</PathFindingComponent>
+
+		<PathFindingGridMarkerComponent
+			marker_work_flag="24" >
+		</PathFindingGridMarkerComponent>
+		
+		<GenomeDataComponent 
+			herd_id="slimes"
+			food_chain_rank="1"
+			is_predator="1" >
+		</GenomeDataComponent>
+		
+		<CharacterPlatformingComponent 
+			pixel_gravity="0"
+			fly_speed_change_spd="0.8"
+			fly_velocity_x="200" 
+			accel_x="0.03" 
+			jump_velocity_y="-12" 
+			run_velocity="17"  >
+		</CharacterPlatformingComponent>
+
+		<CameraBoundComponent
+			max_count="30"
+			distance="160000"
+			>
+		</CameraBoundComponent>
+		
+		<HitboxComponent 
+			_enabled="1"
+			aabb_min_x="-5" 
+			aabb_max_x="5" 
+			aabb_min_y="-23" 
+			aabb_max_y="1"
+			damage_multiplier="1.0" >
+		</HitboxComponent>
+
+		<ItemChestComponent level="4" enemy_drop="1" > </ItemChestComponent>
+
+		<CharacterDataComponent
+			collision_aabb_min_x="-5" 
+			collision_aabb_max_x="5" 
+			collision_aabb_min_y="-28" 
+			collision_aabb_max_y="1"
+			mass="0.7"
+			>
+		</CharacterDataComponent>
+
+	</Base>
+
+	<SpriteComponent 
+        _tags="character" 
+		_enabled="1" 
+		alpha="1" 
+		image_file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_emissive.xml"
+		offset_x="0" 
+		offset_y="0"
+		emissive="1"
+        additive="1"
+		next_rect_animation="" 
+		rect_animation="stand" 
+		 >
+	</SpriteComponent>
+	
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/temple_skeleton/follow_player_ai.lua"
+		execute_every_n_frame="1" >
+	</LuaComponent>
+	
+	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>
+	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>
+	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>
+	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>
+	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>
+	
+	<AudioComponent 
+		file="data/audio/Desktop/animals.bank"
+		event_root="animals/lukki" >
+	</AudioComponent>
+	
+	<AudioComponent
+		file="data/audio/Desktop/animals.bank"
+		event_root="animals/necromancer_shop" >
+	</AudioComponent>
+	
+	<AudioComponent
+		file="data/audio/Desktop/animals.bank"
+		event_root="animals/firemage" >
+	</AudioComponent>
+	
+		<AudioComponent 
+			file="data/audio/Desktop/animals.snd"
+			event_root="">
+		</AudioComponent>
+</Entity>

@@ -64,24 +64,49 @@ local function get_var_store(entity_id, name, value_type)
   end
 end
 
-function get_var_store_int(entity_id, name)
-  return get_var_store(entity_id, name, "int")
+function get_var_store_int(entity_id, name, default)
+  return get_var_store(entity_id, name, "int") or default
 end
 
-function get_var_store_bool(entity_id, name)
-  return get_var_store(entity_id, name, "bool")
+function get_var_store_bool(entity_id, name, default)
+  if get_var_store(entity_id, name, "bool") == nil then
+    return default
+  else
+    return get_var_store(entity_id, name, "bool")
+  end
 end
 
-function get_var_store_float(entity_id, name)
-  return get_var_store(entity_id, name, "float")
+function get_var_store_float(entity_id, name, default)
+  return get_var_store(entity_id, name, "float") or default
 end
 
-function get_var_store_string(entity_id, name)
-  return get_var_store(entity_id, name, "string")
+function get_var_store_string(entity_id, name, default)
+  return get_var_store(entity_id, name, "string") or default
+end
+
+function get_child_with_name(entity_id, name)
+  for i, child in ipairs(EntityGetAllChildren(entity_id) or {}) do
+    if EntityGetName(child) == name then
+      return child
+    end
+  end
 end
 
 function visualize_aabb(entity_id, component_type)
-  local component = EntityGetFirstComponentIncludingDisabled(entity_id, component_type)
+  local component_type
+  local types = {
+    "MaterialAreaCheckerComponent",
+    "AreaDamageComponent",
+    "CollisionTriggerComponent",
+  }
+  local component
+  for i, t in ipairs(types) do
+    component = EntityGetFirstComponentIncludingDisabled(entity_id, t)
+    if component then
+      component_type = t
+      break
+    end
+  end
   local aabb = {}
   local a, b, c, d
   if component_type == "MaterialAreaCheckerComponent" then
@@ -89,6 +114,11 @@ function visualize_aabb(entity_id, component_type)
   elseif component_type == "AreaDamageComponent" then
     a, b = ComponentGetValue2(component, "aabb_min")
     c, d = ComponentGetValue2(component, "aabb_max")
+  elseif component_type == "CollisionTriggerComponent" then
+    local width = ComponentGetValue2(component, "width")
+    local height = ComponentGetValue2(component, "height")
+    a, b = -width / 2, -height / 2
+    c, d = width / 2, height / 2
   end
   aabb.min_x = a
   aabb.min_y = b
@@ -116,4 +146,33 @@ function visualize_aabb(entity_id, component_type)
     z_index=-99,
     smooth_filtering=true,
   })
+end
+
+function get_active_item()
+	local player = EntityGetWithTag("player_unit")[1]
+	local inv = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")
+	return ComponentGetValue2(inv, "mActiveItem")   
+end
+
+-- Doesn't work well, causes screen blackness effect and makes player immune to damage for a minute or so after teleporting...
+function safe_teleport(entity, target_x, target_y)
+  local ent = EntityCreateNew()
+  local teleport_component = EntityAddComponent2(ent, "TeleportComponent", {
+    target_x_is_absolute_position=true,
+    target_y_is_absolute_position=true,
+    load_collapse_entity=false,
+  })
+  ComponentSetValue2(teleport_component, "target", target_x, target_y)
+  EntityAddComponent2(ent, "HitboxComponent", {
+    aabb_min_x=-8,
+    aabb_min_y=-8,
+    aabb_max_x=8,
+    aabb_max_y=8,
+  })
+  EntityAddComponent2(ent, "LifetimeComponent", {
+    lifetime=5
+  })
+  local x, y = EntityGetTransform(entity)
+  EntitySetTransform(ent, x, y)
+  -- EntitySetTransform(entity, target_x, target_y)
 end

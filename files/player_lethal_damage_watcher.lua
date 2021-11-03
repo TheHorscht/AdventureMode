@@ -22,7 +22,6 @@ local function remove_game_effects(entity_id)
     if not undetectable[effect.id] then
       local comp = GameGetGameEffect(entity_id, effect.id)
       if comp > 0 then
-        print("REmoving " ..effect.id)
         ComponentSetValue2(comp, "frames", 0)
       end
     end
@@ -42,67 +41,68 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     local vx, vy = ComponentGetValue2(player_vel_comp, "mVelocity")
     ComponentSetValue2(vel_comp, "mVelocity", vx, vy)
     ComponentSetValue2(character_data_component, "mVelocity", 0, 0)
-    local disable_component = { "DamageModelComponent", "" }
-    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
-    EntitySetComponentIsEnabled(entity_id, comp, false)
-    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
-    EntitySetComponentIsEnabled(entity_id, comp, false)
-    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "PlatformShooterPlayerComponent")
-    EntitySetComponentIsEnabled(entity_id, comp, false)
-    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "CharacterPlatformingComponent")
-    EntitySetComponentIsEnabled(entity_id, comp, false)
-    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "Inventory2Component")
-    EntitySetComponentIsEnabled(entity_id, comp, false)
-    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "InventoryGuiComponent")
-    EntitySetComponentIsEnabled(entity_id, comp, false)
+    local disable_components = {
+      "DamageModelComponent",
+      "SpriteComponent",
+      "PlatformShooterPlayerComponent",
+      "CharacterPlatformingComponent",
+      "ItemPickUpperComponent",
+      "Inventory2Component",
+      "InventoryGuiComponent",
+      "ParticleEmitterComponent",
+      "SpriteParticleEmitterComponent",
+    }
+    for i, comp_name in ipairs(disable_components) do
+      entity_set_component_is_enabled(entity_id, comp_name, false)
+    end
+
+    entity_set_component_is_enabled(get_active_item(), "SpriteComponent", false)
+
+    -- GameDropAllItems(entity_id)
 
     -- Hide cape
     local cape_entity = EntityGetWithName("cape")
-    local comp = EntityGetFirstComponentIncludingDisabled(cape_entity, "VerletPhysicsComponent")
-    EntitySetComponentIsEnabled(cape_entity, comp, false)
+    EntityKill(cape_entity)
     
     -- Hide arm
     local arm_r_entity = EntityGetWithName("arm_r")
+    print("ARm entity: " .. tostring(arm_r_entity))
     local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
-    EntitySetComponentIsEnabled(arm_r_entity, comp, false)
+    print("ARm sprite comp: " .. tostring(comp))
+    -- EntitySetComponentIsEnabled(arm_r_entity, comp, false)
+    ComponentSetValue2(comp, "visible", false)
+    EntityRefreshSprite(arm_r_entity, comp)
 
     -- Reset all game effects
     remove_game_effects(entity_id)
 
-    -- local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "GunComponent")
-    -- EntitySetComponentIsEnabled(entity_id, comp, false)
-    -- local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "KickComponent")
-    -- EntitySetComponentIsEnabled(entity_id, comp, false)
     set_controls_enabled(false)
     bla = true
     async(function()
       wait(180)
       remove_game_effects(entity_id)
-      EntitySetTransform(entity_id, 1173, -553)
-      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
-      EntitySetComponentIsEnabled(entity_id, comp, true)
-      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
-      EntitySetComponentIsEnabled(entity_id, comp, true)
-      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "PlatformShooterPlayerComponent")
-      EntitySetComponentIsEnabled(entity_id, comp, true)
-      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "CharacterPlatformingComponent")
-      EntitySetComponentIsEnabled(entity_id, comp, true)
-      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "Inventory2Component")
-      EntitySetComponentIsEnabled(entity_id, comp, true)
-      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "InventoryGuiComponent")
-      EntitySetComponentIsEnabled(entity_id, comp, true)
+      local respawn_x = tonumber(GlobalsGetValue("AdventureMode_respawn_x", "0"))
+      local respawn_y = tonumber(GlobalsGetValue("AdventureMode_respawn_y", "0"))
+      EntitySetTransform(entity_id, respawn_x, respawn_y)
+      for i, comp_name in ipairs(disable_components) do
+        entity_set_component_is_enabled(entity_id, comp_name, true)
+      end
       local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
       ComponentSetValue2(damage_model_component, "hp", ComponentGetValue2(damage_model_component, "max_hp"))
 
+      entity_set_component_is_enabled(get_active_item(), "SpriteComponent", true)
+
       -- Show cape
-      local cape_entity = EntityGetWithName("cape")
-      local comp = EntityGetFirstComponentIncludingDisabled(cape_entity, "VerletPhysicsComponent")
-      EntitySetComponentIsEnabled(cape_entity, comp, true)
+      EntitySetName(cape_entity, "cape")      
+      local cape_entity = EntityLoad("data/entities/verlet_chains/cape/cape.xml", x, y)
+      EntityAddChild(entity_id, cape_entity)
       
       -- Show arm
       local arm_r_entity = EntityGetWithName("arm_r")
       local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
-      EntitySetComponentIsEnabled(arm_r_entity, comp, true)
+      -- EntitySetComponentIsEnabled(arm_r_entity, comp, true)
+      ComponentSetValue2(comp, "visible", true)
+      EntityRefreshSprite(arm_r_entity, comp)
 
       set_controls_enabled(true)
       bla = false

@@ -56,56 +56,63 @@ ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 -- ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/AdventureMode/files/gun_actions_append.lua")
 
 function OnPlayerSpawned(player)
-  if starting_position == 1 then
-    EntityLoad("mods/AdventureMode/files/intro.xml")
+  local x, y = EntityGetTransform(player)
+  
+  if GlobalsGetValue("AdventureMode_player_initialized", "0") == "0" then
+    GlobalsSetValue("AdventureMode_player_initialized", "1")
+    GlobalsSetValue("AdventureMode_respawn_x", starting_positions[starting_position].x)
+    GlobalsSetValue("AdventureMode_respawn_y", starting_positions[starting_position].y)
+    if starting_position == 1 then
+      EntityLoad("mods/AdventureMode/files/intro.xml")
+    end
+    local world_state_entity = GameGetWorldStateEntity()
+    local world_state_component = EntityGetFirstComponentIncludingDisabled(world_state_entity, "WorldStateComponent")
+    ComponentSetValue2(world_state_component, "intro_weather", true)
+    ComponentSetValue2(world_state_component, "time", 1)
+    ComponentSetValue2(world_state_component, "fog", 0)
+    ComponentSetValue2(world_state_component, "fog_target", 0)
+    ComponentSetValue2(world_state_component, "sky_sunset_alpha_target", 0.5)
+    ComponentSetValue2(world_state_component, "gradient_sky_alpha_target", 0.5)
+  
+    -- Disable jetpack
+    -- entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 0)
+    entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
+    entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0.4)
+    entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd_ground", 0.4)
+  
+    -- Make immortal
+    entity_set_component_value(player, "DamageModelComponent", "wait_for_kill_flag_on_death", true)
+    EntityAddComponent2(player, "LuaComponent", {
+      script_source_file = "mods/AdventureMode/files/player_lethal_damage_watcher.lua",
+      script_damage_received = "mods/AdventureMode/files/player_lethal_damage_watcher.lua",
+      execute_every_n_frame=-1,
+      execute_on_added=true,
+      enable_coroutines=true,
+    })
+  
+    -- Prepare Inventory
+    local inventory_quick = EntityGetWithName("inventory_quick")
+    local items = EntityGetAllChildren(inventory_quick) or {}
+    for i, item in ipairs(items) do
+      EntityKill(item)
+    end
+    local water_potion = EntityLoad("data/entities/items/pickup/potion_water.xml")
+    AddMaterialInventoryMaterial(water_potion, "water", 300)
+    GamePickUpInventoryItem(player, water_potion, false)
+  
+    -- local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
+    -- GamePickUpInventoryItem(player, torch, false)
+  
+  
+    -- EntityAddChild(inventory_quick, water_potion)
+    -- EntityAddChild(inventory_quick)
+    -- EntityKill(items[1])
+    -- EntityKill(items[2])
+  
+  
+    -- ComponentSetValue2(world_state_component, "", 2)
+    -- camera_tracking_shot(260, -800, 260, -600, 0.01)
   end
-  local world_state_entity = GameGetWorldStateEntity()
-  local world_state_component = EntityGetFirstComponentIncludingDisabled(world_state_entity, "WorldStateComponent")
-  ComponentSetValue2(world_state_component, "intro_weather", true)
-  ComponentSetValue2(world_state_component, "time", 1)
-  ComponentSetValue2(world_state_component, "fog", 0)
-  ComponentSetValue2(world_state_component, "fog_target", 0)
-  ComponentSetValue2(world_state_component, "sky_sunset_alpha_target", 0.5)
-  ComponentSetValue2(world_state_component, "gradient_sky_alpha_target", 0.5)
-
-  -- Disable jetpack
-  -- entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 0)
-  entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
-  entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0.4)
-  entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd_ground", 0.4)
-
-  -- Make immortal
-  entity_set_component_value(player, "DamageModelComponent", "wait_for_kill_flag_on_death", true)
-  EntityAddComponent2(player, "LuaComponent", {
-    script_source_file = "mods/AdventureMode/files/player_lethal_damage_watcher.lua",
-    script_damage_received = "mods/AdventureMode/files/player_lethal_damage_watcher.lua",
-    execute_every_n_frame=-1,
-    execute_on_added=true,
-    enable_coroutines=true,
-  })
-
-  -- Prepare Inventory
-  local inventory_quick = EntityGetWithName("inventory_quick")
-  local items = EntityGetAllChildren(inventory_quick) or {}
-  for i, item in ipairs(items) do
-    EntityKill(item)
-  end
-  local water_potion = EntityLoad("data/entities/items/pickup/potion_water.xml")
-  AddMaterialInventoryMaterial(water_potion, "water", 300)
-  GamePickUpInventoryItem(player, water_potion, false)
-
-  -- local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
-  -- GamePickUpInventoryItem(player, torch, false)
-
-
-  -- EntityAddChild(inventory_quick, water_potion)
-  -- EntityAddChild(inventory_quick)
-  -- EntityKill(items[1])
-  -- EntityKill(items[2])
-
-
-  -- ComponentSetValue2(world_state_component, "", 2)
-  -- camera_tracking_shot(260, -800, 260, -600, 0.01)
 end
 
 function OnWorldPreUpdate()

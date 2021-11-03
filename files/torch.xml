@@ -183,6 +183,12 @@
     execute_on_added="1"
   ></LuaComponent>
 
+  <LuaComponent
+    _tags="enabled_in_hand,enabled_in_world"
+    script_source_file="mods/AdventureMode/files/torch_reignite_checker.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
   <VariableStorageComponent
     name="is_on"
     value_bool="1"
@@ -190,7 +196,7 @@
 <!-- MaterialSuckerComponent -->
     <!-- _tags="enabled_in_hand,enabled_in_inventory" -->
   <MaterialAreaCheckerComponent
-    _tags="enabled_in_hand,enabled_in_inventory"
+    _tags="enabled_in_hand,enabled_in_world,enabled_in_inventory"
     look_for_failure="0"
     kill_after_message="0"
     material="water"
@@ -202,7 +208,7 @@
   ></MaterialAreaCheckerComponent>
 
   <LuaComponent
-    _tags="enabled_in_hand,enabled_in_inventory"
+    _tags="enabled_in_hand,enabled_in_world,enabled_in_inventory"
     script_material_area_checker_success="mods/AdventureMode/files/torch_material_checker.lua"
     execute_every_n_frame="-1"
   ></LuaComponent>

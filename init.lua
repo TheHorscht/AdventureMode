@@ -42,8 +42,9 @@ local starting_positions = {
   { x = 1565, y = -285 }, -- Lever puzzle
   { x = 2203, y = -910 }, -- Brazier
   { x = 2253, y = -707 }, -- Above chase
+  { x = 3054, y = -870 }, -- Water
 }
-local starting_position = 11
+local starting_position = 12
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -117,21 +118,30 @@ end
 
 function OnWorldPreUpdate()
   -- local player = EntityGetWithTag("player_unit")[1]
+  local id = 2
+  local function new_id()
+    id = id + 1
+    return id
+  end
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
-  GuiLayoutBeginVertical(gui, 0, 20)
-  if GuiButton(gui, 2, 0, 0, "Give torch") then
-    local inventory_quick = EntityGetWithName("inventory_quick")
-    local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
-    local player = EntityGetWithTag("player_unit")[1]
-    GamePickUpInventoryItem(player, torch, false)
+  GuiLayoutBeginVertical(gui, 1, 20)
+  local inventory_quick = EntityGetWithName("inventory_quick")
+  local player = EntityGetWithTag("player_unit")[1]
+  if GuiButton(gui, new_id(), 0, 0, "Give torch") then
+    local item = EntityLoad("mods/AdventureMode/files/torch.xml")
+    GamePickUpInventoryItem(player, item, false)
   end
-  if GuiButton(gui, 3, 0, 0, "Die") then
+  if GuiButton(gui, new_id(), 0, 0, "Give rock") then
+    local item = EntityLoad("data/entities/items/pickup/physics_gold_orb_greed.xml")
+    GamePickUpInventoryItem(player, item, false)
+  end
+  if GuiButton(gui, new_id(), 0, 0, "Die") then
     local player = EntityGetWithTag("player_unit")[1]
     EntityInflictDamage(player, 999, "DAMAGE_MELEE", "", "NORMAL", 0, 0)
   end
   if not old_pos then
-    if GuiButton(gui, 4, 0, 0, "Teleport far away") then
+    if GuiButton(gui, new_id(), 0, 0, "Teleport far away") then
       local player = EntityGetWithTag("player_unit")[1]
       local x, y = EntityGetTransform(player)
       
@@ -139,7 +149,7 @@ function OnWorldPreUpdate()
       old_pos = { x = x, y = y }
     end
   else
-    if GuiButton(gui, 4, 0, 0, "Teleport back") then
+    if GuiButton(gui, new_id(), 0, 0, "Teleport back") then
       local player = EntityGetWithTag("player_unit")[1]
       EntitySetTransform(player, old_pos.x, old_pos.y)
       old_pos = nil

@@ -1,0 +1,23 @@
+<Entity tags="ui_use_raw_name" name="Ghost">
+
+  <SpriteComponent 
+    image_file="data/enemies_gfx/playerghost.xml" 
+    emissive="1"
+    additive="1"
+    offset_x="6" 
+    offset_y="13" >
+  </SpriteComponent>
+
+	<AudioLoopComponent
+		file="data/audio/Desktop/animals.bank"
+		event_name="animals/ghost/movement_loop"
+		set_speed_parameter="1"
+		auto_play="1">
+	</AudioLoopComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/chaser.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
+
+</Entity>

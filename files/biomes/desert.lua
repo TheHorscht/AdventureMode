@@ -1,3 +1,5 @@
+dofile_once("mods/AdventureMode/files/util.lua")
+
 RegisterSpawnFunction(0xffc626dc, "spawn_cactus")
 RegisterSpawnFunction(0xffbba86b, "spawn_door")
 RegisterSpawnFunction(0xffbba86c, "spawn_door2")
@@ -21,6 +23,11 @@ RegisterSpawnFunction(0xff0aff90, "spawn_statue_pointing_right")
 RegisterSpawnFunction(0xfffaff90, "spawn_statue_pointing_left")
 RegisterSpawnFunction(0xff427800, "spawn_lever_puzzle")
 RegisterSpawnFunction(0xff74b722, "spawn_lever_puzzle_reward")
+RegisterSpawnFunction(0xffe32626, "spawn_brazier")
+RegisterSpawnFunction(0xffc4001e, "spawn_wall_trap_shooting_left")
+RegisterSpawnFunction(0xffe41c3a, "spawn_wall_trap_shooting_right")
+RegisterSpawnFunction(0xffbba3a7, "spawn_spike_ground")
+RegisterSpawnFunction(0xfff6bbc4, "spawn_spike_ceiling")
 RegisterSpawnFunction(0xffe33750, "spawn_temple_skeleton_spawner")
 RegisterSpawnFunction(0xffe33751, "spawn_temple_skeleton")
 RegisterSpawnFunction(0xffe33752, "spawn_temple_skeleton_kill_trigger")
@@ -40,7 +47,7 @@ function spawn_cactus(x, y)
 end
 
 function spawn_door(x, y)
-  EntityLoad("mods/AdventureMode/files/door.xml", x, y)
+  -- EntityLoad("mods/AdventureMode/files/door.xml", x, y)
 end
 
 function spawn_door2(x, y)
@@ -159,6 +166,39 @@ end
 
 function spawn_lever_puzzle_reward(x, y)
   EntityLoad("mods/AdventureMode/files/lever_puzzle_reward.xml", x, y)
+end
+
+function spawn_brazier(x, y)
+  EntityLoad("mods/AdventureMode/files/brazier.xml", x, y - 12)
+end
+
+function spawn_wall_trap_shooting_left(x, y)
+  local shooter = EntityLoad("mods/AdventureMode/files/wall_trap_shooter.xml", x + 1, y)
+  EntityAddComponent2(shooter, "PixelSceneComponent", {
+    pixel_scene="mods/AdventureMode/files/spitter_face_left.png",
+    pixel_scene_visual="mods/AdventureMode/files/spitter_face_left_visual.png",
+    offset_x=-11,
+    offset_y=-14,
+  })
+  EntitySetTransform(shooter, x + 1, y, 0, -1)
+end
+
+function spawn_wall_trap_shooting_right(x, y)
+  local shooter = EntityLoad("mods/AdventureMode/files/wall_trap_shooter.xml", x, y)
+  EntityAddComponent2(shooter, "PixelSceneComponent", {
+    pixel_scene="mods/AdventureMode/files/spitter_face_right.png",
+    pixel_scene_visual="mods/AdventureMode/files/spitter_face_right_visual.png",
+    offset_x=0,
+    offset_y=-14,
+  })
+end
+
+function spawn_spike_ground(x, y)
+  EntityLoad("mods/AdventureMode/files/spike.xml", x, y + 1)
+end
+
+function spawn_spike_ceiling(x, y)
+  EntityLoad("mods/AdventureMode/files/spike_ceil.xml", x, y)
 end
 
 function spawn_temple_skeleton_spawner(x, y)

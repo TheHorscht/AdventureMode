@@ -66,12 +66,16 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     
     -- Hide arm
     local arm_r_entity = EntityGetWithName("arm_r")
-    print("ARm entity: " .. tostring(arm_r_entity))
     local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
-    print("ARm sprite comp: " .. tostring(comp))
-    -- EntitySetComponentIsEnabled(arm_r_entity, comp, false)
     ComponentSetValue2(comp, "visible", false)
     EntityRefreshSprite(arm_r_entity, comp)
+
+    -- Hide no-item arm
+    local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent", "right_arm_root")
+    ComponentSetValue2(comp, "visible", false)
+    EntityRefreshSprite(entity_id, comp)
+
+    GlobalsSetValue("AdventureMode_respawn_in_progress", "1")
 
     -- Reset all game effects
     remove_game_effects(entity_id)
@@ -83,7 +87,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       remove_game_effects(entity_id)
       local respawn_x = tonumber(GlobalsGetValue("AdventureMode_respawn_x", "0"))
       local respawn_y = tonumber(GlobalsGetValue("AdventureMode_respawn_y", "0"))
-      EntitySetTransform(entity_id, respawn_x, respawn_y)
+
       for i, comp_name in ipairs(disable_components) do
         entity_set_component_is_enabled(entity_id, comp_name, true)
       end
@@ -100,9 +104,16 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       -- Show arm
       local arm_r_entity = EntityGetWithName("arm_r")
       local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
-      -- EntitySetComponentIsEnabled(arm_r_entity, comp, true)
       ComponentSetValue2(comp, "visible", true)
       EntityRefreshSprite(arm_r_entity, comp)
+
+      -- Show no-item arm
+      local comp = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent", "right_arm_root")
+      ComponentSetValue2(comp, "visible", true)
+      EntityRefreshSprite(entity_id, comp)
+
+      EntitySetTransform(entity_id, respawn_x, respawn_y)
+      GlobalsSetValue("AdventureMode_respawn_in_progress", "0")
 
       set_controls_enabled(true)
       bla = false

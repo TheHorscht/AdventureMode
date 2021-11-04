@@ -39,12 +39,12 @@ local starting_positions = {
   { x = 1722, y = -910 }, -- Spike corridor
   { x = 2450, y = -910 }, -- Golem
   { x = 2138, y = -844 }, -- After spike corridor
-  { x = 1565, y = -285 }, -- Lever puzzle
+  { x = 1290, y = -285 }, -- Lever puzzle
   { x = 2203, y = -910 }, -- Brazier
   { x = 2253, y = -707 }, -- Above chase
   { x = 3054, y = -870 }, -- Water
 }
-local starting_position = 12
+local starting_position = 9
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -164,8 +164,9 @@ function OnWorldPreUpdate()
   GuiLayoutEnd(gui)
 
   -- Make sure arm doesn't hang weirdly without items
+  local respawn_in_progress = GlobalsGetValue("AdventureMode_respawn_in_progress", "0") == "1"
   local arm_r_entity = EntityGetWithName("arm_r")
-  if arm_r_entity > 0 then
+  if not respawn_in_progress and arm_r_entity > 0 then
     local inventory_quick = EntityGetWithName("inventory_quick")
     local items = EntityGetAllChildren(inventory_quick)
     local sprite_component = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")

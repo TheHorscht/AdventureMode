@@ -7,13 +7,6 @@
     z_index="0.7"
   ></SpriteComponent>
 
-  <CollisionTriggerComponent
-    required_tag="player_unit"
-    width="5"
-    height="10"
-    destroy_this_entity_when_triggered="0"
-  ></CollisionTriggerComponent>
-
   <ParticleEmitterComponent 
     _enabled="0"
 		emitted_material_name="spark_blue"
@@ -78,10 +71,28 @@
 		render_back="1"
   ></ParticleEmitterComponent>
 
-  <LuaComponent
-    script_collision_trigger_hit="mods/AdventureMode/files/respawn_statue/trigger_hit.lua"
-    execute_every_n_frame="-1"
-  ></LuaComponent>
+  <Entity>
+    
+    <InheritTransformComponent>
+      <Transform
+        position.y="-20"
+      ></Transform>
+    </InheritTransformComponent>
+
+    <CollisionTriggerComponent
+      required_tag="player_unit"
+      width="20"
+      height="40"
+      destroy_this_entity_when_triggered="0"
+    ></CollisionTriggerComponent>
+
+    <LuaComponent
+      script_collision_trigger_hit="mods/AdventureMode/files/respawn_statue/trigger_hit.lua"
+      execute_every_n_frame="-1"
+    ></LuaComponent>
+
+  </Entity>
+  
 
   <!-- This checks if it it's the currently set save point and if so, enable the emitters to signal that to the player -->
   <LuaComponent

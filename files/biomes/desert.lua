@@ -31,6 +31,7 @@ RegisterSpawnFunction(0xfff6bbc4, "spawn_spike_ceiling")
 RegisterSpawnFunction(0xffe33750, "spawn_temple_skeleton_spawner")
 RegisterSpawnFunction(0xffe33751, "spawn_temple_skeleton")
 RegisterSpawnFunction(0xffe33752, "spawn_temple_skeleton_kill_trigger")
+RegisterSpawnFunction(0xffff7bef, "spawn_respawn_statue")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -216,4 +217,9 @@ end
 function spawn_temple_skeleton_kill_trigger(x, y)
   -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
   EntityLoad("mods/AdventureMode/files/temple_skeleton_kill_trigger.xml", x, y)
+end
+
+function spawn_respawn_statue(x, y)
+  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/respawn_statue.xml", x, y)
 end

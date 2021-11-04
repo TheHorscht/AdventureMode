@@ -1,0 +1,99 @@
+<Entity>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/respawn_statue/statue.png"
+    offset_x="13"
+    offset_y="43"
+    z_index="0.7"
+  ></SpriteComponent>
+
+  <CollisionTriggerComponent
+    required_tag="player_unit"
+    width="5"
+    height="10"
+    destroy_this_entity_when_triggered="0"
+  ></CollisionTriggerComponent>
+
+  <ParticleEmitterComponent 
+    _enabled="0"
+		emitted_material_name="spark_blue"
+		gravity.y="0.0"
+		lifetime_min="1.5"
+		lifetime_max="1.7"
+		count_min="1"
+		count_max="1"
+		render_on_grid="1"
+		fade_based_on_lifetime="1"
+		area_circle_radius.min="0"
+		area_circle_radius.max="0"
+		cosmetic_force_create="0"
+		airflow_force="0.151"
+		airflow_scale="0.05"
+		airflow_time="1.01"
+    x_vel_min="0"
+    x_vel_max="0"
+    y_vel_min="0"
+    y_vel_max="0"
+    velocity_always_away_from_center="20"
+    offset.x="0"
+    offset.y="-20"
+		emission_interval_min_frames="2"
+		emission_interval_max_frames="3"
+		emit_cosmetic_particles="1"
+		image_animation_file="mods/AdventureMode/files/respawn_statue/emitter.png"
+		image_animation_speed="5"
+		image_animation_loop="1"
+		is_emitting="1"
+		render_back="1"
+  ></ParticleEmitterComponent>
+
+  <ParticleEmitterComponent 
+    _enabled="0"
+		emitted_material_name="spark_blue"
+		gravity.y="0.0"
+		lifetime_min="0.5"
+		lifetime_max="0.7"
+		count_min="1"
+		count_max="1"
+		render_on_grid="1"
+		fade_based_on_lifetime="1"
+		area_circle_radius.min="0"
+		area_circle_radius.max="0"
+		cosmetic_force_create="0"
+		airflow_force="0"
+    x_vel_min="0"
+    x_vel_max="0"
+    y_vel_min="0"
+    y_vel_max="0"
+    offset.x="0"
+    offset.y="-20"
+		emission_interval_min_frames="2"
+		emission_interval_max_frames="3"
+    emission_chance="20"
+		emit_cosmetic_particles="1"
+		image_animation_file="mods/AdventureMode/files/respawn_statue/emitter_eyes.png"
+		image_animation_speed="5"
+		image_animation_loop="1"
+		is_emitting="1"
+		render_back="1"
+  ></ParticleEmitterComponent>
+
+  <LuaComponent
+    script_collision_trigger_hit="mods/AdventureMode/files/respawn_statue/trigger_hit.lua"
+    execute_every_n_frame="-1"
+  ></LuaComponent>
+
+  <!-- This checks if it it's the currently set save point and if so, enable the emitters to signal that to the player -->
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/respawn_statue/check.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+  ></LuaComponent>
+
+  <CameraBoundComponent
+    distance="300"
+    freeze_on_max_count_kill="0"
+    freeze_on_distance_kill="1"
+  ></CameraBoundComponent>
+
+</Entity>

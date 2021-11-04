@@ -10,7 +10,13 @@ local state = get_state()
 
 local amount_of_slices = 64
 
-if not GetValueBool("initialized", false) then
+-- check for sprite child entity to make sure this doesn't rn on on_added, because when the entity respawns,
+-- for instance in debug mode when de/respawning player, the child entities will get loaded AFTER on_added runs
+if not get_child_with_name(entity_id, "sprite") then
+  return
+end
+
+if not get_child_with_name(entity_id, "light_cones") then
   state.sprite_entities = {}
   local container_entity = EntityCreateNew("light_cones")
   EntityAddComponent2(container_entity, "InheritTransformComponent", {
@@ -36,7 +42,15 @@ if not GetValueBool("initialized", false) then
     EntityAddChild(container_entity, sub_entity)
     table.insert(state.sprite_entities, sub_entity)
   end
-  SetValueBool("initialized", true)
+end
+
+if not state.sprite_entities then
+  -- This needs to happen in case the entity gets unloaded and reloaded, in which case the state gets lost
+  state.sprite_entities = {}
+  local container_entity = get_child_with_name(entity_id, "light_cones")
+  for i, sprite_entity in ipairs(EntityGetAllChildren(container_entity) or {}) do
+    table.insert(state.sprite_entities, sprite_entity)
+  end
 end
 
 function get_distance( x1, y1, x2, y2 )
@@ -61,12 +75,12 @@ for i=1, amount_of_slices do
   EntitySetComponentIsEnabled(state.sprite_entities[i], inherit_transform_component, true)
 end
 
-local container_entity = EntityGetWithName("light_cones")
+local container_entity = get_child_with_name(entity_id, "light_cones")
 EntitySetComponentsWithTagEnabled(container_entity, "enabled_in_world", true)
 
 function enabled_changed(entity_id, is_enabled)
   if get_var_store_bool(entity_id, "is_on", true) then
-    local container_entity = EntityGetWithName("light_cones")
+    local container_entity = get_child_with_name(entity_id, "light_cones")
     for i, ent in ipairs(EntityGetAllChildren(container_entity) or {}) do
       EntitySetComponentsWithTagEnabled(ent, "fire", is_enabled)
     end

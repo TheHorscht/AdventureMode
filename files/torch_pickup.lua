@@ -1,0 +1,11 @@
+function item_pickup(entity_item, entity_pickupper, item_name)
+  local sprite_component = EntityGetFirstComponentIncludingDisabled(entity_item, "SpriteComponent")
+  local item_component = EntityGetFirstComponentIncludingDisabled(entity_item, "ItemComponent")
+  ComponentSetValue2(sprite_component, "image_file", "data/items_gfx/torch.xml")
+  EntityRefreshSprite(entity_item, sprite_component)
+  ComponentSetValue2(sprite_component, "rect_animation", "out")
+  ComponentSetValue2(sprite_component, "next_rect_animation", "out")
+  ComponentSetValue2(item_component, "play_spinning_animation", true)
+  ComponentSetValue2(item_component, "play_hover_animation", false)
+  EntityRemoveComponent(entity_item, GetUpdatedComponentID())
+end

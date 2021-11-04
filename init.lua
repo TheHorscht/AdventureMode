@@ -101,6 +101,12 @@ function OnPlayerSpawned(player)
     AddMaterialInventoryMaterial(water_potion, "water", 300)
     GamePickUpInventoryItem(player, water_potion, false)
   
+    -- Add no-item-arm
+    EntityAddComponent2(player, "SpriteComponent", {
+      _tags="right_arm_root,character",
+      image_file="data/enemies_gfx/player_arm_no_item.xml",
+      z_index=0.59
+    })
     -- local torch = EntityLoad("mods/AdventureMode/files/torch.xml")
     -- GamePickUpInventoryItem(player, torch, false)
   
@@ -162,14 +168,16 @@ function OnWorldPreUpdate()
   if arm_r_entity > 0 then
     local inventory_quick = EntityGetWithName("inventory_quick")
     local items = EntityGetAllChildren(inventory_quick)
-    -- local players = EntityGetWithTag("player_unit")
-    -- local player = players[1]
-    -- -- local x, y, r, scale_x = EntityGetTransform(arm_r_entity)
-    -- local x, y, r, scale_x = EntityGetTransform(player)
-    
-    -- EntitySetTransform(arm_r_entity, x, y, math.pi/2 - 0.3 * scale_x)
     local sprite_component = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
+    local player = EntityGetWithTag("player_unit")[1]
+    if player then
+      local no_item_arm_sprite_component = EntityGetFirstComponentIncludingDisabled(player, "SpriteComponent", "right_arm_root")
+      ComponentSetValue2(no_item_arm_sprite_component, "alpha", (not not items) and 0 or 1)
+      -- EntitySetComponentIsEnabled(player, no_item_arm_sprite_component, not items)
+      -- EntityRefreshSprite(player, no_item_arm_sprite_component)
+    end
     EntitySetComponentIsEnabled(arm_r_entity, sprite_component, not not items)
+    -- EntitySetComponentIsEnabled(arm_r_entity, sprite_component, false)
   end
 end
 

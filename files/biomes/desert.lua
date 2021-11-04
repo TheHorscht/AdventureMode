@@ -211,15 +211,12 @@ function spawn_temple_skeleton(x, y)
   -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
   GlobalsSetValue("AdventureMode_temple_skeleton_spawn_x", x)
   GlobalsSetValue("AdventureMode_temple_skeleton_spawn_y", y)
-  -- EntityLoad("mods/AdventureMode/files/temple_skeleton/temple_skeleton.xml", x, y)
 end
 
 function spawn_temple_skeleton_kill_trigger(x, y)
-  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
   EntityLoad("mods/AdventureMode/files/temple_skeleton_kill_trigger.xml", x, y)
 end
 
 function spawn_respawn_statue(x, y)
-  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
-  EntityLoad("mods/AdventureMode/files/respawn_statue.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/respawn_statue/statue.xml", x, y)
 end

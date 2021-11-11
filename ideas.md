@@ -30,11 +30,19 @@ Labyrinth with doors and switches that open/close specific groups of doors, with
 Spell that lets you spawn a controllable drone, to get into narrow passageways to press a switch
 Physics door that drops down. Filling area with water so elecriticy can burn the wooden platform underneath the door
 Drop rock down a hole to activate switch
-Light up all torches, or in a certain pattern
 Mix different liquids to create gate opener
 Door that requires you to put wands on pedestals and leave them behind for a while
 Lava lake that needs to be frozen with a circle of freezing spell to cross
 Pushable block puzzle
+Ability to turn into another entity (shapeshift/polymorph)
+Timed pressure plates that raise something while standing on top of them and lowers it when not standing on them,
+ and you have to align a few things in a straight line this way
+Floor that collapses
+Do-not-jump room
+Gas caves for which you need the torch after water room
+
+
+Color robe: 6e482f colorize in gimp
 
 Story:
 =====

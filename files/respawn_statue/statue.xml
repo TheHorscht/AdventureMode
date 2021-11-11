@@ -71,7 +71,7 @@
 		render_back="1"
   ></ParticleEmitterComponent>
 
-  <Entity>
+  <!-- <Entity>
     
     <InheritTransformComponent>
       <Transform
@@ -92,7 +92,17 @@
     ></LuaComponent>
 
   </Entity>
-  
+   -->
+
+  <InteractableComponent
+    radius="14"
+    ui_text="Press $0 to save your progress"
+  ></InteractableComponent>
+
+  <LuaComponent
+    script_interacting="mods/AdventureMode/files/respawn_statue/interact.lua"
+    execute_every_n_frame="-1"
+  ></LuaComponent>
 
   <!-- This checks if it it's the currently set save point and if so, enable the emitters to signal that to the player -->
   <LuaComponent

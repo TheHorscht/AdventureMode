@@ -13,6 +13,7 @@ local dialog_inactive = {
   options = {
     {
       text = "Insert Gemstone",
+      enabled = false,
       func = function(dialog)
         local sprite_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
         ComponentSetValue2(sprite_component, "rect_animation", "wake")
@@ -29,6 +30,8 @@ local dialog_inactive = {
         end)
         dialog.close()
       end
+    }, {
+      text = "Leave it alone"
     }
   }
 }
@@ -91,9 +94,9 @@ local dialog_active = {
                         if did_hit then
                           GameScreenshake(100, x, y)
                           -- function shoot_projectile( who_shot, entity_file, x, y, vel_x, vel_y, send_message )
-                          shoot_projectile(entity_id, "data/entities/projectiles/explosion.xml", x + 22 + i * 5, y - 40, 0, 0, false)
-                          shoot_projectile(entity_id, "data/entities/projectiles/explosion.xml", x + 22 + i * 5, y - 20, 0, 0, false)
-                          shoot_projectile(entity_id, "data/entities/projectiles/explosion.xml", x + 22 + i * 5, y, 0, 0, false)
+                          shoot_projectile(entity_id, "mods/AdventureMode/files/golem_explosion.xml", x + 22 + i * 5, y - 40, 0, 0, false)
+                          shoot_projectile(entity_id, "mods/AdventureMode/files/golem_explosion.xml", x + 22 + i * 5, y - 20, 0, 0, false)
+                          shoot_projectile(entity_id, "mods/AdventureMode/files/golem_explosion.xml", x + 22 + i * 5, y, 0, 0, false)
                           break
                         end
                         wait(0)

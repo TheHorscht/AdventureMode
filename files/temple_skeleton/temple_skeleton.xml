@@ -181,8 +181,13 @@
 	
 	<LuaComponent
 		script_source_file="mods/AdventureMode/files/temple_skeleton/follow_player_ai.lua"
-		execute_every_n_frame="1" >
-	</LuaComponent>
+		execute_every_n_frame="1"
+	></LuaComponent>
+
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/temple_skeleton/despawn_on_player_death.lua"
+		execute_every_n_frame="5"
+	></LuaComponent>
 	
 	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>
 	<Entity>  <Base file="mods/AdventureMode/files/temple_skeleton/temple_skeleton_leg.xml" /> </Entity>

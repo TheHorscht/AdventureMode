@@ -44,8 +44,9 @@ local starting_positions = {
   { x = 2253, y = -707 }, -- Above chase
   { x = 3054, y = -870 }, -- Water
   { x = 4444, y = -103 }, -- 13 Lever puzzle
+  { x = 3460, y = -1179}, -- 14 Golem
 }
-local starting_position = 13
+local starting_position = 8
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -77,8 +78,11 @@ function OnPlayerSpawned(player)
     ComponentSetValue2(world_state_component, "gradient_sky_alpha_target", 0.5)
   
     -- Disable jetpack
-    -- entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 0)
-    entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
+    if starting_position > 1 then
+      entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
+    else
+      entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 0)
+    end
     entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0.2)
     entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd_ground", 1.0)
   
@@ -135,9 +139,9 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
-  if GuiButton(gui, new_id(), 2, 200, "D") then
-    debug_menu_open = not debug_menu_open
-  end
+  -- if GuiButton(gui, new_id(), 2, 200, "D") then
+  --   debug_menu_open = not debug_menu_open
+  -- end
 
   if debug_menu_open then
     GuiLayoutBeginVertical(gui, 1, 20)

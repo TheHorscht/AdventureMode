@@ -4,8 +4,8 @@
     required_tag="player_unit"
     width="20"
     height="60"
+    destroy_this_entity_when_triggered="0"
   ></CollisionTriggerComponent>
-    <!-- destroy_this_entity_when_triggered="0" -->
 
   <LuaComponent
     script_collision_trigger_hit="mods/AdventureMode/files/temple_skeleton_spawner.lua"

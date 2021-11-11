@@ -10,7 +10,7 @@
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/4_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/4.plz" pos_x="3584" pos_y="-1024" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/5_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/5.plz" pos_x="3584" pos_y="-512" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/5_background.png" colors_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/5_visual.plz" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/5.plz" pos_x="3584" pos_y="-512" skip_biome_checks="1" >
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/6_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/6.plz" pos_x="4096" pos_y="-3072" skip_biome_checks="1" >
     </PixelScene>

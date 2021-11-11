@@ -1,0 +1,32 @@
+<Entity>	
+
+	<LightComponent 
+		radius="24"
+		fade_out_time="1.5" 
+		r="230"
+		g="120"
+		b="230"
+	></LightComponent>
+	
+	<LaserEmitterComponent
+		is_emitting="1"
+		laser_angle_add_rad="0"
+		><laser
+			damage_to_entities="0"
+			max_cell_durability_to_destroy="0"
+			damage_to_cells="0"
+			max_length="60"
+			beam_radius="5"
+			hit_particle_chance="0"
+			beam_particle_chance="100"
+			beam_particle_type="plasma_fading"
+			audio_enabled="0"
+		></laser>
+	</LaserEmitterComponent>
+
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/door_lever_labyrinth/door_checker.lua"
+		execute_every_n_frame="3"
+	></LuaComponent>
+
+</Entity>

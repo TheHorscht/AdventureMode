@@ -176,3 +176,12 @@ function safe_teleport(entity, target_x, target_y)
   EntitySetTransform(ent, x, y)
   -- EntitySetTransform(entity, target_x, target_y)
 end
+
+function split_string(inputstr, sep)
+  sep = sep or "%s"
+  local t= {}
+  for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+    table.insert(t, str)
+  end
+  return t
+end

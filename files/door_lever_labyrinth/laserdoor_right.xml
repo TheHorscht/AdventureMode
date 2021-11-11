@@ -1,0 +1,9 @@
+<Entity>	
+
+	<Base file="mods/AdventureMode/files/door_lever_labyrinth/laserdoor_base.xml">
+    <LaserEmitterComponent
+      laser_angle_add_rad="0"
+    ></LaserEmitterComponent>
+  </Base>
+
+</Entity>

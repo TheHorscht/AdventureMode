@@ -1,0 +1,16 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/lever.xml" include_children="1" />
+
+  <!-- Needs to be a unique global for this lever's state -->
+  <VariableStorageComponent
+    name="global_variable"
+    value_string="AdventureMode_door_lever_labyrinth_06"
+  ></VariableStorageComponent>
+
+  <VariableStorageComponent
+    name="global_function"
+    value_string="mods/AdventureMode/files/leverdoor_puzzle.lua;lever_06_switched"
+  ></VariableStorageComponent>
+
+</Entity>

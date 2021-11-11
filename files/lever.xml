@@ -1,4 +1,4 @@
-<Entity serialize="0">
+<Entity>
 
   <SpriteComponent
     image_file="mods/AdventureMode/files/lever_base.png"
@@ -32,5 +32,11 @@
     script_interacting="mods/AdventureMode/files/lever.lua"
     execute_every_n_frame="1"
   ></LuaComponent>
+
+  <!-- <CameraBoundComponent
+    distance="600"
+    freeze_on_max_count_kill="0"
+    freeze_on_distance_kill="0"
+  ></CameraBoundComponent> -->
 
 </Entity>

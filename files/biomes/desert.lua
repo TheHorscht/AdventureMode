@@ -33,6 +33,30 @@ RegisterSpawnFunction(0xffe33751, "spawn_temple_skeleton")
 RegisterSpawnFunction(0xffe33752, "spawn_temple_skeleton_kill_trigger")
 RegisterSpawnFunction(0xffff7bef, "spawn_respawn_statue")
 
+RegisterSpawnFunction(0xff517700, "spawn_leverdoor_puzzle_lever_01")
+RegisterSpawnFunction(0xff517701, "spawn_leverdoor_puzzle_lever_02")
+RegisterSpawnFunction(0xff517702, "spawn_leverdoor_puzzle_lever_03")
+RegisterSpawnFunction(0xff517703, "spawn_leverdoor_puzzle_lever_04")
+RegisterSpawnFunction(0xff517704, "spawn_leverdoor_puzzle_lever_05")
+RegisterSpawnFunction(0xff517705, "spawn_leverdoor_puzzle_lever_06")
+
+RegisterSpawnFunction(0xffcd0000, "spawn_leverdoor_puzzle_door_01")
+RegisterSpawnFunction(0xffcd0001, "spawn_leverdoor_puzzle_door_02")
+RegisterSpawnFunction(0xffcd0002, "spawn_leverdoor_puzzle_door_03")
+RegisterSpawnFunction(0xffcd0003, "spawn_leverdoor_puzzle_door_04")
+RegisterSpawnFunction(0xffcd0004, "spawn_leverdoor_puzzle_door_05")
+RegisterSpawnFunction(0xffcd0005, "spawn_leverdoor_puzzle_door_06")
+RegisterSpawnFunction(0xffcd0006, "spawn_leverdoor_puzzle_door_07")
+RegisterSpawnFunction(0xffcd0007, "spawn_leverdoor_puzzle_door_08")
+RegisterSpawnFunction(0xffcd0008, "spawn_leverdoor_puzzle_door_09")
+RegisterSpawnFunction(0xffcd0009, "spawn_leverdoor_puzzle_door_10")
+RegisterSpawnFunction(0xffcd0010, "spawn_leverdoor_puzzle_door_11")
+RegisterSpawnFunction(0xffcd0011, "spawn_leverdoor_puzzle_door_12")
+RegisterSpawnFunction(0xffcd0012, "spawn_leverdoor_puzzle_door_13")
+RegisterSpawnFunction(0xffcd0013, "spawn_leverdoor_puzzle_door_14")
+RegisterSpawnFunction(0xffcd0014, "spawn_leverdoor_puzzle_door_15")
+RegisterSpawnFunction(0xffcd0015, "spawn_leverdoor_puzzle_door_16")
+
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
     local j = math.random(i)
@@ -219,4 +243,132 @@ end
 
 function spawn_respawn_statue(x, y)
   EntityLoad("mods/AdventureMode/files/respawn_statue/statue.xml", x, y)
+end
+-- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))([\s\S\n\r]*?)(end)
+-- $1--[[$2]]$3
+-- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))(--\[\[)([\s\S\n\r]*?)(\]\])(end)
+-- $1$3$5
+function spawn_leverdoor_puzzle_lever_01(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_01.xml", x, y)
+end
+
+function spawn_leverdoor_puzzle_lever_02(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_02.xml", x, y)
+end
+
+function spawn_leverdoor_puzzle_lever_03(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_03.xml", x, y)
+end
+
+function spawn_leverdoor_puzzle_lever_04(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_04.xml", x, y)
+end
+
+function spawn_leverdoor_puzzle_lever_05(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_05.xml", x, y)
+end
+
+function spawn_leverdoor_puzzle_lever_06(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_06.xml", x, y)
+end
+
+function spawn_leverdoor_puzzle_door_01(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_01.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_int(door, "default_state", 0)
+  -- set_var_store_string(door, "color", "blue")
+end
+
+function spawn_leverdoor_puzzle_door_02(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_02.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_right.xml", x, y)
+  -- set_var_store_string(door, "color", "blue")
+end
+
+function spawn_leverdoor_puzzle_door_03(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_03.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "red")
+end
+
+function spawn_leverdoor_puzzle_door_04(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_04.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_right.xml", x, y)
+  -- set_var_store_string(door, "color", "pink")
+end
+
+function spawn_leverdoor_puzzle_door_05(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_05.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_int(door, "default_state", 0)
+  -- set_var_store_string(door, "color", "blue")
+end
+
+function spawn_leverdoor_puzzle_door_06(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_06.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_right.xml", x, y)
+  -- set_var_store_int(door, "default_state", 0)
+  -- set_var_store_string(door, "color", "green")
+end
+
+function spawn_leverdoor_puzzle_door_07(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_07.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "blue")
+end
+
+function spawn_leverdoor_puzzle_door_08(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_08.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "green")
+end
+
+function spawn_leverdoor_puzzle_door_09(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_09.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_right.xml", x, y)
+  -- set_var_store_string(door, "color", "pink")
+end
+
+function spawn_leverdoor_puzzle_door_10(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_10.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "green")
+end
+
+function spawn_leverdoor_puzzle_door_11(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_11.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_int(door, "default_state", 0)
+  -- set_var_store_string(door, "color", "pink")
+end
+
+function spawn_leverdoor_puzzle_door_12(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_12.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_right.xml", x, y)
+  -- set_var_store_string(door, "color", "blue")
+end
+
+function spawn_leverdoor_puzzle_door_13(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_13.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_right.xml", x, y)
+  -- set_var_store_string(door, "color", "red")
+end
+
+function spawn_leverdoor_puzzle_door_14(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_14.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "orange")
+end
+
+function spawn_leverdoor_puzzle_door_15(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_15.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "pink")
+end
+
+function spawn_leverdoor_puzzle_door_16(x, y)
+  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_16.xml", x, y)
+  -- local door = EntityLoad("mods/AdventureMode/files/laserdoor_down.xml", x, y)
+  -- set_var_store_string(door, "color", "red")
+  -- EntityLoad("mods/AdventureMode/files/test.xml", x, y)
 end

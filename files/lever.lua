@@ -37,6 +37,12 @@ if state.progress then
   EntitySetTransform(handle_entity, hx, hy, hrot)
   if state.progress == 1 then
     local global_variable = get_var_store_string(entity_id, "global_variable")
+    local toggle_global_variables = get_var_store_string(entity_id, "toggle_global_variables")
+    local global_script_and_function = get_var_store_string(entity_id, "global_function")
+    local global_script, global_function
+    if global_script_and_function then
+      global_script, global_function = unpack(split_string(global_script_and_function, ";"))
+    end
     state.progress = nil
     -- It's pressed on the right and unpressed on the left position
     local new_state = state.direction == 1
@@ -48,7 +54,9 @@ if state.progress then
     if global_variable then
       GlobalsSetValue(global_variable, new_state and "1" or "0")
     end
-    -- SetTimeOut(0, "mods/AdventureMode/files/timeout.lua", "boop")
+    if global_script then
+      SetTimeOut(0, global_script, global_function)
+    end
   end
 end
 

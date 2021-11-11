@@ -43,8 +43,9 @@ local starting_positions = {
   { x = 2203, y = -910 }, -- Brazier
   { x = 2253, y = -707 }, -- Above chase
   { x = 3054, y = -870 }, -- Water
+  { x = 4444, y = -103 }, -- 13 Lever puzzle
 }
-local starting_position = 9
+local starting_position = 13
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -78,8 +79,8 @@ function OnPlayerSpawned(player)
     -- Disable jetpack
     -- entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 0)
     entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
-    entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0.4)
-    entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd_ground", 0.4)
+    entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd", 0.2)
+    entity_set_component_value(player, "CharacterDataComponent", "fly_recharge_spd_ground", 1.0)
   
     -- Make immortal
     entity_set_component_value(player, "DamageModelComponent", "wait_for_kill_flag_on_death", true)
@@ -122,6 +123,8 @@ function OnPlayerSpawned(player)
   end
 end
 
+local debug_menu_open = false
+
 function OnWorldPreUpdate()
   -- local player = EntityGetWithTag("player_unit")[1]
   local id = 2
@@ -131,37 +134,63 @@ function OnWorldPreUpdate()
   end
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
-  GuiLayoutBeginVertical(gui, 1, 20)
-  local inventory_quick = EntityGetWithName("inventory_quick")
-  local player = EntityGetWithTag("player_unit")[1]
-  if GuiButton(gui, new_id(), 0, 0, "Give torch") then
-    local item = EntityLoad("mods/AdventureMode/files/torch.xml")
-    GamePickUpInventoryItem(player, item, false)
+
+  if GuiButton(gui, new_id(), 2, 200, "D") then
+    debug_menu_open = not debug_menu_open
   end
-  if GuiButton(gui, new_id(), 0, 0, "Give rock") then
-    local item = EntityLoad("data/entities/items/pickup/physics_gold_orb_greed.xml")
-    GamePickUpInventoryItem(player, item, false)
-  end
-  if GuiButton(gui, new_id(), 0, 0, "Die") then
+
+  if debug_menu_open then
+    GuiLayoutBeginVertical(gui, 1, 20)
+    local inventory_quick = EntityGetWithName("inventory_quick")
     local player = EntityGetWithTag("player_unit")[1]
-    EntityInflictDamage(player, 999, "DAMAGE_MELEE", "", "NORMAL", 0, 0)
-  end
-  if not old_pos then
-    if GuiButton(gui, new_id(), 0, 0, "Teleport far away") then
-      local player = EntityGetWithTag("player_unit")[1]
-      local x, y = EntityGetTransform(player)
-      
-      EntitySetTransform(player, x - 50000, y - 50000)
-      old_pos = { x = x, y = y }
+    if GuiButton(gui, new_id(), 0, 0, "Give torch") then
+      local item = EntityLoad("mods/AdventureMode/files/torch.xml")
+      GamePickUpInventoryItem(player, item, false)
     end
-  else
-    if GuiButton(gui, new_id(), 0, 0, "Teleport back") then
-      local player = EntityGetWithTag("player_unit")[1]
-      EntitySetTransform(player, old_pos.x, old_pos.y)
-      old_pos = nil
+    if GuiButton(gui, new_id(), 0, 0, "Give rock") then
+      local item = EntityLoad("data/entities/items/pickup/physics_gold_orb_greed.xml")
+      GamePickUpInventoryItem(player, item, false)
     end
+    if GuiButton(gui, new_id(), 0, 0, "Die") then
+      local player = EntityGetWithTag("player_unit")[1]
+      EntityInflictDamage(player, 999, "DAMAGE_MELEE", "", "NORMAL", 0, 0)
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Print global") then
+      GamePrint(GlobalsGetValue("AdventureMode_player_initialized", "0"))
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Reload world") then
+      BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Print number of test") then
+      local number = #EntityGetWithTag("test")
+      print(number)
+      GamePrint(number)
+    end
+    if not old_pos then
+      if GuiButton(gui, new_id(), 0, 0, "Teleport far away") then
+        local player = EntityGetWithTag("player_unit")[1]
+        local x, y = EntityGetTransform(player)
+        
+        EntitySetTransform(player, x - 100000, y - 100000)
+        old_pos = { x = x, y = y }
+      end
+    else
+      if GuiButton(gui, new_id(), 0, 0, "Teleport back") then
+        local player = EntityGetWithTag("player_unit")[1]
+        EntitySetTransform(player, old_pos.x, old_pos.y)
+        old_pos = nil
+      end
+    end
+    GuiLayoutEnd(gui)
   end
-  GuiLayoutEnd(gui)
+
+  local number = #EntityGetWithTag("test")
+  local number_last_frame = tonumber(GlobalsGetValue("number", "0"))
+  if number ~= number_last_frame then
+    print(("========== CHANGED from (%d) to (%d) =========="):format(number_last_frame, number))
+    GamePrint("CHANGED")
+    GlobalsSetValue("number", number)
+  end
 
   -- Make sure arm doesn't hang weirdly without items
   local respawn_in_progress = GlobalsGetValue("AdventureMode_respawn_in_progress", "0") == "1"

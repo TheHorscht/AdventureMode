@@ -4,8 +4,8 @@
 	<TeleportComponent
 		target_x_is_absolute_position="1"
 		target_y_is_absolute_position="1"
-		target.x="2347"
-		target.y="-647"
+		target.x="2435"
+		target.y="-708"
     load_collapse_entity="0"
 	></TeleportComponent>
 

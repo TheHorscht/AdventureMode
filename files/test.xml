@@ -1,0 +1,21 @@
+<Entity tags="test">
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/test_added.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+  ></LuaComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/test_removed.lua"
+    execute_every_n_frame="-1"
+    execute_on_removed="1"
+  ></LuaComponent>
+
+  <!-- <CameraBoundComponent
+    distance="6000000"
+    freeze_on_max_count_kill="0"
+    freeze_on_distance_kill="1"
+  ></CameraBoundComponent> -->
+
+</Entity>

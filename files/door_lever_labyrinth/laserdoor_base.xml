@@ -12,7 +12,7 @@
 		is_emitting="1"
 		laser_angle_add_rad="0"
 		><laser
-			damage_to_entities="0"
+			damage_to_entities="4"
 			max_cell_durability_to_destroy="0"
 			damage_to_cells="0"
 			max_length="60"

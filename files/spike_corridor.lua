@@ -68,7 +68,7 @@ else
     local area_damage_component = EntityAddComponent2(spike, "AreaDamageComponent", {
       death_cause="Stabbed",
       damage_type="DAMAGE_MELEE",
-      damage_per_frame=0.001,
+      damage_per_frame=4,
       update_every_n_frame=2,
     })
     ComponentSetValue2(area_damage_component, "aabb_min", -5, 0 + math.min(0, v.direction) * 50)

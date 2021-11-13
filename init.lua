@@ -78,6 +78,20 @@ function OnPlayerSpawned(player)
     ComponentSetValue2(world_state_component, "sky_sunset_alpha_target", 0.5)
     ComponentSetValue2(world_state_component, "gradient_sky_alpha_target", 0.5)
   
+    -- Remove crown etc
+    local sprite_tags = {
+      "player_hat2",
+      "player_hat2_shadow",
+      "player_hat",
+      "player_amulet_gem",
+      "player_amulet",
+      "lukki_enable",
+    }
+    for i, tag in ipairs(sprite_tags) do
+      local comp = EntityGetFirstComponentIncludingDisabled(player, "SpriteComponent", tag)
+      EntityRemoveComponent(player, comp)
+    end
+
     -- Disable jetpack
     if starting_position > 1 then
       entity_set_component_value(player, "CharacterDataComponent", "fly_time_max", 1)
@@ -105,7 +119,8 @@ function OnPlayerSpawned(player)
     end
     local water_potion = EntityLoad("data/entities/items/pickup/potion_water.xml")
     AddMaterialInventoryMaterial(water_potion, "water", 300)
-    GamePickUpInventoryItem(player, water_potion, false)
+    EntityAddChild(inventory_quick, water_potion)
+    -- GamePickUpInventoryItem(player, water_potion, false)
   
     -- Add no-item-arm
     EntityAddComponent2(player, "SpriteComponent", {

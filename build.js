@@ -36,6 +36,9 @@ const ignore_list = [
   '*.json',
   '*.js',
   '.*',
+  'gimp',
+  'noita_api.lua',
+  'ideas.md',
   'dist'
 ];
 // Config end

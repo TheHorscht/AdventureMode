@@ -29,6 +29,13 @@ local function remove_game_effects(entity_id)
   entity_set_component_value(entity_id, "DamageModelComponent", "is_on_fire", false)
 end
 
+local function entity_and_children_set_components_with_tag_enabled(entity_id, tag, enabled)
+  EntitySetComponentsWithTagEnabled(entity_id, tag, enabled)
+  for i, child in ipairs(EntityGetAllChildren(entity_id) or {}) do
+    entity_and_children_set_components_with_tag_enabled(child, tag, enabled)
+  end
+end
+
 local bla = false
 function damage_received(damage, message, entity_thats_responsible, is_fatal, projectile_thats_responsible)
   if is_fatal and not bla then
@@ -57,9 +64,8 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     end
     EntitySetComponentsWithTagEnabled(entity_id, "jetpack", false)
 
-    entity_set_component_is_enabled(get_active_item(), "SpriteComponent", false)
-
-    -- GameDropAllItems(entity_id)
+    local active_item = get_active_item()
+    entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", false)
 
     -- Hide cape
     local cape_entity = EntityGetWithName("cape")
@@ -95,7 +101,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
       ComponentSetValue2(damage_model_component, "hp", ComponentGetValue2(damage_model_component, "max_hp"))
 
-      entity_set_component_is_enabled(get_active_item(), "SpriteComponent", true)
+      entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", true)
 
       -- Show cape
       EntitySetName(cape_entity, "cape")      

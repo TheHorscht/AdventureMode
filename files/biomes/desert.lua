@@ -273,7 +273,7 @@ function spawn_leverdoor_puzzle_lever_06(x, y)
 end
 
 function spawn_leverdoor_puzzle_door_01(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_01.xml", x, y)
+  -- EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_01.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_02(x, y)

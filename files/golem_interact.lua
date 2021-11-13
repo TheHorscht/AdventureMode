@@ -13,8 +13,11 @@ local dialog_inactive = {
   options = {
     {
       text = "Insert Gemstone",
-      enabled = false,
-      func = function(dialog)
+      enabled = function(stats)
+        return stats.get_item_with_name("red_gem")
+      end,
+      func = function(dialog, stats)
+        EntityKill(stats.get_item_with_name("red_gem"))
         local sprite_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
         ComponentSetValue2(sprite_component, "rect_animation", "wake")
         local sprite_particle_emitter_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteParticleEmitterComponent")
@@ -25,7 +28,6 @@ local dialog_inactive = {
             GameScreenshake(5, x, y)
             wait(10)
           end
-          -- wait(30)
           EntitySetComponentIsEnabled(entity_id, sprite_particle_emitter_component, false)
         end)
         dialog.close()

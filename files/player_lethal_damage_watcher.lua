@@ -49,12 +49,13 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       "ItemPickUpperComponent",
       "Inventory2Component",
       "InventoryGuiComponent",
-      "ParticleEmitterComponent",
       "SpriteParticleEmitterComponent",
     }
+    -- "ParticleEmitterComponent",
     for i, comp_name in ipairs(disable_components) do
       entity_set_component_is_enabled(entity_id, comp_name, false)
     end
+    EntitySetComponentsWithTagEnabled(entity_id, "jetpack", false)
 
     entity_set_component_is_enabled(get_active_item(), "SpriteComponent", false)
 

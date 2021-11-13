@@ -1,4 +1,5 @@
 -- ModMagicNumbersFileAdd("mods/AdventureMode/files/magic_numbers.xml")
+ModRegisterAudioEventMappings("mods/AdventureMode/files/audio/GUIDs.txt")
 dofile_once("mods/AdventureMode/lib/DialogSystem/init.lua")("mods/AdventureMode/lib/DialogSystem")
 dofile_once("mods/AdventureMode/lib/coroutines.lua")
 dofile_once("data/scripts/lib/utilities.lua")

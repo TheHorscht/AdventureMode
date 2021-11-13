@@ -20,6 +20,7 @@ async(function()
   -- Clear pixel scene
   LoadPixelScene("mods/AdventureMode/files/door_cool_remover.png", "", door_x, door_y, "", true)
   -- Open door
+  GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rumble/start", door_x, door_y)
   local particle_emitter_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteParticleEmitterComponent")
   local sprite_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
   EntitySetComponentIsEnabled(entity_id, sprite_component, true)
@@ -31,6 +32,7 @@ async(function()
   wait(15)
   EntitySetComponentIsEnabled(entity_id, particle_emitter_component, false)
   wait(40)
+  GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rumble/loop", door_x, door_y)
   EntitySetComponentIsEnabled(entity_id, particle_emitter_component, true)
   for i=1, 50 do
     ComponentSetValue2(sprite_component, "offset_y", i)
@@ -40,6 +42,7 @@ async(function()
   -- ComponentSetValue2(sprite_component, "offset_y", 1)
   EntitySetComponentIsEnabled(entity_id, particle_emitter_component, false)
   GameScreenshake(50, x, y)
+  GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rumble/stop", door_x, door_y)
   --   <SpriteParticleEmitterComponent
 --   _enabled="0"
 --   sprite_file="data/particles/jetpack_smoke.xml"

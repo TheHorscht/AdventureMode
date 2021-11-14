@@ -36,10 +36,14 @@ local function entity_and_children_set_components_with_tag_enabled(entity_id, ta
   end
 end
 
-local bla = false
 function damage_received(damage, message, entity_thats_responsible, is_fatal, projectile_thats_responsible)
-  if is_fatal and not bla then
+  if is_fatal and GlobalsGetValue("AdventureMode_respawn_in_progress", "0") == "0" then
+    local respawn_x = tonumber(GlobalsGetValue("AdventureMode_respawn_x", "0"))
+    local respawn_y = tonumber(GlobalsGetValue("AdventureMode_respawn_y", "0"))
     local entity_id = GetUpdatedEntityID()
+    if respawn_x == 0 then
+      entity_set_component_value(entity_id, "DamageModelComponent", "kill_now", true)
+    end
     local x, y = EntityGetTransform(entity_id)
     local corpse = EntityLoad("mods/AdventureMode/files/player_corpse.xml", x, y)
     local player_vel_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "VelocityComponent")
@@ -84,16 +88,20 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
 
     GlobalsSetValue("AdventureMode_respawn_in_progress", "1")
 
+    -- Remove heatstroke
+    local heatstroke = get_child_with_name(entity_id, "heatstroke")
+    if heatstroke then
+      EntityKill(heatstroke)
+    end
+
     -- Reset all game effects
     remove_game_effects(entity_id)
 
     set_controls_enabled(false)
-    bla = true
+
     async(function()
       wait(180)
       remove_game_effects(entity_id)
-      local respawn_x = tonumber(GlobalsGetValue("AdventureMode_respawn_x", "0"))
-      local respawn_y = tonumber(GlobalsGetValue("AdventureMode_respawn_y", "0"))
 
       for i, comp_name in ipairs(disable_components) do
         entity_set_component_is_enabled(entity_id, comp_name, true)
@@ -123,7 +131,6 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       GlobalsSetValue("AdventureMode_respawn_in_progress", "0")
 
       set_controls_enabled(true)
-      bla = false
     end)
   end
 end

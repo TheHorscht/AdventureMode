@@ -1,4 +1,5 @@
 -- ModMagicNumbersFileAdd("mods/AdventureMode/files/magic_numbers.xml")
+ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/AdventureMode/files/status_list_append.lua")
 ModRegisterAudioEventMappings("mods/AdventureMode/files/audio/GUIDs.txt")
 dofile_once("mods/AdventureMode/lib/DialogSystem/init.lua")("mods/AdventureMode/lib/DialogSystem", {
   disable_controls = true
@@ -36,6 +37,7 @@ ModTextFileSetContent("data/biome/_biomes_all.xml", tostring(xml))
 local starting_positions = {
   { x = 150, y = -768 }, -- Intro
   { x = 715, y = -600 }, -- In front of Main door
+  { x = 1057, y = -553 }, -- Tablet
   { x = 1173, y = -553 }, -- Lava room
   { x = 1341, y = -891 }, -- Electricity door room
   { x = 1412, y = -895 }, -- Pressure plate puzzle
@@ -49,7 +51,7 @@ local starting_positions = {
   { x = 4444, y = -103 }, -- 13 Lever puzzle
   { x = 3460, y = -1179}, -- 14 Golem
 }
-local starting_position = 8
+local starting_position = 1
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -66,10 +68,11 @@ function OnPlayerSpawned(player)
   
   if GlobalsGetValue("AdventureMode_player_initialized", "0") == "0" then
     GlobalsSetValue("AdventureMode_player_initialized", "1")
-    GlobalsSetValue("AdventureMode_respawn_x", starting_positions[starting_position].x)
-    GlobalsSetValue("AdventureMode_respawn_y", starting_positions[starting_position].y)
     if starting_position == 1 then
       EntityLoad("mods/AdventureMode/files/intro.xml")
+    else
+      GlobalsSetValue("AdventureMode_respawn_x", starting_positions[starting_position].x)
+      GlobalsSetValue("AdventureMode_respawn_y", starting_positions[starting_position].y)
     end
     local world_state_entity = GameGetWorldStateEntity()
     local world_state_component = EntityGetFirstComponentIncludingDisabled(world_state_entity, "WorldStateComponent")
@@ -148,7 +151,7 @@ end
 local debug_menu_open = false
 
 function OnWorldPreUpdate()
-  -- local player = EntityGetWithTag("player_unit")[1]
+  dofile("mods/AdventureMode/files/heatstroke_watcher.lua")
   local id = 2
   local function new_id()
     id = id + 1
@@ -157,9 +160,9 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
-  -- if GuiButton(gui, new_id(), 2, 200, "D") then
-  --   debug_menu_open = not debug_menu_open
-  -- end
+  if GuiButton(gui, new_id(), 2, 200, "D") then
+    debug_menu_open = not debug_menu_open
+  end
 
   if debug_menu_open then
     GuiLayoutBeginVertical(gui, 1, 20)

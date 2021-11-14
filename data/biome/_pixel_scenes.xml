@@ -7,5 +7,10 @@
   </PixelSceneFiles>
   <mBufferedPixelScenes>
   		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="0" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
+  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="-512" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
+  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="-1024" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
+  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="-1536" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
+  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="-2048" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
+  		<PixelScene DEBUG_RELOAD_ME="0" background_filename="" clean_area_before="0" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/entrance.png" pos_x="-2560" pos_y="-1024" skip_biome_checks="1" skip_edge_textures="0" />
   </mBufferedPixelScenes>
 </PixelScenes>

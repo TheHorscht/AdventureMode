@@ -6,10 +6,5 @@ end
 
 function OnPlayerDied( player_entity )
 	GameDestroyInventoryItems( player_entity )
-	-- async(function()
-	-- 	wait(60)
-	-- 	GamePrint("DED")
-	-- 	BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")
-	-- end)
-	-- GameTriggerGameOver()
+	GameTriggerGameOver()
 end

@@ -1,0 +1,34 @@
+<Entity name="heatstroke">
+
+	<InheritTransformComponent only_position="1" />
+
+	<GameEffectComponent 
+		effect="CUSTOM"
+		custom_effect_id="ADVENTUREMODE_HEATSTROKE"
+		frames="1001">
+	</GameEffectComponent>	
+
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/heatstroke_on.lua"
+		execute_every_n_frame="1000"
+    remove_after_executed="1"
+    >
+	</LuaComponent>
+
+  <UIIconComponent
+    icon_sprite_file="mods/AdventureMode/files/heatstroke_icon.png"
+    name="Heatstrokey"
+    description="You don't feel so goody..."
+    display_above_head="1"
+    display_in_hud="1"
+    is_perk="0"
+  ></UIIconComponent>
+
+	<!-- <LuaComponent
+		script_source_file="mods/AdventureMode/files/heatstroke_off.lua"
+		execute_on_removed="1"
+		execute_every_n_frame="-1"
+    >
+	</LuaComponent> -->
+
+</Entity>

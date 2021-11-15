@@ -235,6 +235,3 @@ function OnWorldPreUpdate()
     -- EntitySetComponentIsEnabled(arm_r_entity, sprite_component, false)
   end
 end
-
-function OnWorldPostUpdate()
-end

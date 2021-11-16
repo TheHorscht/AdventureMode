@@ -1,0 +1,12 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/tractor_beam.xml">
+    <HitboxComponent
+      aabb_min_x="-20"
+      aabb_max_x="20"
+      aabb_min_y="-150"
+      aabb_max_y="0"
+    ></HitboxComponent>
+  </Base>
+
+</Entity>

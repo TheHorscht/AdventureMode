@@ -358,3 +358,38 @@ end
 function spawn_leverdoor_puzzle_door_16(x, y)
   EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_16.xml", x, y)
 end
+
+function spawn_tractor_beam_150(x, y)
+  EntityLoad("mods/AdventureMode/files/tractor_beam_150.xml", x, y)
+end
+
+function spawn_warp_portal_01(x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portal_01.xml", x, y)
+end
+
+function spawn_warp_portal_02(x, y)
+  -- EntityLoad("mods/AdventureMode/files/warp_portal_02.xml", x, y)
+end
+
+function spawn_warp_portal_03(x, y)
+  -- EntityLoad("mods/AdventureMode/files/warp_portal_03.xml", x, y)
+end
+
+function spawn_warp_portal_04(x, y)
+  -- EntityLoad("mods/AdventureMode/files/warp_portal_04.xml", x, y)
+end
+
+function spawn_warp_portal_05(x, y)
+  -- EntityLoad("mods/AdventureMode/files/warp_portal_05.xml", x, y)
+end
+
+function spawn_warp_portal_06(x, y)
+  -- EntityLoad("mods/AdventureMode/files/warp_portal_06.xml", x, y)
+end
+
+
+-- Regex to comment out function body:
+-- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))([\s\S\n\r]*?)(end)
+-- $1--[[$2]]$3
+-- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))(--\[\[)([\s\S\n\r]*?)(\]\])(end)
+-- $1$3$5

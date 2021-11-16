@@ -22,7 +22,7 @@ local function get_direction( x1, y1, x2, y2 )
 	return result
 end
 
-local time_to_wait = 60
+local time_to_wait = 300
 
 local player = EntityGetWithTag("player_unit")[1]
 if player then

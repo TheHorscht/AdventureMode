@@ -4,8 +4,8 @@
 	<TeleportComponent
 		target_x_is_absolute_position="1"
 		target_y_is_absolute_position="1"
-		target.x="2435"
-		target.y="-708"
+		target.x="2735"
+		target.y="-625"
     load_collapse_entity="0"
 	></TeleportComponent>
 
@@ -121,9 +121,5 @@
 		calculate_material_lowpass="0"
 		auto_play="1" >
 	</AudioLoopComponent>
-
-  <CameraBoundComponent
-    distance="400"
-  ></CameraBoundComponent>
 
 </Entity>

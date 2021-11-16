@@ -2,15 +2,20 @@
 
   <SpriteComponent
     image_file="mods/AdventureMode/files/ok_hand.png"
-    offset_x="41"
-    offset_y="111"
+    offset_x="49"
+    offset_y="134"
   ></SpriteComponent>
 
   <PixelSceneComponent
     pixel_scene="mods/AdventureMode/files/ok_hand_gem_spawner.png"
-    offset_x="-41"
-    offset_y="-111"
+    offset_x="-49"
+    offset_y="-134"
   ></PixelSceneComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/hand_holding_gem_player_check.lua"
+    execute_every_n_frame="1"
+  ></LuaComponent>
 
   <!-- -43 -->
   <!-- <Entity>

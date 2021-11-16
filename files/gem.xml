@@ -1,4 +1,4 @@
-  <Entity>
+  <Entity name="red_gem_in_statue_hand">
   <!-- -43 -->
     <InheritTransformComponent>
       <Transform

@@ -103,7 +103,7 @@
   ></SpriteParticleEmitterComponent>
 
 	<AbilityComponent
-		ui_name="Red Glowing Gem"
+		ui_name="Red Glowing Gemstone"
 		throw_as_item="1"
 		><gun_config
 			deck_capacity="0"

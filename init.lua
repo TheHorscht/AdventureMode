@@ -36,23 +36,24 @@ xml:add_children(nxml.parse_many([[
 ModTextFileSetContent("data/biome/_biomes_all.xml", tostring(xml))
 
 local starting_positions = {
-  { x = 150, y = -768 }, -- Intro
-  { x = 715, y = -600 }, -- In front of Main door
-  { x = 1057, y = -553 }, -- Tablet
-  { x = 1173, y = -553 }, -- Lava room
-  { x = 1341, y = -891 }, -- Electricity door room
-  { x = 1412, y = -895 }, -- Pressure plate puzzle
-  { x = 1722, y = -910 }, -- Spike corridor
-  { x = 2450, y = -910 }, -- Golem
-  { x = 2138, y = -844 }, -- After spike corridor
-  { x = 1290, y = -285 }, -- Lever puzzle
-  { x = 2203, y = -910 }, -- Brazier
-  { x = 2253, y = -707 }, -- Above chase
-  { x = 3054, y = -870 }, -- Water
-  { x = 4444, y = -103 }, -- 13 Lever puzzle
-  { x = 3460, y = -1179}, -- 14 Golem
+  { x = 150, y = -768 }, -- 1 Intro
+  { x = 715, y = -600 }, -- 2 In front of Main door
+  { x = 1057, y = -553 }, -- 3 Tablet
+  { x = 1173, y = -553 }, -- 4 Lava room
+  { x = 1341, y = -891 }, -- 5 Electricity door room
+  { x = 1412, y = -895 }, -- 6 Pressure plate puzzle
+  { x = 1722, y = -910 }, -- 7 Spike corridor
+  { x = 2450, y = -910 }, -- 8 Golem
+  { x = 2138, y = -844 }, -- 9 After spike corridor
+  { x = 1290, y = -285 }, -- 10 Lever puzzle
+  { x = 2203, y = -910 }, -- 11 Brazier
+  { x = 2735, y = -625 }, -- 12 Teleporter room
+  { x = 3054, y = -870 }, -- 13 Water
+  { x = 4444, y = -103 }, -- 14 Lever puzzle
+  { x = 3460, y = -1179}, -- 15 Golem
+  { x = 4758, y = -866}, -- 16 Hand with gem
 }
-local starting_position = 1
+local starting_position = 16
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"

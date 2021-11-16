@@ -19,7 +19,6 @@ RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
 RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton_02")
 RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
 RegisterSpawnFunction(0xffea238a, "spawn_golem")
-RegisterSpawnFunction(0xfffaff90, "spawn_statue_pointing_left")
 for i=1, 10 do
   RegisterSpawnFunction(0xff427800 + i, "spawn_lever_puzzle_lever_" .. string.format("%.2d", i))
   RegisterSpawnFunction(0xfffaff90 + i, "spawn_lever_puzzle_statue_" .. string.format("%.2d", i))
@@ -60,6 +59,8 @@ RegisterSpawnFunction(0xffcd0013, "spawn_leverdoor_puzzle_door_14")
 RegisterSpawnFunction(0xffcd0014, "spawn_leverdoor_puzzle_door_15")
 RegisterSpawnFunction(0xffcd0015, "spawn_leverdoor_puzzle_door_16")
 
+RegisterSpawnFunction(0xffc10908, "spawn_hand_holding_gem")
+RegisterSpawnFunction(0xffc10909, "spawn_gem")
 RegisterSpawnFunction(0xff50f7f7, "spawn_tractor_beam_150")
 
 RegisterSpawnFunction(0xff39e161, "spawn_warp_portal_01")
@@ -84,15 +85,15 @@ function spawn_cactus(x, y)
 end
 
 function spawn_door(x, y)
-  EntityLoad("mods/AdventureMode/files/door.xml", x, y)
+  -- EntityLoad("mods/AdventureMode/files/door.xml", x, y)
 end
 
 function spawn_door2(x, y)
-  EntityLoad("mods/AdventureMode/files/door2.xml", x, y)
+  -- EntityLoad("mods/AdventureMode/files/door2.xml", x, y)
 end
 
 function spawn_door3(x, y)
-  EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
+  -- EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
 end
 
 function spawn_heart_fullhp(x, y)
@@ -378,6 +379,14 @@ function spawn_warp_portal_06(x, y)
   -- EntityLoad("mods/AdventureMode/files/warp_portal_06.xml", x, y)
 end
 
+function spawn_hand_holding_gem(x, y)
+  EntityLoad("mods/AdventureMode/files/slab_gem_hand.xml", x - 60, y)
+  EntityLoad("mods/AdventureMode/files/hand_holding_gem.xml", x, y)
+end
+
+function spawn_gem(x, y)
+  EntityLoad("mods/AdventureMode/files/gem.xml", x, y)
+end
 
 -- Regex to comment out function body:
 -- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))([\s\S\n\r]*?)(end)

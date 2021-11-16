@@ -189,16 +189,7 @@ function spawn_golem(x, y)
   EntityLoad("mods/AdventureMode/files/golem.xml", x, y)
 end
 
-local world_seed = tonumber(StatsGetValue("world_seed"))
-math.randomseed(world_seed)
-local amount = 10
-if not lever_puzzle_solution then
-  lever_puzzle_solution = {}
-  for i=1, amount do
-    table.insert(lever_puzzle_solution, math.random(0, 1))
-  end
-end
-
+local lever_puzzle_solution = dofile_once("mods/AdventureMode/files/lever_puzzle/solution.lua")
 for i=1,10 do
   local num_string = string.format("%.2d", i)
   _G["spawn_lever_puzzle_statue_" .. num_string] = function(x, y)

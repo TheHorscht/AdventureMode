@@ -1,5 +1,6 @@
 -- ModMagicNumbersFileAdd("mods/AdventureMode/files/magic_numbers.xml")
 ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/AdventureMode/files/status_list_append.lua")
+ModMaterialsFileAdd("mods/AdventureMode/files/materials.xml")
 ModRegisterAudioEventMappings("mods/AdventureMode/files/audio/GUIDs.txt")
 dofile_once("mods/AdventureMode/lib/DialogSystem/init.lua")("mods/AdventureMode/lib/DialogSystem", {
   disable_controls = true

@@ -1,0 +1,37 @@
+<Materials>
+
+  <CellDataChild
+  	_parent="meat"
+    name="meat_camel"
+    ui_name="Camel meat"
+    wang_color="ffed4d49"
+    audio_physics_material_wall="meat"
+    audio_physics_material_solid="meat"
+    audio_is_soft="1"
+    show_in_creative_mode="0"
+	>
+    <StatusEffects>
+      <Ingestion>
+        <StatusEffect type="ADVENTUREMODE_SADNESS" amount="0.2" />
+      </Ingestion>
+	  </StatusEffects>
+  </CellDataChild>
+
+  <CellDataChild
+  	_parent="meat"
+    name="player_corpse"
+    ui_name="Noita meat"
+    wang_color="ffed4d50"
+    audio_physics_material_wall="meat"
+    audio_physics_material_solid="meat"
+    audio_is_soft="1"
+    show_in_creative_mode="0"
+	>
+    <StatusEffects>
+      <Ingestion>
+        <StatusEffect type="ADVENTUREMODE_CANNIBALISM" amount="0.2" />
+      </Ingestion>
+	  </StatusEffects>
+  </CellDataChild>
+
+</Materials>

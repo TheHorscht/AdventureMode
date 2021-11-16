@@ -29,6 +29,7 @@
     air_in_lungs_max="0"
     ragdoll_offset_y="-5"
     ragdoll_filenames_file="data/ragdolls/player/filenames.txt"
+    ragdoll_material="player_corpse"
   ></DamageModelComponent>
 
 </Entity>

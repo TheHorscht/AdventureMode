@@ -6,7 +6,7 @@
 		ragdoll_offset_x="6"
 		ragdoll_offset_y="-12"
 		hp="0.04"
-		ragdoll_material="meat_done"
+		ragdoll_material="meat_camel"
 	></DamageModelComponent>
 
 	<SpriteComponent 

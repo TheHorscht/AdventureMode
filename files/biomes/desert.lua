@@ -364,7 +364,7 @@ function spawn_tractor_beam_150(x, y)
 end
 
 function spawn_warp_portal_01(x, y)
-  EntityLoad("mods/AdventureMode/files/warp_portal_01.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/spawner_01.xml", x, y)
 end
 
 function spawn_warp_portal_02(x, y)

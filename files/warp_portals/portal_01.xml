@@ -1,0 +1,13 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/warp_portals/base.xml">
+    <TeleportComponent
+      target.x="1547"
+		  target.y="-286"
+    ></TeleportComponent>
+    <UIInfoComponent
+		  name="Teleport to levers"
+    ></UIInfoComponent>
+  </Base>
+
+</Entity>

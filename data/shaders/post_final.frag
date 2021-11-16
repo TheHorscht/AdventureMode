@@ -236,10 +236,10 @@ void main()
 	
 	// Heat warp (AdventureMode)
 	float hw_amount = heat_warp_amount.x;
-	color_fg = mix(color_fg, texture2D(tex_fg, tex_coord + vec2(sin(noise_perlin2.y * 40.0 + time * 4.0) * 0.0015 * hw_amount, 0.0)), 1.0);
-	color = mix(color, texture2D(tex_bg, tex_coord + vec2(sin(noise_perlin2.y * 40.0 + time * 4.0) * 0.0015 * hw_amount, 0.0)).rgb, 1.0);
-	color_fg = mix(color_fg, vec4(0.9, 0.6, 0.0, 1.0), 0.3 * hw_amount);
-	color = mix(color, vec3(0.9, 0.6, 0.0), 0.3 * hw_amount);
+	color_fg = mix(color_fg, texture2D(tex_fg, tex_coord + vec2(sin(noise_perlin2.y * 40.0 + time * 6.0) * 0.0015 * hw_amount, 0.0)), 1.0);
+	color = mix(color, texture2D(tex_bg, tex_coord + vec2(sin(noise_perlin2.y * 40.0 + time * 6.0) * 0.0015 * hw_amount, 0.0)).rgb, 1.0);
+	color_fg = mix(color_fg, vec4(0.9, 0.6, 0.0, 1.0), 0.2 * hw_amount);
+	color = mix(color, vec3(0.9, 0.6, 0.0), 0.2 * hw_amount);
 
 #ifdef TRIPPY
 	// drunk doublevision

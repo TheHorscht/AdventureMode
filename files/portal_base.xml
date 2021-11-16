@@ -13,8 +13,6 @@
 		aabb_max_y="15"
 	></HitboxComponent>
 
-	<!-- gfx -->
-
 	<UIInfoComponent
 		name="$teleport_deeper"
 		>

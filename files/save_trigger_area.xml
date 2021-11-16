@@ -12,6 +12,6 @@
     execute_every_n_frame="-1"
   ></LuaComponent>
 
-  <Base file="mods/AdventureMode/files/aabb_visualizer.xml" />
+  <!-- <Base file="mods/AdventureMode/files/aabb_visualizer.xml" /> -->
 
 </Entity>

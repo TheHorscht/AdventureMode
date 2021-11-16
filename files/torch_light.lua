@@ -80,6 +80,11 @@ EntitySetComponentsWithTagEnabled(container_entity, "enabled_in_world", true)
 
 function enabled_changed(entity_id, is_enabled)
   if get_var_store_bool(entity_id, "is_on", true) then
+    local burn_entity = get_child_with_name(entity_id, "burn")
+    local inherit_transform_component = EntityGetFirstComponentIncludingDisabled(burn_entity, "InheritTransformComponent")
+    local magic_convert_material_comp = EntityGetFirstComponentIncludingDisabled(burn_entity, "MagicConvertMaterialComponent")
+    EntitySetComponentIsEnabled(burn_entity, magic_convert_material_comp, is_enabled)
+    EntitySetComponentIsEnabled(burn_entity, inherit_transform_component, is_enabled)
     local container_entity = get_child_with_name(entity_id, "light_cones")
     for i, ent in ipairs(EntityGetAllChildren(container_entity) or {}) do
       EntitySetComponentsWithTagEnabled(ent, "fire", is_enabled)

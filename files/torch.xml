@@ -184,6 +184,25 @@
 
   </Entity>
 
+  <Entity name="burn">
+
+    <InheritTransformComponent
+      _tags="enabled_in_world"
+    ></InheritTransformComponent>
+
+    <MagicConvertMaterialComponent
+      _enabled="0"
+      radius="10"
+      is_circle="1"
+      steps_per_frame="1"
+      ignite_materials="1"
+      kill_when_finished="0"
+      reaction_audio_amount="1"
+    ></MagicConvertMaterialComponent> 
+  
+  </Entity>
+  
+
   <LuaComponent
     _tags="enabled_in_hand,enabled_in_world,fire"
     script_source_file="mods/AdventureMode/files/torch_light.lua"

@@ -10,7 +10,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
     text = [[
       {@delay 2}The secrets to manipulating life and the universe itself
       lie in these halls, waiting for those who are worthy.{@pause 30}
-      To gain everything, one must sacrifice everything.
+      In order to gain everything, one must sacrifice everything.
     ]],
   })
 end

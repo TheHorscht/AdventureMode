@@ -1,0 +1,15 @@
+<Entity name="lever_puzzle_reward">
+
+  <!--
+    This entity just exists so we can more easily place it in a specific spot in the pixel scene
+    and then get a reference to it through its name
+  -->
+  <LuaComponent
+    _enabled="0"
+    script_source_file="mods/AdventureMode/files/lever_puzzle/reward.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+    enable_coroutines="1"
+  ></LuaComponent>
+
+</Entity>

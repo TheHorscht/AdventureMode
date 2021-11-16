@@ -98,6 +98,7 @@ function visualize_aabb(entity_id, component_type)
     "MaterialAreaCheckerComponent",
     "AreaDamageComponent",
     "CollisionTriggerComponent",
+    "HitboxComponent",
   }
   local component
   for i, t in ipairs(types) do
@@ -119,6 +120,11 @@ function visualize_aabb(entity_id, component_type)
     local height = ComponentGetValue2(component, "height")
     a, b = -width / 2, -height / 2
     c, d = width / 2, height / 2
+  elseif component_type == "HitboxComponent" then
+    a = ComponentGetValue2(component, "aabb_min_x")
+    b = ComponentGetValue2(component, "aabb_min_y")
+    c = ComponentGetValue2(component, "aabb_max_x")
+    d = ComponentGetValue2(component, "aabb_max_y")
   end
   aabb.min_x = a
   aabb.min_y = b

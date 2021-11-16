@@ -19,9 +19,11 @@ RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
 RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton_02")
 RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
 RegisterSpawnFunction(0xffea238a, "spawn_golem")
-RegisterSpawnFunction(0xff0aff90, "spawn_statue_pointing_right")
 RegisterSpawnFunction(0xfffaff90, "spawn_statue_pointing_left")
-RegisterSpawnFunction(0xff427800, "spawn_lever_puzzle")
+for i=1, 10 do
+  RegisterSpawnFunction(0xff427800 + i, "spawn_lever_puzzle_lever_" .. string.format("%.2d", i))
+  RegisterSpawnFunction(0xfffaff90 + i, "spawn_lever_puzzle_statue_" .. string.format("%.2d", i))
+end
 RegisterSpawnFunction(0xff74b722, "spawn_lever_puzzle_reward")
 RegisterSpawnFunction(0xffe32626, "spawn_brazier")
 RegisterSpawnFunction(0xffc4001e, "spawn_wall_trap_shooting_left")
@@ -57,6 +59,15 @@ RegisterSpawnFunction(0xffcd0012, "spawn_leverdoor_puzzle_door_13")
 RegisterSpawnFunction(0xffcd0013, "spawn_leverdoor_puzzle_door_14")
 RegisterSpawnFunction(0xffcd0014, "spawn_leverdoor_puzzle_door_15")
 RegisterSpawnFunction(0xffcd0015, "spawn_leverdoor_puzzle_door_16")
+
+RegisterSpawnFunction(0xff50f7f7, "spawn_tractor_beam_150")
+
+RegisterSpawnFunction(0xff39e161, "spawn_warp_portal_01")
+RegisterSpawnFunction(0xff39e162, "spawn_warp_portal_02")
+RegisterSpawnFunction(0xff39e163, "spawn_warp_portal_03")
+RegisterSpawnFunction(0xff39e164, "spawn_warp_portal_04")
+RegisterSpawnFunction(0xff39e165, "spawn_warp_portal_05")
+RegisterSpawnFunction(0xff39e166, "spawn_warp_portal_06")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -178,20 +189,30 @@ function spawn_golem(x, y)
   EntityLoad("mods/AdventureMode/files/golem.xml", x, y)
 end
 
-function spawn_statue_pointing_right(x, y)
-  EntityLoad("mods/AdventureMode/files/statue_pointing_right.xml", x, y)
+local world_seed = tonumber(StatsGetValue("world_seed"))
+math.randomseed(world_seed)
+local amount = 10
+if not lever_puzzle_solution then
+  lever_puzzle_solution = {}
+  for i=1, amount do
+    table.insert(lever_puzzle_solution, math.random(0, 1))
+  end
 end
 
-function spawn_statue_pointing_left(x, y)
-  EntityLoad("mods/AdventureMode/files/statue_pointing_left.xml", x, y)
-end
-
-function spawn_lever_puzzle(x, y)
-  EntityLoad("mods/AdventureMode/files/lever_puzzle.xml", x, y)
+for i=1,10 do
+  local num_string = string.format("%.2d", i)
+  _G["spawn_lever_puzzle_statue_" .. num_string] = function(x, y)
+    local direction = lever_puzzle_solution[i] == 1 and "right" or "left"
+    print("Spawning \"mods/AdventureMode/files/lever_puzzle/statue_pointing_" .. direction .. ".xml\"")
+    EntityLoad("mods/AdventureMode/files/lever_puzzle/statue_pointing_" .. direction .. ".xml", x, y)
+  end
+  _G["spawn_lever_puzzle_lever_" .. num_string] = function(x, y)
+    EntityLoad("mods/AdventureMode/files/lever_puzzle/lever_" .. num_string .. ".xml", x, y)
+  end
 end
 
 function spawn_lever_puzzle_reward(x, y)
-  EntityLoad("mods/AdventureMode/files/lever_puzzle_reward.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/lever_puzzle/reward.xml", x, y)
 end
 
 function spawn_brazier(x, y)
@@ -249,10 +270,7 @@ end
 function spawn_respawn_statue(x, y)
   EntityLoad("mods/AdventureMode/files/respawn_statue/statue.xml", x, y)
 end
--- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))([\s\S\n\r]*?)(end)
--- $1--[[$2]]$3
--- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))(--\[\[)([\s\S\n\r]*?)(\]\])(end)
--- $1$3$5
+
 function spawn_leverdoor_puzzle_lever_01(x, y)
   EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_01.xml", x, y)
 end

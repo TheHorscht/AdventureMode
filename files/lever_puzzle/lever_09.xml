@@ -1,0 +1,16 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/lever.xml" include_children="1" />
+
+  <VariableStorageComponent
+    name="global_variable"
+    value_string="AdventureMode_lever_puzzle_lever_9"
+  ></VariableStorageComponent>
+
+
+  <VariableStorageComponent
+    name="global_function"
+    value_string="mods/AdventureMode/files/lever_puzzle/lever_changed.lua;lever_changed"
+  ></VariableStorageComponent>
+
+</Entity>

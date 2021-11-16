@@ -1,0 +1,9 @@
+<Entity>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/lever_puzzle/statue_pointing_right.png"
+    offset_x="8"
+    offset_y="31"
+  ></SpriteComponent>
+
+</Entity>

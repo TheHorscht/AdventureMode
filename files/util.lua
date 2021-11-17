@@ -99,10 +99,11 @@ function visualize_aabb(entity_id, component_type)
     "AreaDamageComponent",
     "CollisionTriggerComponent",
     "HitboxComponent",
+    "CharacterDataComponent",
   }
   local component
   for i, t in ipairs(types) do
-    component = EntityGetFirstComponentIncludingDisabled(entity_id, t)
+    component = EntityGetFirstComponent(entity_id, t)
     if component then
       component_type = t
       break
@@ -125,6 +126,11 @@ function visualize_aabb(entity_id, component_type)
     b = ComponentGetValue2(component, "aabb_min_y")
     c = ComponentGetValue2(component, "aabb_max_x")
     d = ComponentGetValue2(component, "aabb_max_y")
+  elseif component_type == "CharacterDataComponent" then
+    a = ComponentGetValue2(component, "collision_aabb_min_x")
+    b = ComponentGetValue2(component, "collision_aabb_min_y")
+    c = ComponentGetValue2(component, "collision_aabb_max_x")
+    d = ComponentGetValue2(component, "collision_aabb_max_y")
   end
   aabb.min_x = a
   aabb.min_y = b

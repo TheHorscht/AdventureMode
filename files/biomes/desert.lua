@@ -380,7 +380,7 @@ function spawn_warp_portal_06(x, y)
 end
 
 function spawn_hand_holding_gem(x, y)
-  EntityLoad("mods/AdventureMode/files/slab_gem_hand.xml", x - 60, y)
+  EntityLoad("mods/AdventureMode/files/slab_gem_hand.xml", x + 60, y)
   EntityLoad("mods/AdventureMode/files/hand_holding_gem.xml", x, y)
 end
 

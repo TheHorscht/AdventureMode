@@ -1,0 +1,16 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/portal_base.xml">
+
+    <TeleportComponent
+      target.x="4878"
+		  target.y="-872"
+    ></TeleportComponent>
+
+    <UIInfoComponent
+		  name="Teleport behind gunpowder door"
+    ></UIInfoComponent>
+
+  </Base>
+
+</Entity>

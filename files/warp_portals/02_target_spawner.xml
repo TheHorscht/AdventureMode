@@ -1,0 +1,18 @@
+<Entity>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/spawn_entity_check.lua"
+    execute_every_n_frame="30"
+  ></LuaComponent>
+
+  <VariableStorageComponent
+    name="check_global_variable"
+    value_string="AdventureMode_portal_unlocked_02"
+  ></VariableStorageComponent>
+
+  <VariableStorageComponent
+    name="spawn_entity"
+    value_string="mods/AdventureMode/files/warp_portals/back.xml"
+  ></VariableStorageComponent>
+  
+</Entity>

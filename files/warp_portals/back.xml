@@ -1,0 +1,16 @@
+<Entity>
+
+	<Base file="mods/AdventureMode/files/portal_base.xml">
+
+		<TeleportComponent
+			target.x="2735"
+			target.y="-625"
+		></TeleportComponent>
+
+		<UIInfoComponent
+			name="Portal to warp room"
+		></UIInfoComponent>
+
+	</Base>
+
+</Entity>

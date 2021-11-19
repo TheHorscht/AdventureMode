@@ -64,11 +64,16 @@ RegisterSpawnFunction(0xffc10909, "spawn_gem")
 RegisterSpawnFunction(0xff50f7f7, "spawn_tractor_beam_150")
 
 RegisterSpawnFunction(0xff39e161, "spawn_warp_portal_01")
+RegisterSpawnFunction(0xff39e261, "spawn_warp_portal_01_target")
 RegisterSpawnFunction(0xff39e162, "spawn_warp_portal_02")
+RegisterSpawnFunction(0xff39e262, "spawn_warp_portal_02_target")
 RegisterSpawnFunction(0xff39e163, "spawn_warp_portal_03")
 RegisterSpawnFunction(0xff39e164, "spawn_warp_portal_04")
 RegisterSpawnFunction(0xff39e165, "spawn_warp_portal_05")
 RegisterSpawnFunction(0xff39e166, "spawn_warp_portal_06")
+
+RegisterSpawnFunction(0xff304901, "spawn_portal_activator_02")
+
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -85,15 +90,15 @@ function spawn_cactus(x, y)
 end
 
 function spawn_door(x, y)
-  -- EntityLoad("mods/AdventureMode/files/door.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/door.xml", x, y)
 end
 
 function spawn_door2(x, y)
-  -- EntityLoad("mods/AdventureMode/files/door2.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/door2.xml", x, y)
 end
 
 function spawn_door3(x, y)
-  -- EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
 end
 
 function spawn_heart_fullhp(x, y)
@@ -356,11 +361,23 @@ function spawn_tractor_beam_150(x, y)
 end
 
 function spawn_warp_portal_01(x, y)
-  EntityLoad("mods/AdventureMode/files/warp_portals/spawner_01.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/01_spawner.xml", x, y)
+end
+
+function spawn_warp_portal_01_target(x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/01_target_spawner.xml", x, y)
 end
 
 function spawn_warp_portal_02(x, y)
-  -- EntityLoad("mods/AdventureMode/files/warp_portal_02.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/02_spawner.xml", x, y)
+end
+
+function spawn_warp_portal_02_target(x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/02_target_spawner.xml", x, y)
+end
+
+function spawn_portal_activator_02(x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/02_activation_trigger.xml", x, y)
 end
 
 function spawn_warp_portal_03(x, y)

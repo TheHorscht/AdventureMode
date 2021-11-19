@@ -1,0 +1,124 @@
+<Entity name="Golem" tags="ui_use_raw_name">
+
+	<Base file="data/entities/base_helpless_animal.xml" >
+		<AnimalAIComponent
+			preferred_job="JobDefault"
+			attack_melee_enabled="0"
+			attack_ranged_entity_file=""
+			attack_ranged_predict="1"
+			attack_ranged_enabled="0"
+			attack_melee_enabled="0"
+			sense_creatures="1"
+			creature_detection_range_x="128"
+			creature_detection_range_y="160"
+			attack_melee_damage_min="0"
+			attack_melee_damage_max="0"
+      max_distance_to_move_from_home="300"
+			can_fly="0"
+      can_walk="1"
+    ></AnimalAIComponent>
+
+    <SpriteComponent
+      _tags="character"
+      image_file="mods/AdventureMode/files/golem/sprite.xml"
+      offset_x="11"
+      offset_y="32"
+      rect_animation="stand"
+      z_index="1"
+    ></SpriteComponent>
+
+		<DamageModelComponent
+			ragdoll_filenames_file="data/ragdolls/peasant/filenames.txt"
+			fire_probability_of_ignition="0.05"
+			hp="1000"
+    ></DamageModelComponent>
+
+		<PathFindingGridMarkerComponent
+      marker_offset_y="-6"
+			marker_work_flag="24"
+    ></PathFindingGridMarkerComponent>
+
+		<GenomeDataComponent
+			herd_id="helpless"
+			food_chain_rank="20"
+			is_predator="0"
+    ></GenomeDataComponent>
+
+		<CharacterPlatformingComponent
+			jump_velocity_y="-12"
+			run_velocity="20"
+    ></CharacterPlatformingComponent>
+
+    <HitboxComponent _enabled="0" />
+		<!-- <HitboxComponent
+			aabb_min_x="-5"
+			aabb_max_x="5"
+			aabb_min_y="0"
+			aabb_max_y="38"
+			>
+		</HitboxComponent> -->
+
+    <PathFindingComponent
+      can_jump="0"
+      can_fly="0"
+      jump_speed="100"
+      initial_jump_lob="1"
+      initial_jump_max_distance_x="60"
+      initial_jump_max_distance_y="60"
+    ></PathFindingComponent>
+
+		<CharacterDataComponent
+			collision_aabb_min_x="-5"
+			collision_aabb_max_x="5"
+			collision_aabb_min_y="-25"
+			collision_aabb_max_y="0"
+			mass="2.4"
+    ></CharacterDataComponent>
+
+		<CameraBoundComponent
+			max_count="30"
+			distance="160000"
+    ></CameraBoundComponent>
+	</Base>
+
+  <!-- <Base file="mods/AdventureMode/files/aabb_visualizer.xml" /> -->
+
+  <!-- <SpriteAnimatorComponent>
+  </SpriteAnimatorComponent> -->
+
+  <InteractableComponent
+    radius="15"
+    ui_text="Press $0 to interact"
+  ></InteractableComponent>
+
+  <SpriteParticleEmitterComponent
+    _enabled="0"
+    sprite_file="data/particles/jetpack_smoke.xml"
+		delay="0"
+		additive="1"
+		randomize_position.min_x="-9"
+		randomize_position.max_x="9"
+		randomize_position.min_y="-25"
+		randomize_position.max_y="0"
+		randomize_velocity.min_x="-10"
+		randomize_velocity.max_x="10"
+		randomize_velocity.min_y="0"
+		randomize_velocity.max_y="5"
+    count_min="1"
+    count_max="2"
+    emission_interval_min_frames="3"
+    emission_interval_max_frames="5"
+    is_emitting="1"
+		render_back="0"
+  ></SpriteParticleEmitterComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/golem/interact.lua"
+    script_interacting="mods/AdventureMode/files/golem/interact.lua"
+    execute_every_n_frame="1"
+    execute_on_added="1"
+    enable_coroutines="1"
+    >
+  </LuaComponent>
+
+</Entity>

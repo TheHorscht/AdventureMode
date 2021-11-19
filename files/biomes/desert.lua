@@ -18,7 +18,7 @@ RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
 RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
 RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton_02")
 RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
-RegisterSpawnFunction(0xffea238a, "spawn_golem")
+RegisterSpawnFunction(0xffea238a, "spawn_golem_sleeping")
 for i=1, 10 do
   RegisterSpawnFunction(0xff427800 + i, "spawn_lever_puzzle_lever_" .. string.format("%.2d", i))
   RegisterSpawnFunction(0xfffaff90 + i, "spawn_lever_puzzle_statue_" .. string.format("%.2d", i))
@@ -186,8 +186,8 @@ function spawn_maze_skeleton_01(x, y)
   EntityLoad("mods/AdventureMode/files/skeletons/maze_01.xml", x, y)
 end
 
-function spawn_golem(x, y)
-  EntityLoad("mods/AdventureMode/files/golem.xml", x, y)
+function spawn_golem_sleeping(x, y)
+  EntityLoad("mods/AdventureMode/files/golem/sleeping.xml", x, y)
 end
 
 local lever_puzzle_solution = dofile_once("mods/AdventureMode/files/lever_puzzle/solution.lua")

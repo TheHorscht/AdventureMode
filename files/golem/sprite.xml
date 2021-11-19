@@ -1,7 +1,5 @@
 <Sprite
-  filename="mods/AdventureMode/files/golem.png"
-  offset_x="11"
-  offset_y="31"
+  filename="mods/AdventureMode/files/golem/sprite.png"
   default_animation="sleep">
 
   <!-- sleep -->

@@ -1,19 +1,24 @@
 <Entity name="Strange Statue" tags="ui_use_raw_name">
 
-  <SpriteComponent
-    _tags="character"
-    image_file="mods/AdventureMode/files/golem_sprite.xml"
-  ></SpriteComponent>
-    <!-- rect_animation="walk" -->
-    <!-- next_rect_animation="walk" -->
-
-  <SpriteAnimatorComponent>
-  </SpriteAnimatorComponent>
+	<SpriteComponent
+		_tags="character"
+		image_file="mods/AdventureMode/files/golem/sprite.xml"
+		offset_x="11"
+		offset_y="31"
+		rect_animation="sleep"
+		z_index="1"
+	></SpriteComponent>
 
   <InteractableComponent
-    radius="8"
+    radius="15"
     ui_text="Press $0 to interact"
   ></InteractableComponent>
+
+  <SimplePhysicsComponent
+  ></SimplePhysicsComponent>
+
+  <VelocityComponent
+  ></VelocityComponent>
 
   <SpriteParticleEmitterComponent
     _enabled="0"
@@ -32,13 +37,13 @@
     count_max="2"
     emission_interval_min_frames="3"
     emission_interval_max_frames="5"
-    is_emitting="1" 
+    is_emitting="1"
 		render_back="0"
   ></SpriteParticleEmitterComponent>
 
   <LuaComponent
-    script_source_file="mods/AdventureMode/files/golem_interact.lua"
-    script_interacting="mods/AdventureMode/files/golem_interact.lua"
+    script_source_file="mods/AdventureMode/files/golem/sleeping_interact.lua"
+    script_interacting="mods/AdventureMode/files/golem/sleeping_interact.lua"
     execute_every_n_frame="1"
     execute_on_added="1"
     enable_coroutines="1"

@@ -34,4 +34,12 @@
 	  </StatusEffects>
   </CellDataChild>
 
+  <CellDataChild
+  	_parent="templebrick_static_broken"
+  	name="templebrick_static_broken2"
+    ui_name="$mat_templebrick_static"
+    wang_color="ff9e8439"
+    hp="10000"
+  ></CellDataChild>
+
 </Materials>

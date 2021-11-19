@@ -51,9 +51,9 @@ local starting_positions = {
   { x = 3054, y = -870 }, -- 13 Water
   { x = 4444, y = -103 }, -- 14 Lever puzzle
   { x = 3460, y = -1179}, -- 15 Golem
-  { x = 4758, y = -866}, -- 16 Hand with gem
+  { x = 3817, y = -1171 }, -- 16 Hand with gem
 }
-local starting_position = 16
+local starting_position = 15
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -178,20 +178,23 @@ function OnWorldPreUpdate()
       local item = EntityLoad("data/entities/items/pickup/physics_gold_orb_greed.xml")
       GamePickUpInventoryItem(player, item, false)
     end
+    if GuiButton(gui, new_id(), 0, 0, "Give gem") then
+      local item = EntityLoad("mods/AdventureMode/files/gem_item.xml")
+      GamePickUpInventoryItem(player, item, false)
+    end
     if GuiButton(gui, new_id(), 0, 0, "Die") then
       local player = EntityGetWithTag("player_unit")[1]
       EntityInflictDamage(player, 999, "DAMAGE_MELEE", "", "NORMAL", 0, 0)
     end
-    if GuiButton(gui, new_id(), 0, 0, "Print global") then
-      GamePrint(GlobalsGetValue("AdventureMode_player_initialized", "0"))
-    end
     if GuiButton(gui, new_id(), 0, 0, "Reload world") then
       BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")
     end
-    if GuiButton(gui, new_id(), 0, 0, "Print number of test") then
-      local number = #EntityGetWithTag("test")
-      print(number)
-      GamePrint(number)
+    if GuiButton(gui, new_id(), 0, 0, "Spawn brazier") then
+      local player = EntityGetWithTag("player_unit")[1]
+      if player then
+        local x, y = EntityGetTransform(player)
+        EntityLoad("mods/AdventureMode/files/brazier.xml", x, y)
+      end
     end
     if not old_pos then
       if GuiButton(gui, new_id(), 0, 0, "Teleport far away") then

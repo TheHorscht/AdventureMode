@@ -111,10 +111,10 @@
     execute_on_added="1"
   ></LuaComponent>
 
-  <CameraBoundComponent
+  <!-- <CameraBoundComponent
     distance="300"
     freeze_on_max_count_kill="0"
     freeze_on_distance_kill="1"
-  ></CameraBoundComponent>
+  ></CameraBoundComponent> -->
 
 </Entity>

@@ -7,4 +7,8 @@ if respawn_x == x and respawn_y == y then
   for i, comp in ipairs(EntityGetComponentIncludingDisabled(entity_id, "ParticleEmitterComponent")) do
     EntitySetComponentIsEnabled(entity_id, comp, true)
   end
+else
+  for i, comp in ipairs(EntityGetComponentIncludingDisabled(entity_id, "ParticleEmitterComponent")) do
+    EntitySetComponentIsEnabled(entity_id, comp, false)
+  end
 end

@@ -24,7 +24,7 @@
       offset_x="11"
       offset_y="32"
       rect_animation="stand"
-      z_index="1"
+      z_index="0.9"
     ></SpriteComponent>
 
 		<DamageModelComponent

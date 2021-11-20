@@ -9,7 +9,7 @@
 table.insert(status_effects, {
   id="ADVENTUREMODE_SADNESS",
   ui_name="Sadness",
-  ui_description="It was your friend... *sniff*",
+  ui_description="Tastes like a dead friend... *sniff*",
   ui_icon="mods/AdventureMode/files/status_effects/sadness_icon.png",
   effect_entity="mods/AdventureMode/files/status_effects/sadness.xml",
 })

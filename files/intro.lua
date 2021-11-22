@@ -4,6 +4,7 @@ dofile_once("mods/AdventureMode/files/camera.lua")
 
 set_controls_enabled(false)
 sequence(function()
+  GamePlaySound("data/audio/Desktop/music04.bank", "music/wandcave/01", 0, 0)
   set_camera_manual(true)
   camera_set_position(400, -800)
   -- camera_tracking_shot(400, -800, 400, -580, 0.0025)

@@ -12,9 +12,6 @@
 		</relationship>
 	</object>
 	<object class="MixerSend" id="{4df62d1b-977f-4ef1-b7dd-a0edba3db715}">
-		<property name="bypass">
-			<value>true</value>
-		</property>
 		<property name="inputFormat">
 			<value>2</value>
 		</property>
@@ -47,7 +44,7 @@
 			<value>0.0026896180742334587</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>-11</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{36c0a3ab-de3f-45d6-8fea-4ee2922a9872}">
@@ -55,7 +52,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>-11</value>
 		</property>
 	</object>
 </objects>

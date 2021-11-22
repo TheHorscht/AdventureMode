@@ -63,6 +63,8 @@ function()
   local damage_model_component_camel = EntityGetFirstComponentIncludingDisabled(camel, "DamageModelComponent")
   ComponentSetValue2(damage_model_component_camel, "air_in_lungs", -1)
   ComponentSetValue2(damage_model_component_camel, "air_in_lungs_max", 0)
+  local camel_x, camel_y = EntityGetTransform(camel)
+  GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "camel_death", camel_x, camel_y)
   wait(100)
   -- The Noita turns around to look at the dead camel
   ComponentSetValue2(controls_component, "mAimingVector", -1, vy)

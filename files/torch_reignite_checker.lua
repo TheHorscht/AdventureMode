@@ -7,6 +7,7 @@ function reignite()
   if not get_var_store_bool(entity_id, "is_on", true) then
     set_var_store_bool(entity_id, "is_on", true)
     local sprite_child = get_child_with_name(entity_id, "sprite")
+    local burn_child = get_child_with_name(entity_id, "burn")
     local light_component = EntityGetFirstComponentIncludingDisabled(sprite_child, "LightComponent")
     local sprite_component = EntityGetFirstComponentIncludingDisabled(sprite_child, "SpriteComponent")
     local sprite_component_world = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
@@ -27,10 +28,19 @@ function reignite()
       ComponentAddTag(comp, "enabled_in_hand")
       ComponentAddTag(comp, "enabled_in_world")
     end
+    for i, comp in ipairs(EntityGetComponentIncludingDisabled(burn_child, "AudioComponent") or {}) do
+      ComponentAddTag(comp, "enabled_in_hand")
+      ComponentAddTag(comp, "enabled_in_world")
+    end
+    for i, comp in ipairs(EntityGetComponentIncludingDisabled(burn_child, "AudioLoopComponent") or {}) do
+      ComponentAddTag(comp, "enabled_in_hand")
+      ComponentAddTag(comp, "enabled_in_world")
+    end
   
     -- Check if it's in world or held
     if EntityGetParent(entity_id) ~= 0 then
       EntitySetComponentsWithTagEnabled(sprite_child, "fire", true)
+      EntitySetComponentsWithTagEnabled(burn_child, "fire", true)
     end
   end
 end

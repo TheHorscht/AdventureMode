@@ -200,6 +200,23 @@
       reaction_audio_amount="1"
     ></MagicConvertMaterialComponent> 
   
+    <AudioComponent
+      _enabled="0"
+      _tags="fire"
+      file="data/audio/Desktop/projectiles.bank"
+      event_root="player_projectiles/torch"
+      set_latest_event_position="1" >
+    </AudioComponent>
+
+    <AudioLoopComponent
+      _enabled="0"
+      _tags="fire"
+      file="data/audio/Desktop/projectiles.bank"
+      event_name="player_projectiles/torch/loop"
+      auto_play_if_enabled="1"
+      play_on_component_enable="1" >
+    </AudioLoopComponent>
+
   </Entity>
   
 

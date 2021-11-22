@@ -2,9 +2,8 @@ dofile_once("mods/AdventureMode/files/util.lua")
 
 function material_area_checker_success(x, y)
   local entity_id = GetUpdatedEntityID()
-  -- print("Setting var store to false")
-
   local sprite_child = get_child_with_name(entity_id, "sprite")
+  local burn_child = get_child_with_name(entity_id, "burn")
   local light_component = EntityGetFirstComponentIncludingDisabled(sprite_child, "LightComponent")
   local sprite_component = EntityGetFirstComponentIncludingDisabled(sprite_child, "SpriteComponent")
   local sprite_component_world = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
@@ -29,8 +28,15 @@ function material_area_checker_success(x, y)
     ComponentRemoveTag(comp, "enabled_in_hand")
     ComponentRemoveTag(comp, "enabled_in_world")
   end
+  for i, comp in ipairs(EntityGetComponentIncludingDisabled(burn_child, "AudioComponent") or {}) do
+    ComponentRemoveTag(comp, "enabled_in_hand")
+    ComponentRemoveTag(comp, "enabled_in_world")
+  end
+  for i, comp in ipairs(EntityGetComponentIncludingDisabled(burn_child, "AudioLoopComponent") or {}) do
+    ComponentRemoveTag(comp, "enabled_in_hand")
+    ComponentRemoveTag(comp, "enabled_in_world")
+  end
 
   EntitySetComponentsWithTagEnabled(sprite_child, "fire", false)
-  -- EntitySetComponentIsEnabled(sprite_child, sprite_comp, not is_enabled)
-  -- EntitySetComponentIsEnabled(sprite_child, inherit_transform_component, true)
+  EntitySetComponentsWithTagEnabled(burn_child, "fire", false)
 end

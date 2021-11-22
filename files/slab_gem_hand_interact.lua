@@ -8,10 +8,9 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
     portrait = "mods/AdventureMode/files/slab_portrait.png",
     -- typing_sound = "two", -- There are currently 6: default, sans, one, two, three, four and "none" to turn it off, if not specified uses "default"
     text = [[
-      {@delay 2}Strain as you might, the object of your desire eludes you.
-      To reach your goal, you must first set your eyes on it.
-      Then through sheer determination and power of will, let your
-      aspiration lift you higher.
+      {@delay 2}If you let restlessness move you,
+      you lose touch with who you are.
+      Reach without grasping. Look, but don't touch.
     ]],
   })
 end

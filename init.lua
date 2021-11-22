@@ -229,14 +229,14 @@ function OnWorldPreUpdate()
     local inventory_quick = EntityGetWithName("inventory_quick")
     local items = EntityGetAllChildren(inventory_quick)
     local sprite_component = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
+    local active_item = get_active_item()
+    -- Check if active item still exists, if EntityGetTransform returns nil then it doesn't
+    local x = EntityGetTransform(active_item)
+    local active_item_exists = x ~= nil
+    local show_arm = not items or not active_item_exists
     local player = EntityGetWithTag("player_unit")[1]
-    if player then
-      local no_item_arm_sprite_component = EntityGetFirstComponentIncludingDisabled(player, "SpriteComponent", "right_arm_root")
-      ComponentSetValue2(no_item_arm_sprite_component, "alpha", (not not items) and 0 or 1)
-      -- EntitySetComponentIsEnabled(player, no_item_arm_sprite_component, not items)
-      -- EntityRefreshSprite(player, no_item_arm_sprite_component)
-    end
-    EntitySetComponentIsEnabled(arm_r_entity, sprite_component, not not items)
-    -- EntitySetComponentIsEnabled(arm_r_entity, sprite_component, false)
+    local no_item_arm_sprite_component = EntityGetFirstComponentIncludingDisabled(player, "SpriteComponent", "right_arm_root")
+    ComponentSetValue2(no_item_arm_sprite_component, "alpha", show_arm and 1 or 0)
+    EntitySetComponentIsEnabled(arm_r_entity, sprite_component, not show_arm)
   end
 end

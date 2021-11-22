@@ -1,5 +1,3 @@
-Riddle that tells you to "look at" something, meaning put the mouse cursor on top of it
-Make a skeleton head chase player through the maze
 Potion:
   Reactions
   Liquids
@@ -7,7 +5,6 @@ Wands:
   Shoot enemies (Get gold from enemies that respawn every 5 minutes?)
   Teleport wand
   Give Bundles of different types of spells / wands with multiple type of spells
-Golem and gem to activate golem, which breaks wall
 Money:
   Buy items
 Heavy Stone:
@@ -26,9 +23,7 @@ Corridor that shoots projectiles at you and you need a shield upgrade to block t
 Digger Wand:
   Corridor submerged in sand and you need a digger wand to pass
   Items hidden in sand that you need to dig out
-Labyrinth with doors and switches that open/close specific groups of doors, with a hidden switch that's necessary to solve it
 Spell that lets you spawn a controllable drone, to get into narrow passageways to press a switch
-Physics door that drops down. Filling area with water so elecriticy can burn the wooden platform underneath the door
 Drop rock down a hole to activate switch
 Mix different liquids to create gate opener
 Door that requires you to put wands on pedestals and leave them behind for a while
@@ -39,8 +34,6 @@ Timed pressure plates that raise something while standing on top of them and low
  and you have to align a few things in a straight line this way
 Floor that collapses
 Do-not-jump room
-Gas caves for which you need the torch after water room
-
 
 Color robe: 6e482f colorize in gimp
 
@@ -57,3 +50,77 @@ There are still the remains of the expedition scattered around the temple, whose
 The story is told through their last thoughts.
 
 At the end of the temple, you find out that the knowledge was stolen and there is a portal. However, the portal is unstable due to having been active for so long that it has lost most of it's magic. Stepping through it teleports you to the mountain where the main game begins, stripped of all items and memory due to the unstable nature of the portal.
+
+
+
+Knowing others is intelligence;
+knowing yourself is true wisdom.
+Mastering others is strength;
+mastering yourself is true power.
+
+If you realize that you have enough,
+you are truly rich.
+If you stay in the center
+and embrace death with your whole heart,
+you will endure forever.
+
+
+
+
+--[[ 
+
+If you let restlessness move you,
+you lose touch with who you are.
+Look, but don't touch.
+Listen, but don't speak.
+Reach, and it can't be grasped.
+
+
+
+  ORIG
+  Look, and it can't be seen.
+  Listen, and it can't be heard.
+  Reach, and it can't be grasped.
+
+
+If you want to become whole,
+let yourself be partial.
+If you want to become straight,
+let yourself be crooked.
+If you want to become full,
+let yourself be empty.
+If you want to be reborn,
+let yourself die.
+If you want to be given everything,
+give everything up.
+
+
+If you let yourself be blown to and fro,
+you lose touch with your root.
+If you let restlessness move you,
+you lose touch with who you are.
+
+
+
+
+If you want to shrink something,
+you must first allow it to expand.
+If you want to get rid of something,
+you must first allow it to flourish.
+If you want to take something,
+you must first allow it to be given.
+This is called the subtle perception
+of the way things are.
+
+
+The Tao gives birth to One.
+One gives birth to Two.
+Two gives birth to Three.
+Three gives birth to all things.
+
+If you realize that all things change,
+there is nothing you will try to hold on to.
+If you aren't afraid of dying,
+there is nothing you can't achieve.
+
+ ]]

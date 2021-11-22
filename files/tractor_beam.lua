@@ -24,8 +24,6 @@ if player then
     local vx, vy = ComponentGetValue2(character_data_comp, "mVelocity")
     if vy > -45 then
       ComponentSetValue2(character_data_comp, "mVelocity", vx, vy - 10)
-    else
-      ComponentSetValue2(character_data_comp, "mVelocity", vx, -45)
     end
   end
 end

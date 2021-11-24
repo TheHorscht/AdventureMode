@@ -54,7 +54,7 @@ local starting_positions = {
   { x = 3817, y = -1171 }, -- 16 Hand with gem
   { x = 4400, y = -1020 }, -- 17 Lever door maze
 }
-local starting_position = 17
+local starting_position = 1
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -163,9 +163,9 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
-  if GuiButton(gui, new_id(), 2, 200, "D") then
-    debug_menu_open = not debug_menu_open
-  end
+  -- if GuiButton(gui, new_id(), 2, 200, "D") then
+  --   debug_menu_open = not debug_menu_open
+  -- end
 
   if debug_menu_open then
     GuiLayoutBeginVertical(gui, 1, 20)

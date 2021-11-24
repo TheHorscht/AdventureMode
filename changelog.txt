@@ -1,0 +1,8 @@
+v0.2.1:
+- Changed door lever maze to solid doors
+- Added sound for camel dying
+- Fix arms when having no active item
+- Remove blue flame from puzzle torches
+- Make sound work on torch item
+- Add music to intro
+- Change background texture

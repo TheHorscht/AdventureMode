@@ -27,6 +27,9 @@ local time_to_wait = 300
 local player = EntityGetWithTag("player_unit")[1]
 if player then
   local controls_comp = EntityGetFirstComponentIncludingDisabled(player, "ControlsComponent")
+  if not ComponentGetValue2(controls_comp, "enabled") then
+    last_frame_looked_away = GameGetFrameNum()
+  end
   local check_keys = {
     "mButtonFrameLeft",
     "mButtonFrameRight",

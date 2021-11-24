@@ -1,9 +1,41 @@
-<Entity>	
+<Entity>
 
 	<Base file="mods/AdventureMode/files/door_lever_labyrinth/laserdoor_base.xml">
-    <LaserEmitterComponent
-      laser_angle_add_rad="0"
-    ></LaserEmitterComponent>
+
+    <PhysicsImageShapeComponent
+      image_file="mods/AdventureMode/files/door_lever_labyrinth/door_body_invis_h.png"
+      offset_x="0"
+      offset_y="4"
+    ></PhysicsImageShapeComponent>
+
+    <PhysicsJointComponent
+      pos_x="6"
+      pos_y="4"
+    ></PhysicsJointComponent>
+
+    <PhysicsJointComponent
+      pos_x="17"
+      pos_y="4"
+    ></PhysicsJointComponent>
+
+  	<SpriteComponent
+      image_file="mods/AdventureMode/files/door_lever_labyrinth/door_h.png"
+      offset_x="1"
+      offset_y="4"
+    ></SpriteComponent>
+
+    <SpriteParticleEmitterComponent
+      randomize_position.min_x="-2"
+      randomize_position.max_x="-1"
+      randomize_position.min_y="-3"
+      randomize_position.max_y="3"
+    ></SpriteParticleEmitterComponent>
+
   </Base>
+
+  <VariableStorageComponent
+    name="orientation"
+    value_string="h"
+  ></VariableStorageComponent>
 
 </Entity>

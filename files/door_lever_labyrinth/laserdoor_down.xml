@@ -1,9 +1,11 @@
-<Entity>	
+<Entity>
 
 	<Base file="mods/AdventureMode/files/door_lever_labyrinth/laserdoor_base.xml">
-    <LaserEmitterComponent
-      laser_angle_add_rad="1.57079"
-    ></LaserEmitterComponent>
   </Base>
+
+  <VariableStorageComponent
+    name="orientation"
+    value_string="v"
+  ></VariableStorageComponent>
 
 </Entity>

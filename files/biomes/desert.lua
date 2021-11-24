@@ -292,68 +292,78 @@ function spawn_leverdoor_puzzle_lever_06(x, y)
   EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_06.xml", x, y)
 end
 
+local function load_and_offset_door(file, x, y)
+  local door = EntityLoad(file, x, y)
+  local orientation = get_var_store_string(door, "orientation")
+  if orientation == "h" then
+    EntitySetTransform(door, x + 1, y)
+  elseif orientation == "v" then
+    EntitySetTransform(door, x, y + 1)
+  end
+end
+
 function spawn_leverdoor_puzzle_door_01(x, y)
-  -- EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_01.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_01.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_02(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_02.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_02.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_03(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_03.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_03.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_04(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_04.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_04.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_05(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_05.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_05.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_06(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_06.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_06.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_07(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_07.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_07.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_08(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_08.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_08.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_09(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_09.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_09.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_10(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_10.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_10.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_11(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_11.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_11.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_12(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_12.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_12.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_13(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_13.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_13.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_14(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_14.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_14.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_15(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_15.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_15.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_door_16(x, y)
-  EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_16.xml", x, y)
+  load_and_offset_door("mods/AdventureMode/files/door_lever_labyrinth/laserdoor_16.xml", x, y)
 end
 
 function spawn_tractor_beam_150(x, y)

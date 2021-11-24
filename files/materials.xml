@@ -41,5 +41,13 @@
     wang_color="ff9e8439"
     hp="10000"
   ></CellDataChild>
+  
+  <CellDataChild
+  	_parent="wood_prop"
+  	name="door_material"
+    ui_name="$mat_templebrick_static"
+    wang_color="ff9e8440"
+    burnable="0"
+  ></CellDataChild>
 
 </Materials>

@@ -13,9 +13,4 @@
 		value_bool="0"
 	></VariableStorageComponent>
 
-	<LuaComponent
-		script_source_file="mods/AdventureMode/files/door_lever_labyrinth/door_checker.lua"
-		execute_every_n_frame="3"
-	></LuaComponent>
-
 </Entity>

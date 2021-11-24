@@ -1,32 +1,72 @@
-<Entity>	
-
-	<LightComponent 
-		radius="24"
-		fade_out_time="1.5" 
-		r="230"
-		g="120"
-		b="230"
-	></LightComponent>
-	
-	<LaserEmitterComponent
-		is_emitting="1"
-		laser_angle_add_rad="0"
-		><laser
-			damage_to_entities="4"
-			max_cell_durability_to_destroy="0"
-			damage_to_cells="0"
-			max_length="60"
-			beam_radius="5"
-			hit_particle_chance="0"
-			beam_particle_chance="100"
-			beam_particle_type="plasma_fading"
-			audio_enabled="0"
-		></laser>
-	</LaserEmitterComponent>
+<Entity>
 
 	<LuaComponent
 		script_source_file="mods/AdventureMode/files/door_lever_labyrinth/door_checker.lua"
 		execute_every_n_frame="3"
+		execute_on_added="1"
+		enable_coroutines="1"
 	></LuaComponent>
+
+	<PhysicsJointComponent
+    nail_to_wall="1"
+    breakable="0"
+    grid_joint="1"
+    pos_x="4"
+    pos_y="6"
+  ></PhysicsJointComponent>
+
+  <PhysicsJointComponent
+    nail_to_wall="1"
+    grid_joint="1"
+    breakable="0"
+    pos_x="4"
+    pos_y="17"
+  ></PhysicsJointComponent>
+
+	<PhysicsBodyComponent
+		is_bullet="1"
+    allow_sleep="1"
+    angular_damping="0"
+    fixed_rotation="0"
+    linear_damping="0"
+    on_death_really_leave_body="0"
+    hax_wait_till_pixel_scenes_loaded="0"
+    go_through_sand="0"
+		kills_entity="0"
+  ></PhysicsBodyComponent>
+
+  <PhysicsImageShapeComponent
+    image_file="mods/AdventureMode/files/door_lever_labyrinth/door_body_invis_v.png"
+    material="door_material"
+		use_sprite="0"
+		offset_x="4"
+  ></PhysicsImageShapeComponent>
+
+	<SpriteComponent
+		image_file="mods/AdventureMode/files/door_lever_labyrinth/door_v.png"
+		offset_x="4"
+		offset_y="1"
+	></SpriteComponent>
+
+  <SpriteParticleEmitterComponent
+    _enabled="0"
+    sprite_file="data/particles/jetpack_smoke.xml"
+		delay="0"
+		additive="1"
+		randomize_position.min_x="-3"
+		randomize_position.max_x="3"
+		randomize_position.min_y="-2"
+		randomize_position.max_y="-1"
+		randomize_velocity.min_x="-10"
+		randomize_velocity.max_x="10"
+		randomize_velocity.min_y="0"
+		randomize_velocity.max_y="5"
+    count_min="1"
+    count_max="1"
+    emission_interval_min_frames="2"
+    emission_interval_max_frames="2"
+    is_emitting="1"
+		render_back="0"
+  ></SpriteParticleEmitterComponent>
 
 </Entity>

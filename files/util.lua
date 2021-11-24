@@ -160,6 +160,12 @@ function visualize_aabb(entity_id, component_type)
   })
 end
 
+function get_state(entity_id)
+  _state = _state or {}
+  _state[entity_id] = _state[entity_id] or {}
+  return _state[entity_id]
+end
+
 function get_active_item()
 	local player = EntityGetWithTag("player_unit")[1]
 	local inv = EntityGetFirstComponentIncludingDisabled(player, "Inventory2Component")

@@ -25,6 +25,6 @@ if #players > 0 then
     camera_set_position(cx, cy)
     set_camera_manual(false)
     set_controls_enabled(true)
-    EntitySetComponentIsEnabled(entity_id, this_component, false)
+    EntityKill(entity_id)
   end)
 end

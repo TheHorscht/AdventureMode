@@ -32,6 +32,11 @@ xml:add_children(nxml.parse_many([[
   height_index="0"
   color="ffec2b42">
 </Biome>
+<Biome
+  biome_filename="mods/AdventureMode/files/biomes/golem_room.xml" 
+  height_index="0"
+  color="ff986b4f">
+</Biome>
 ]]))
 ModTextFileSetContent("data/biome/_biomes_all.xml", tostring(xml))
 

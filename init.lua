@@ -54,11 +54,13 @@ local starting_positions = {
   { x = 3817, y = -1171 }, -- 16 Hand with gem
   { x = 4400, y = -1020 }, -- 17 Lever door maze
 }
-local starting_position = 1
+local starting_position = 4
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
   DESIGN_PLAYER_START_POS_Y="%d"
+  DEBUG_MATERIAL_AREA_CHECKER="1"
+  DEBUG_COLLISION_TRIGGERS="1"
 ></MagicNumbers>
 ]], starting_positions[starting_position].x, starting_positions[starting_position].y))
 

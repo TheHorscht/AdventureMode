@@ -1,0 +1,50 @@
+<Entity>
+
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/vanishing_block.lua"
+		execute_every_n_frame="1"
+	></LuaComponent>
+
+	<!-- <PhysicsJointComponent
+    nail_to_wall="1"
+    breakable="0"
+    grid_joint="1"
+    pos_x="4"
+    pos_y="6"
+  ></PhysicsJointComponent>
+
+  <PhysicsJointComponent
+    nail_to_wall="1"
+    grid_joint="1"
+    breakable="0"
+    pos_x="4"
+    pos_y="17"
+  ></PhysicsJointComponent> -->
+
+	<PhysicsBodyComponent
+		is_bullet="1"
+    is_static="1"
+    allow_sleep="1"
+    angular_damping="0"
+    fixed_rotation="0"
+    linear_damping="0"
+    on_death_really_leave_body="0"
+    hax_wait_till_pixel_scenes_loaded="0"
+    go_through_sand="0"
+		kills_entity="0"
+  ></PhysicsBodyComponent>
+
+  <PhysicsImageShapeComponent
+    image_file="mods/AdventureMode/files/vanishing_block.png"
+    material="door_material"
+		use_sprite="0"
+		offset_x="0"
+  ></PhysicsImageShapeComponent>
+<!-- 
+	<SpriteComponent
+		image_file="mods/AdventureMode/files/vanishing_block.png"
+		offset_x="4"
+		offset_y="1"
+	></SpriteComponent> -->
+
+</Entity>

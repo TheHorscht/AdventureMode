@@ -1,0 +1,10 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/vanishing_block_base.xml" />
+
+  <VariableStorageComponent
+    name="cycle"
+    value_int="120"
+  ></VariableStorageComponent>
+
+</Entity>

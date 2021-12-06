@@ -28,9 +28,21 @@
     ></SpriteComponent>
 
 		<DamageModelComponent
+			materials_that_damage="lava"
+			materials_how_much_damage="0.0"
 			ragdoll_filenames_file="data/ragdolls/peasant/filenames.txt"
-			fire_probability_of_ignition="0.05"
+			fire_probability_of_ignition="0.0"
 			hp="1000"
+			<damage_multipliers
+				radioactive="0"
+				ice="0"
+				projectile="0"
+				drill="0"
+				slice="0"
+				poison="0"
+				explosion="0"
+				electricity="0">
+			</damage_multipliers>
     ></DamageModelComponent>
 
 		<PathFindingGridMarkerComponent
@@ -49,14 +61,13 @@
 			run_velocity="20"
     ></CharacterPlatformingComponent>
 
-    <HitboxComponent _enabled="0" />
-		<!-- <HitboxComponent
+		<HitboxComponent
 			aabb_min_x="-5"
 			aabb_max_x="5"
 			aabb_min_y="0"
 			aabb_max_y="38"
 			>
-		</HitboxComponent> -->
+		</HitboxComponent>
 
     <PathFindingComponent
       can_jump="0"
@@ -120,5 +131,13 @@
     enable_coroutines="1"
     >
   </LuaComponent>
+
+<Entity>
+    <GameEffectComponent
+    	effect="PROTECTION_MELEE"
+    	frames="-1"
+    >
+    </GameEffectComponent>
+</Entity>
 
 </Entity>

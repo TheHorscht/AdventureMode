@@ -20,11 +20,12 @@ end
 local dialog_active = {
   name = "Golem",
   portrait = "mods/AdventureMode/files/golem/portrait.png",
-  -- typing_sound = "two", -- There are currently 6: default, sans, one, two, three, four and "none" to turn it off, if not specified uses "default"
+  typing_sound = "stone", 
+  -- There are currently 6: default, sans, one, two, three, four and "none" to turn it off, if not specified uses "default"
   text = [[
-    {@delay 5}#ROAR!!#{@pause 60}{@delay 2} Were you the one who woke me from my slumber?{@pause 60}
-    Another seeker of magic?{@pause 30} Ah, who else would it be...{@pause 30}
-    I wonder if this one going to finally make it?
+    {@delay 4}Were you the one who woke me from my slumber?{@pause 60}
+    Another seeker of magic?{@pause 20} Ah, who else would it be...{@pause 30}
+    I wonder if this one is going to finally make it?
   ]],
   options = {
     {
@@ -32,7 +33,7 @@ local dialog_active = {
       func = function(dialog)
         dialog.show({
           text = [[
-            Well, you see{@pause 15}.{@pause 15}.{@pause 15}. {@pause 15}
+            {@delay 4}Well, you see{@pause 15}.{@pause 15}.{@pause 15}. {@pause 15}
             When a mommy stone and a daddy stone
             love each other very much...
           ]],
@@ -48,7 +49,8 @@ local dialog_active = {
       text = "Can you break the wall for me?",
       func = function(dialog)
         dialog.show({
-          text = "Nothing easier than that. Step aside and watch me go.",
+          text = [[ {@delay 4}Nothing easier than that. Step aside and watch me go. 
+          ]],
           options = {
             {
               text = "End",
@@ -134,15 +136,81 @@ local dialog_active = {
 local dialog_wall_destroyed = {
   name = "Golem",
   portrait = "mods/AdventureMode/files/golem/portrait.png",
+  typing_sound = "stone", 
   text = [[
-    That was fun :)
+    You may now pass.
+  ]],
+  options = {
+    {
+      text = "Do you think I will make it?",
+      func = function(dialog)
+        dialog.show({
+          text = [[
+          {@delay 4}It's quite intriguing how you {@color cc97ea}Alchemists {@color ffffff}seek such
+          power and wealth.{@pause 40}
+          {@delay 5}It's unwise to pursue such things.
+          {@pause 20}Unless you want to suffer for it.
+          ]],
+          options = {
+            {
+              text = "Leave",
+              func = function(dialog)
+                dialog.close(function()
+                  GlobalsSetValue("AdventureMode_golem_has_spoken_1", "1")
+                end)
+              end
+            }
+          }
+        })
+      end
+    },
+    {
+      text = "Leave"
+    },
+  }
+}
+
+
+ -- local dialog_extra_1 = {
+ --   name = "Golem",
+ --   portrait = "mods/AdventureMode/files/golem/portrait.png",
+ --   typing_sound = "stone", 
+ --   text = [[
+ --           {@delay 4}It's quite intriguing how you {@color cc97ea}Alchemists {@color ffffff}seek such
+ --           power and wealth.{@pause 60}
+ --           {@delay 8}{@color 7d5e5e}#This will be your downfall.#
+ --   ]],
+ -- }
+
+local dialog_extra_1 = {
+  name = "Golem",
+  portrait = "mods/AdventureMode/files/golem/portrait.png",
+  typing_sound = "stone", 
+  text = [[
+    {@delay 6}Mmmm donuts...
+  ]],
+}
+
+local dialog_extra_2 = {
+  name = "Golem",
+  portrait = "mods/AdventureMode/files/golem/portrait.png",
+  typing_sound = "stone", 
+  text = [[
+    {@delay 4}You're still waiting for answers?{@pause 30}
+    I served my purpose,{@pause 20} there is nothing more
+    I can do for you at my state.
   ]],
 }
 
 function interacting(entity_who_interacted, entity_interacted, interactable_name)
   local dialog = dialog_active
-  if GlobalsGetValue("AdventureMode_golem_has_destroyed_wall", "0") == "1" then
-    dialog = dialog_wall_destroyed
-  end
+if GlobalsGetValue("AdventureMode_golem_has_spoken_2", "0") == "1" then
+  dialog = dialog_extra_2
+elseif GlobalsGetValue("AdventureMode_golem_has_spoken_1", "0") == "1" then
+  GlobalsSetValue("AdventureMode_golem_has_spoken_2", "1")
+  dialog = dialog_extra_1
+elseif GlobalsGetValue("AdventureMode_golem_has_destroyed_wall", "0") == "1" then
+  dialog = dialog_wall_destroyed
+end
   dialog_system.open_dialog(dialog)
 end

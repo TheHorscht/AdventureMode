@@ -3,7 +3,11 @@ ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/AdventureM
 ModMaterialsFileAdd("mods/AdventureMode/files/materials.xml")
 ModRegisterAudioEventMappings("mods/AdventureMode/files/audio/GUIDs.txt")
 dofile_once("mods/AdventureMode/lib/DialogSystem/init.lua")("mods/AdventureMode/lib/DialogSystem", {
-  disable_controls = true
+  disable_controls = true,
+  sounds = {
+    bones = { bank = "mods/AdventureMode/files/audio/AdventureMode.bank", event = "bones_rattle" },
+    stone = { bank = "mods/AdventureMode/files/audio/AdventureMode.bank", event = "golem_speak" },
+  }
 })
 dofile_once("mods/AdventureMode/lib/coroutines.lua")
 dofile_once("data/scripts/lib/utilities.lua")
@@ -170,9 +174,10 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
-  -- if GuiButton(gui, new_id(), 2, 200, "D") then
-  --   debug_menu_open = not debug_menu_open
-  -- end
+if GuiButton(gui, new_id(), 2, 200, "D") then
+debug_menu_open = not debug_menu_open
+end
+  -- 
 
   if debug_menu_open then
     GuiLayoutBeginVertical(gui, 1, 20)
@@ -203,6 +208,12 @@ function OnWorldPreUpdate()
         local x, y = EntityGetTransform(player)
         EntityLoad("mods/AdventureMode/files/brazier.xml", x, y)
       end
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Bones rattling") then
+      GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "bones_rattle", 0, 0)
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Rattle me bones!") then
+      GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rattle_me_bones", 0, 0)
     end
     if not old_pos then
       if GuiButton(gui, new_id(), 0, 0, "Teleport far away") then

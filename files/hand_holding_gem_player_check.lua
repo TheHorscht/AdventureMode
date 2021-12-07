@@ -5,6 +5,11 @@ if GlobalsGetValue("AdventureMode_red_gem_picked", "0") == "1" then
   EntityRemoveComponent(entity_id, GetUpdatedComponentID())
 end
 
+local function get_distance2( x1, y1, x2, y2 )
+	-- Distance squared. More performant but does not return accurate distance in actual pixels. Good for comparing relative distances.
+	return ( x2 - x1 ) ^ 2 + ( y2 - y1 ) ^ 2
+end
+
 local function vec_rotate(x, y, angle)
 	local ca = math.cos(angle)
 	local sa = math.sin(angle)
@@ -53,10 +58,16 @@ if player then
   if gem > 0 then
     local gx, gy = EntityGetTransform(gem)
     local px, py = EntityGetTransform(player)
+    local max_distance = 170
+    local dist2 = get_distance2(gx, gy, px, py)
+    print(math.sqrt(dist2))
+    if dist2 > max_distance * max_distance then
+      return
+    end
     local aim_x, aim_y = ComponentGetValue2(controls_comp, "mAimingVector")
     local angle_to_gem = get_direction(px, py, gx, gy)
     local angle_aiming_at = get_direction(0, 0, aim_x, aim_y)
-    if math.abs(angle_aiming_at - angle_to_gem) > 0.1 then
+    if math.abs(angle_aiming_at - angle_to_gem) > 0.15 then
       last_frame_looked_away = GameGetFrameNum()
     end
   end

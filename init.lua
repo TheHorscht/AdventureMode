@@ -180,6 +180,25 @@ function OnPlayerSpawned(player)
   end
 end
 
+function handle_arm_sprite()
+  local respawn_in_progress = GlobalsGetValue("AdventureMode_respawn_in_progress", "0") == "1"
+  local arm_r_entity = EntityGetWithName("arm_r")
+  if not respawn_in_progress and arm_r_entity > 0 then
+    local inventory_quick = EntityGetWithName("inventory_quick")
+    local items = EntityGetAllChildren(inventory_quick)
+    local sprite_component = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
+    local active_item = get_active_item()
+    -- Check if active item still exists, if EntityGetTransform returns nil then it doesn't
+    local x = EntityGetTransform(active_item)
+    local active_item_exists = x ~= nil
+    local show_arm = not items or not active_item_exists
+    local player = EntityGetWithTag("player_unit")[1]
+    local no_item_arm_sprite_component = EntityGetFirstComponentIncludingDisabled(player, "SpriteComponent", "right_arm_root")
+    ComponentSetValue2(no_item_arm_sprite_component, "alpha", show_arm and 1 or 0)
+    EntitySetComponentIsEnabled(arm_r_entity, sprite_component, not show_arm)
+  end
+end
+
 local debug_menu_open = false
 
 function OnWorldPreUpdate()
@@ -260,20 +279,5 @@ end
   end
 
   -- Make sure arm doesn't hang weirdly without items
-  local respawn_in_progress = GlobalsGetValue("AdventureMode_respawn_in_progress", "0") == "1"
-  local arm_r_entity = EntityGetWithName("arm_r")
-  if not respawn_in_progress and arm_r_entity > 0 then
-    local inventory_quick = EntityGetWithName("inventory_quick")
-    local items = EntityGetAllChildren(inventory_quick)
-    local sprite_component = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
-    local active_item = get_active_item()
-    -- Check if active item still exists, if EntityGetTransform returns nil then it doesn't
-    local x = EntityGetTransform(active_item)
-    local active_item_exists = x ~= nil
-    local show_arm = not items or not active_item_exists
-    local player = EntityGetWithTag("player_unit")[1]
-    local no_item_arm_sprite_component = EntityGetFirstComponentIncludingDisabled(player, "SpriteComponent", "right_arm_root")
-    ComponentSetValue2(no_item_arm_sprite_component, "alpha", show_arm and 1 or 0)
-    EntitySetComponentIsEnabled(arm_r_entity, sprite_component, not show_arm)
-  end
+  handle_arm_sprite()
 end

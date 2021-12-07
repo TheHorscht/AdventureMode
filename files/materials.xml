@@ -22,6 +22,7 @@
     name="player_corpse"
     ui_name="Noita meat"
     wang_color="ffed4d50"
+    burnable="0"
     audio_physics_material_wall="meat"
     audio_physics_material_solid="meat"
     audio_is_soft="1"

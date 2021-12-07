@@ -79,7 +79,9 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     EntitySetComponentsWithTagEnabled(entity_id, "jetpack", false)
 
     local active_item = get_active_item()
-    entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", false)
+    if active_item > 0 then
+      entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", false)
+    end
 
     -- Hide cape
     local cape_entity = EntityGetWithName("cape")
@@ -127,7 +129,9 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
 	
       ComponentSetValue2(damage_model_component, "hp", ComponentGetValue2(damage_model_component, "max_hp"))
 
-      entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", true)
+      if active_item > 0 then
+        entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", true)
+      end
 
       -- Show cape
       EntitySetName(cape_entity, "cape")      

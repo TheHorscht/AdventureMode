@@ -28,6 +28,7 @@ else
       for i=1, 10 do
         local x, y, r = EntityGetTransform(entity_id)
         EntitySetTransform(entity_id, x, y + 5 * direction)
+        GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "spike_trap", x, y)
         wait(0)
       end
       wait(pause_in)

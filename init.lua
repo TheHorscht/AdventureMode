@@ -3,7 +3,11 @@ ModLuaFileAppend("data/scripts/status_effects/status_list.lua", "mods/AdventureM
 ModMaterialsFileAdd("mods/AdventureMode/files/materials.xml")
 ModRegisterAudioEventMappings("mods/AdventureMode/files/audio/GUIDs.txt")
 dofile_once("mods/AdventureMode/lib/DialogSystem/init.lua")("mods/AdventureMode/lib/DialogSystem", {
-  disable_controls = true
+  disable_controls = true,
+  sounds = {
+    bones = { bank = "mods/AdventureMode/files/audio/AdventureMode.bank", event = "bones_rattle" },
+    stone = { bank = "mods/AdventureMode/files/audio/AdventureMode.bank", event = "golem_speak" },
+  }
 })
 dofile_once("mods/AdventureMode/lib/coroutines.lua")
 dofile_once("data/scripts/lib/utilities.lua")
@@ -32,6 +36,11 @@ xml:add_children(nxml.parse_many([[
   height_index="0"
   color="ffec2b42">
 </Biome>
+<Biome
+  biome_filename="mods/AdventureMode/files/biomes/golem_room.xml" 
+  height_index="0"
+  color="ff986b4f">
+</Biome>
 ]]))
 ModTextFileSetContent("data/biome/_biomes_all.xml", tostring(xml))
 
@@ -54,11 +63,13 @@ local starting_positions = {
   { x = 3817, y = -1171 }, -- 16 Hand with gem
   { x = 4400, y = -1020 }, -- 17 Lever door maze
 }
-local starting_position = 1
+local starting_position = 4
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
   DESIGN_PLAYER_START_POS_Y="%d"
+  DEBUG_MATERIAL_AREA_CHECKER="1"
+  DEBUG_COLLISION_TRIGGERS="1"
 ></MagicNumbers>
 ]], starting_positions[starting_position].x, starting_positions[starting_position].y))
 
@@ -163,9 +174,10 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
-  -- if GuiButton(gui, new_id(), 2, 200, "D") then
-  --   debug_menu_open = not debug_menu_open
-  -- end
+if GuiButton(gui, new_id(), 2, 200, "D") then
+debug_menu_open = not debug_menu_open
+end
+  -- 
 
   if debug_menu_open then
     GuiLayoutBeginVertical(gui, 1, 20)
@@ -196,6 +208,12 @@ function OnWorldPreUpdate()
         local x, y = EntityGetTransform(player)
         EntityLoad("mods/AdventureMode/files/brazier.xml", x, y)
       end
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Bones rattling") then
+      GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "bones_rattle", 0, 0)
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Rattle me bones!") then
+      GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rattle_me_bones", 0, 0)
     end
     if not old_pos then
       if GuiButton(gui, new_id(), 0, 0, "Teleport far away") then

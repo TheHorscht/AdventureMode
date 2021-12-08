@@ -34,6 +34,7 @@ RegisterSpawnFunction(0xffe33751, "spawn_temple_skeleton")
 RegisterSpawnFunction(0xffe33752, "spawn_temple_skeleton_kill_trigger")
 RegisterSpawnFunction(0xffff7bef, "spawn_respawn_statue")
 RegisterSpawnFunction(0xff11c7e8, "spawn_respawn_point_save_trigger")
+RegisterSpawnFunction(0xffdbcb91, "spawn_levitation_refresh_pickup")
 
 RegisterSpawnFunction(0xff517700, "spawn_leverdoor_puzzle_lever_01")
 RegisterSpawnFunction(0xff517701, "spawn_leverdoor_puzzle_lever_02")
@@ -274,6 +275,10 @@ end
 
 function spawn_respawn_statue(x, y)
   EntityLoad("mods/AdventureMode/files/respawn_statue/statue.xml", x, y)
+end
+
+function spawn_levitation_refresh_pickup(x, y)
+  EntityLoad("mods/AdventureMode/files/levitation_refresh_pickup.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_lever_01(x, y)

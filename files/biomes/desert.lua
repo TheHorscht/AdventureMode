@@ -288,7 +288,7 @@ function spawn_wall_trap_shooting_right(x, y)
 end
 
 function spawn_spike_ground(x, y)
-  EntityLoad("mods/AdventureMode/files/spike.xml", x, y + 1)
+  EntityLoad("mods/AdventureMode/files/spike.xml", x + 1, y + 1)
 end
 
 function spawn_spike_ceiling(x, y)

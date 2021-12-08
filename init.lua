@@ -85,11 +85,11 @@ ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.fo
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
   DESIGN_PLAYER_START_POS_Y="%d"
-  DEBUG_MATERIAL_AREA_CHECKER="1"
-  DEBUG_COLLISION_TRIGGERS="1"
-></MagicNumbers>
-]], starting_positions[starting_position].x, starting_positions[starting_position].y))
-
+  ></MagicNumbers>
+  ]], starting_positions[starting_position].x, starting_positions[starting_position].y))
+  
+  -- DEBUG_MATERIAL_AREA_CHECKER="1"
+  -- DEBUG_COLLISION_TRIGGERS="1"
 ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 
 -- ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/AdventureMode/files/gun_actions_append.lua")

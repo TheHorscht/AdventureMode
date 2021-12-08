@@ -88,6 +88,8 @@ async(function()
   
   wait(40)
   
+  local sprite_components = EntityGetComponent(players[1], "SpriteComponent") or {}
+  
 	for i, sprite_component in ipairs(sprite_components) do
 
 		if ComponentGetValue2(sprite_component, "image_file") == "data/enemies_gfx/player_purple.xml" or ComponentGetValue2(sprite_component, "image_file") == "data/enemies_gfx/player_arm_no_item_purple.xml" then
@@ -108,7 +110,17 @@ async(function()
 		if ComponentGetValue2(sprite_component, "image_file") == "data/enemies_gfx/player_purple.xml" or ComponentGetValue2(sprite_component, "image_file") == "data/enemies_gfx/player_arm_no_item_purple.xml" then
 
 			ComponentAddTag( sprite_component, "character" )
-	
+			
+			if ComponentGetValue2(sprite_component, "image_file") == "data/enemies_gfx/player_arm_no_item_purple.xml" then
+				local sprite_arm = EntityGetFirstComponentIncludingDisabled(players[1], "SpriteComponent", "right_arm_root")
+				EntityRemoveComponent(players[1], sprite_arm)
+				
+				EntityAddComponent2(players[1], "SpriteComponent", {
+				  _tags="right_arm_root,character",
+				  image_file="data/enemies_gfx/player_arm_no_item_purple.xml",
+				  z_index=0.59
+				})
+			end
 		end
 		
 	end

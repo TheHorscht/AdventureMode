@@ -101,6 +101,14 @@ function spawn_door3(x, y)
   EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
 end
 
+for i=1, 15 do
+  local num_string = string.format("%.2d", i)
+  RegisterSpawnFunction(0xff426870 + i, "spawn_vanishing_block_" .. num_string)
+  _G["spawn_vanishing_block_" .. num_string] = function(x, y)
+    EntityLoad("mods/AdventureMode/files/vanishing_block_" .. num_string .. ".xml", x, y)
+  end
+end
+
 function spawn_heart_fullhp(x, y)
   EntityLoad("data/entities/items/pickup/heart_fullhp.xml", x, y)
 end

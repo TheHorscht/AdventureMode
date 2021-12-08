@@ -1,0 +1,72 @@
+<Entity tags="rebirth_finger">
+
+	<LuaComponent
+		_enabled="0"
+		_tags="particles"
+		script_source_file="mods/AdventureMode/files/rebirth_finger_particles.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+	
+	<AudioLoopComponent
+		_enabled="0"
+		_tags="particles"
+		file="data/audio/Desktop/fx.bank"
+		event_name="fx/fx_concentration"
+		calculate_material_lowpass="0"
+		auto_play="1" >
+	</AudioLoopComponent>
+	
+	  <SpriteComponent 
+		_enabled="0"
+		_tags="particles"
+		alpha="1" 
+		image_file="data/projectiles_gfx/orb_green.xml" 
+		next_rect_animation="" 
+		offset_x="0" 
+		offset_y="0" 
+		rect_animation="fireball" 
+		emissive="1"
+		additive="1"
+		 
+		update_transform_rotation="0"
+		>
+	  </SpriteComponent>
+	
+	<ParticleEmitterComponent 
+		_enabled="0"
+		_tags="particles"
+		emitted_material_name="spark_green"
+		gravity.y="0"
+		offset.x="0"
+		offset.y="0"
+		x_pos_offset_min="0"
+		y_pos_offset_min="0"
+		x_pos_offset_max="0"
+		y_pos_offset_max="0"
+		x_vel_min="0"
+		x_vel_max="0"
+		y_vel_min="0"
+		y_vel_max="0"
+		friction="4"
+		count_min="30"
+		count_max="50"
+		area_circle_radius.max="4"
+		area_circle_radius.min="4"
+		velocity_always_away_from_center="80"
+		lifetime_min="0.9"
+		lifetime_max="3.2"
+		render_on_grid="1"
+		airflow_force="0.25"
+		airflow_time="0.101"
+		airflow_scale="2.01"
+		fade_based_on_lifetime="1"
+		create_real_particles="0"
+		emit_cosmetic_particles="1"
+		emission_interval_min_frames="16"
+		emission_interval_max_frames="16"
+		delay_frames="8"
+		is_emitting="1" >
+	</ParticleEmitterComponent>
+
+</Entity>

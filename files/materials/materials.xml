@@ -1,0 +1,15 @@
+<Materials>
+
+  <CellDataChild
+  	_parent="rock_static_intro_breakable"
+  	_inherit_reactions="1"
+  	name="brittle_gravel" 
+	ui_name="Brittle Gravel"
+	wang_color="ff006c83">
+  	<Graphics
+	texture_file="mods/AdventureMode/files/materials/templebrick_broken.png"
+	color="ffAAF06E" >
+    </Graphics>
+  </CellDataChild>
+
+</Materials>

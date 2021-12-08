@@ -1,0 +1,25 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/pickups/base.xml">
+
+    <SpriteComponent
+      image_file="mods/AdventureMode/files/pickups/levitation_boost.png"
+      offset_x="5"
+      offset_y="5"
+    ></SpriteComponent>
+
+    <UIInfoComponent
+      name="Levitation Boost"
+    ></UIInfoComponent>
+
+    <ItemComponent
+      item_name="Levitation Boost"
+    ></ItemComponent>
+	
+	<LuaComponent 
+		script_item_picked_up="mods/AdventureMode/files/pickups/jetpack2_pickup.lua"
+  ></LuaComponent>
+
+  </Base>
+
+</Entity>

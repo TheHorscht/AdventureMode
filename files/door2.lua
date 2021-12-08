@@ -18,7 +18,6 @@ async(function()
   local door_x, door_y = EntityGetTransform(entity_id)
   camera_tracking_shot(x, y, door_x + 20, door_y + 40, 0.01)
   -- Clear pixel scene
-  LoadPixelScene("mods/AdventureMode/files/temple_door_remover.png", "", door_x, door_y, "", true)
   -- Open door
   GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rumble/start", door_x, door_y)
   local particle_emitter_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteParticleEmitterComponent")
@@ -34,6 +33,7 @@ async(function()
   wait(40)
   GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "rumble/loop", door_x, door_y)
   EntitySetComponentIsEnabled(entity_id, particle_emitter_component, true)
+  LoadPixelScene("mods/AdventureMode/files/temple_door_remover.png", "", door_x, door_y, "", true)
   for i=1, 80 do
     ComponentSetValue2(sprite_component, "offset_y", i)
     GameScreenshake(10, x, y)

@@ -69,12 +69,47 @@ RegisterSpawnFunction(0xff39e261, "spawn_warp_portal_01_target")
 RegisterSpawnFunction(0xff39e162, "spawn_warp_portal_02")
 RegisterSpawnFunction(0xff39e262, "spawn_warp_portal_02_target")
 RegisterSpawnFunction(0xff39e163, "spawn_warp_portal_03")
+RegisterSpawnFunction(0xff08bb4d, "spawn_warp_portal_03_target")
 RegisterSpawnFunction(0xff39e164, "spawn_warp_portal_04")
 RegisterSpawnFunction(0xff39e165, "spawn_warp_portal_05")
 RegisterSpawnFunction(0xff39e166, "spawn_warp_portal_06")
 
 RegisterSpawnFunction(0xff304901, "spawn_portal_activator_02")
 
+RegisterSpawnFunction(0xffbb1748, "spawn_wall_corridor")
+
+RegisterSpawnFunction(0xffff9301, "spawn_pickup_jetpack2")
+
+RegisterSpawnFunction(0xff155fb3, "spawn_wand_statue")
+
+RegisterSpawnFunction(0xff5011aa, "spawn_wand")
+RegisterSpawnFunction(0xffc37114, "spawn_bullet")
+RegisterSpawnFunction(0xff11a4c3, "spawn_arrow")
+RegisterSpawnFunction(0xff4b11c3, "spawn_arrow_bullet")
+RegisterSpawnFunction(0xffd90ee6, "spawn_bullet_heavy")
+RegisterSpawnFunction(0xffc31717, "spawn_rocket")
+
+RegisterSpawnFunction(0xff23aa27, "spawn_tesla_coil")
+
+RegisterSpawnFunction(0xff92991d, "spawn_zombies")
+RegisterSpawnFunction(0xff1a1299, "spawn_monks")
+RegisterSpawnFunction(0xff2bc311, "spawn_wand_boost")
+RegisterSpawnFunction(0xffa26d18, "spawn_phantoms")
+RegisterSpawnFunction(0xff78bb19, "spawn_alchemists")
+
+RegisterSpawnFunction(0xff07e6b1, "spawn_breathless_perk")
+
+RegisterSpawnFunction(0xff22a6b3, "alligator_spawner")
+RegisterSpawnFunction(0xff52881c, "spawn_alligator1")
+RegisterSpawnFunction(0xff202d91, "spawn_alligator2")
+
+RegisterSpawnFunction(0xffc30e0e, "spawn_alligator_chase_stop_trigger")
+
+RegisterSpawnFunction(0xff9d20b3, "spawn_rebirth_door")
+RegisterSpawnFunction(0xff10b315, "spawn_creep_skull")
+
+RegisterSpawnFunction(0xffc1cc15, "spawn_rebirth_trigger")
+RegisterSpawnFunction(0xff21bb33, "spawn_rebirth_finger")
 
 local function shuffle(tbl)
   for i = #tbl, 2, -1 do
@@ -269,10 +304,6 @@ function spawn_respawn_statue(x, y)
   EntityLoad("mods/AdventureMode/files/respawn_statue/statue.xml", x, y)
 end
 
-function spawn_levitation_refresh_pickup(x, y)
-  EntityLoad("mods/AdventureMode/files/levitation_refresh_pickup.xml", x, y)
-end
-
 function spawn_leverdoor_puzzle_lever_01(x, y)
   EntityLoad("mods/AdventureMode/files/door_lever_labyrinth/lever_01.xml", x, y)
 end
@@ -396,7 +427,11 @@ function spawn_portal_activator_02(x, y)
 end
 
 function spawn_warp_portal_03(x, y)
-  -- EntityLoad("mods/AdventureMode/files/warp_portal_03.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/03_spawner.xml", x, y)
+end
+
+function spawn_warp_portal_03_target(x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/03_target_spawner.xml", x, y)
 end
 
 function spawn_warp_portal_04(x, y)
@@ -418,6 +453,232 @@ end
 
 function spawn_gem(x, y)
   EntityLoad("mods/AdventureMode/files/gem.xml", x, y)
+end
+
+function spawn_levitation_refresh_pickup(x, y)
+  EntityLoad("mods/AdventureMode/files/levitation_refresh_pickup.xml", x, y)
+end
+
+function spawn_wall_corridor(x, y)
+  EntityLoad("mods/AdventureMode/files/wall_corridor.xml", x, y)
+end
+
+function spawn_pickup_jetpack2(x, y)
+  EntityLoad("mods/AdventureMode/files/pickups/jetpack2.xml", x, y - 10)
+end
+
+function spawn_wand_statue(x, y)
+  EntityLoad("mods/AdventureMode/files/wand_statue.xml", x, y - 10)
+  EntityLoad("mods/AdventureMode/files/pickups/wand_basic.xml", x + 3, y - 60)
+end
+
+function spawn_bullet(x, y)
+  CreateItemActionEntity( "LIGHT_BULLET", x, y )
+end
+
+function shop_spell( x, y, card_id, cost, is_stealable )
+	-- this makes the shop items deterministic
+	SetRandomSeed( x, y )
+
+	local biomes =
+	{
+		[1] = 0,
+		[2] = 0,
+		[3] = 0,
+		[4] = 1,
+		[5] = 1,
+		[6] = 1,
+		[7] = 2,
+		[8] = 2,
+		[9] = 2,
+		[10] = 2,
+		[11] = 2,
+		[12] = 2,
+		[13] = 3,
+		[14] = 3,
+		[15] = 3,
+		[16] = 3,
+		[17] = 4,
+		[18] = 4,
+		[19] = 4,
+		[20] = 4,
+		[21] = 5,
+		[22] = 5,
+		[23] = 5,
+		[24] = 5,
+		[25] = 6,
+		[26] = 6,
+		[27] = 6,
+		[28] = 6,
+		[29] = 6,
+		[30] = 6,
+		[31] = 6,
+		[32] = 6,
+		[33] = 6,
+	}
+
+
+	local biomepixel = math.floor(y / 512)
+	local biomeid = biomes[biomepixel] or 0
+	
+	if (biomepixel > 35) then
+		biomeid = 7
+	end
+
+	if( is_stealable == nil ) then
+		is_stealable = false
+	end
+
+	local item = ""
+	local cardcost = cost
+
+	-- Note( Petri ): Testing how much squaring the biomeid for prices affects things
+
+	item = card_id
+
+	local eid = CreateItemActionEntity( item, x, y )
+
+	-- local x, y = EntityGetTransform( entity_id )
+	-- SetRandomSeed( x, y )
+	
+	local offsetx = 6
+	local text = tostring(cardcost)
+	local textwidth = 0
+	
+	for i=1,#text do
+		local l = string.sub( text, i, i )
+		
+		if ( l ~= "1" ) then
+			textwidth = textwidth + 6
+		else
+			textwidth = textwidth + 3
+		end
+	end
+	
+	offsetx = textwidth * 0.5 - 0.5
+
+	EntityAddComponent( eid, "SpriteComponent", { 
+		_tags="shop_cost,enabled_in_world",
+		image_file="data/fonts/font_pixel_white.xml", 
+		is_text_sprite="1", 
+		offset_x=tostring(offsetx), 
+		offset_y="25", 
+		update_transform="1" ,
+		update_transform_rotation="0",
+		text=tostring(cardcost),
+		z_index="-1",
+		} )
+
+	local stealable_value = "0"
+	
+	EntityAddComponent( eid, "ItemCostComponent", { 
+		_tags="shop_cost,enabled_in_world", 
+		cost=cardcost,
+		stealable=stealable_value
+		} )
+		
+	EntityAddComponent( eid, "LuaComponent", { 
+		script_item_picked_up="data/scripts/items/shop_effect.lua",
+		} )
+end
+
+function spawn_arrow(x, y)
+  shop_spell( x, y, "BULLET", 60 )
+end
+
+function spawn_arrow_bullet(x, y)
+  shop_spell( x, y, "DISC_BULLET", 90 )
+end
+
+function spawn_bullet_heavy(x, y)
+  shop_spell( x, y, "CHAIN_BOLT", 150 )
+end
+
+function spawn_rocket(x, y)
+  shop_spell( x, y, "ROCKET", 500 )
+end
+
+function spawn_tesla_coil(x, y)
+  EntityLoad("mods/AdventureMode/files/tesla_coil.xml", x, y - 10)
+end
+
+function spawn_zombies(x, y)
+	for i=1,6 do
+	  EntityLoad("mods/AdventureMode/files/zombie.xml", x, y)
+	end
+end
+
+function spawn_monks(x, y)
+  for i=1,3 do
+    EntityLoad("mods/AdventureMode/files/monk.xml", x, y)
+  end
+end
+
+function spawn_wand_boost(x, y)
+  EntityLoad("mods/AdventureMode/files/pickups/wand_boost.xml", x, y - 10)
+end
+
+function spawn_phantoms(x, y)
+  for i=1,3 do
+    EntityLoad("mods/AdventureMode/files/phantom_a.xml", x, y)
+  end
+  for i=1,2 do
+    EntityLoad("mods/AdventureMode/files/phantom_b.xml", x, y)
+  end
+end
+
+function spawn_alchemists(x, y)
+  for i=1,3 do
+    EntityLoad("mods/AdventureMode/files/failed_alchemist.xml", x, y)
+  end
+  for i=1,2 do
+    EntityLoad("mods/AdventureMode/files/failed_alchemist_b.xml", x, y)
+  end
+  EntityLoad("mods/AdventureMode/files/enlightened_alchemist.xml", x, y)
+  for i=1,6 do
+    EntityLoad("mods/AdventureMode/files/skullrat.xml", x, y)
+  end
+end
+
+function spawn_breathless_perk(x, y)
+  dofile_once("data/scripts/perks/perk.lua")
+  perk_spawn( x, y, "BREATH_UNDERWATER" )	
+end
+
+function alligator_spawner(x, y)
+  EntityLoad("mods/AdventureMode/files/alligator_spawner.xml", x, y)
+end
+
+function spawn_alligator1(x, y)
+  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
+  GlobalsSetValue("AdventureMode_alligator_spawn_x", x)
+  GlobalsSetValue("AdventureMode_alligator_spawn_y", y)
+end
+
+function spawn_alligator2(x, y)
+  -- EntityLoad("mods/AdventureMode/files/chaser.xml", x, y)
+  GlobalsSetValue("AdventureMode_alligator_spawn_x2", x)
+  GlobalsSetValue("AdventureMode_alligator_spawn_y2", y)
+end
+
+function spawn_alligator_chase_stop_trigger(x, y)
+  EntityLoad("mods/AdventureMode/files/alligator_chase_stop_trigger.xml", x, y)
+end
+
+function spawn_rebirth_door(x, y)
+  EntityLoad("mods/AdventureMode/files/rebirth_door.xml", x, y)
+end
+
+function spawn_creep_skull(x, y)
+  EntityLoad("mods/AdventureMode/files/creep_skull/creep_skull.xml", x, y)
+end
+
+function spawn_rebirth_trigger(x, y)
+  EntityLoad("mods/AdventureMode/files/rebirth_trigger.xml", x, y)
+end
+
+function spawn_rebirth_finger(x, y)
+  EntityLoad("mods/AdventureMode/files/rebirth_finger.xml", x, y)
 end
 
 -- Regex to comment out function body:

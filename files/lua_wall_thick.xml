@@ -1,0 +1,43 @@
+<Entity name="Lua Wall" serialize="0">
+
+	<SpriteComponent 
+		image_file="mods/AdventureMode/files/wall_thick.png" 
+		offset_x="28"
+		offset_y="30" >
+	</SpriteComponent>
+
+    <VariableStorageComponent
+        name="top_edge"
+        value_string="-30"
+    ></VariableStorageComponent>
+	
+    <VariableStorageComponent
+        name="bottom_edge"
+        value_string="30"
+    ></VariableStorageComponent>
+	
+    <VariableStorageComponent
+        name="left_edge"
+        value_string="-28"
+    ></VariableStorageComponent>
+	
+    <VariableStorageComponent
+        name="right_edge"
+        value_string="28"
+    ></VariableStorageComponent>
+	
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/lua_wall.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
+	
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/lua_wall_move.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+    execute_on_removed="1"
+    enable_coroutines="1"
+  ></LuaComponent>
+
+</Entity>

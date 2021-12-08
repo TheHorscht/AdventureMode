@@ -48,7 +48,7 @@
   ></SpriteComponent>
 
   <SpriteComponent
-    _tags="enabled_in_hand"
+    _tags="enabled_in_hand,enabled_in_world"
     offset_x="37.5"
     offset_y="37.5"
     fog_of_war_hole="1"

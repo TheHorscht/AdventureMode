@@ -64,6 +64,6 @@ if player then
   if no_key_pressed and last_frame_looked_away + time_to_wait < GameGetFrameNum() then
     local character_data_comp = EntityGetFirstComponentIncludingDisabled(player, "CharacterDataComponent")
     local vx, vy = ComponentGetValue2(character_data_comp, "mVelocity")
-    ComponentSetValue2(character_data_comp, "mVelocity", vx, -10)
+    ComponentSetValue2(character_data_comp, "mVelocity", vx, -13)
   end
 end

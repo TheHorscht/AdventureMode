@@ -126,15 +126,21 @@ function spawn_cactus(x, y)
 end
 
 function spawn_door(x, y)
-  EntityLoad("mods/AdventureMode/files/door.xml", x, y)
+  if GlobalsGetValue("AdventureMode_DEBUG_starting_position", "1") == "1" then
+    EntityLoad("mods/AdventureMode/files/door.xml", x, y)
+  end
 end
 
 function spawn_door2(x, y)
-  EntityLoad("mods/AdventureMode/files/door2.xml", x, y)
+  if GlobalsGetValue("AdventureMode_DEBUG_starting_position", "1") == "1" then
+    EntityLoad("mods/AdventureMode/files/door2.xml", x, y)
+  end
 end
 
 function spawn_door3(x, y)
-  EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
+  if GlobalsGetValue("AdventureMode_DEBUG_starting_position", "1") == "1" then
+    EntityLoad("mods/AdventureMode/files/door3.xml", x, y)
+  end
 end
 
 for i=1, 15 do

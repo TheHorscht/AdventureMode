@@ -95,6 +95,7 @@ ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 -- ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/AdventureMode/files/gun_actions_append.lua")
 
 function OnPlayerSpawned(player)
+  GlobalsSetValue("AdventureMode_DEBUG_starting_position", starting_position)
   local x, y = EntityGetTransform(player)
   
   if GlobalsGetValue("AdventureMode_player_initialized", "0") == "0" then

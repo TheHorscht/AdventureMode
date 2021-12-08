@@ -949,7 +949,6 @@
 		has_offset="1"
 		offset_x="10"
 		offset_y="14"
-		next_animation="stand" 
 		>
 	</RectAnimation>
 	

@@ -1,0 +1,14 @@
+<Entity>
+  
+	<MagicConvertMaterialComponent
+		from_material_tag="[liquid]"
+		to_material="air"
+		steps_per_frame="5"
+		loop="1"
+		is_circle="1"
+		radius="5" >
+	</MagicConvertMaterialComponent>
+
+
+</Entity>
+

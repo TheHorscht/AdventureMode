@@ -1,0 +1,23 @@
+<Entity name="wall_corridor">
+
+  <!-- <PixelSceneComponent
+    
+  ></PixelSceneComponent> -->
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/wall_corridor.lua"
+    execute_every_n_frame="-1"
+    execute_on_added="1"
+    execute_on_removed="1"
+    >
+  </LuaComponent>
+    <!-- remove_after_executed="1" -->
+
+  <!-- Needs to be frozen early, so execute_on_removed runs, which will kill the spawned sub-entities -->
+<!--   <CameraBoundComponent
+    distance="600"
+    freeze_on_max_count_kill="0"
+    freeze_on_distance_kill="1"
+  ></CameraBoundComponent> -->
+
+</Entity>

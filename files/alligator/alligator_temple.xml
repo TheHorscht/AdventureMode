@@ -1,0 +1,318 @@
+<Entity name="Alligator" 
+    tags="ui_use_raw_name" >
+    
+    <AdvancedFishAIComponent
+        move_check_range_min="300"
+		avoid_predators="0"
+		flock="0"
+		mNextFrameCheckFlockWants="0"
+		mNextFramePredatorAvoidance="0"
+		mScared="0"
+		mWantsToBeInFlock="0"
+        >
+    </AdvancedFishAIComponent>
+
+    <GenomeDataComponent 
+        herd_id="slimes"
+        food_chain_rank="1"
+        is_predator="1" >
+    </GenomeDataComponent>
+
+		<DamageModelComponent 
+            hp="60"
+			air_needed="0" 
+			physics_objects_damage="0"
+            materials_create_messages="1"
+            ragdoll_material="meat"
+			materials_that_damage="" 
+			fire_probability_of_ignition="0"
+            ragdoll_filenames_file="" >
+			<damage_multipliers
+				fire="0" 
+				drill="0"
+				slice="0"
+				melee="0"
+				projectile="0"
+				radioactive="0"
+				explosion="0"
+				electricity="0"
+				poison="0"
+				physics_hit="0"	>
+			</damage_multipliers>
+		</DamageModelComponent>
+
+    <CharacterDataComponent
+        buoyancy_check_offset_y="0"
+        mass="0.3"
+        collision_aabb_min_x="-3" 
+        collision_aabb_max_x="3" 
+        collision_aabb_min_y="-3" 
+        collision_aabb_max_y="3"
+        eff_hg_velocity_min_x="-20" 
+        eff_hg_velocity_max_x="20" 
+        eff_hg_velocity_min_y="-20" 
+        eff_hg_velocity_max_y="20" 
+        >
+    </CharacterDataComponent>
+
+    <CharacterPlatformingComponent 
+        velocity_min_x="-150" 
+        velocity_max_x="150" 
+        velocity_min_y="-50"
+        velocity_max_y="200" 
+        run_velocity="60"
+        accel_x="0.15" 
+        >
+    </CharacterPlatformingComponent>
+
+    <CharacterCollisionComponent 
+        getting_crushed_threshold="3"
+        moving_up_before_getting_crushed_threshold="3" >
+    </CharacterCollisionComponent>
+
+    <VelocityComponent
+        updates_velocity="0"
+        displace_liquid="0" >
+    </VelocityComponent>
+
+    <ControlsComponent 
+        enabled="0" 
+        >
+    </ControlsComponent>
+
+    <SpriteAnimatorComponent>
+    </SpriteAnimatorComponent>
+
+    <SpriteComponent 
+        alpha="1" 
+        image_file="mods/AdventureMode/files/alligator/alligator_temple_head.xml" 
+        next_rect_animation="" 
+        rect_animation="stand"
+		has_special_scale="1"
+		special_scale_x="0.5"
+		special_scale_y="0.5"
+        >
+    </SpriteComponent>
+	
+	<LuaComponent 
+		_enabled="1" 
+		script_source_file="mods/AdventureMode/files/alligator/alligator_temple_attack.lua" 
+		execute_every_n_frame="30">
+   </LuaComponent>
+   
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/alligator/follow_player_ai_water.lua"
+		execute_every_n_frame="1" >
+	</LuaComponent>
+	
+    <LuaComponent 
+		_enabled="1" 
+		script_source_file="mods/AdventureMode/files/alligator/alligator_temple.lua" 
+		execute_every_n_frame="60">
+   </LuaComponent>
+   
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/alligator/despawn_on_player_death.lua"
+		execute_every_n_frame="5"
+	></LuaComponent>
+   
+	<Entity tags="ui_use_raw_name,mortal,hittable,teleportable_NOT,homing_target,enemy,worm,glue_NOT" name="Alligator">
+
+		<InheritTransformComponent only_position="1">
+		</InheritTransformComponent>
+		
+		<DamageModelComponent 
+			air_in_lungs="5" 
+			air_in_lungs_max="5" 
+			air_lack_of_damage="0.2" 
+			air_needed="0" 
+			falling_damage_damage_max="1.2" 
+			falling_damage_damage_min="0.1" 
+			falling_damage_height_max="450" 
+			falling_damage_height_min="250" 
+			falling_damages="1" 
+			fire_damage_amount="0.2" 
+			fire_probability_of_ignition="0.5" 
+			hp="40" 
+			is_on_fire="0" 
+			mAirAreWeInWater="0" 
+			mFallCount="0" 
+			mFallHighestY="3.40282e+038" 
+			mFallIsOnGround="0" 
+			mFireProbability="100" 
+			mIsOnFire="0" 
+			mLastCheckTime="0" 
+			mLastCheckX="0" 
+			mLastCheckY="0" 
+			materials_damage="1" 
+			blood_multiplier="0"
+			ragdoll_filenames_file=""
+			ragdoll_offset_y="0"
+			physics_objects_damage="0.5"
+			>
+				<damage_multipliers
+					slice="0.5"
+					projectile="0.5"
+					drill="0.35"
+					melee="0.5"
+					explosion="0.5"
+					electricity="0.25"
+					ice="0.5"
+					fire="0.5"
+					radioactive="0.5"
+					poison="0.5"
+					>
+				</damage_multipliers>
+		</DamageModelComponent>
+			
+		<WormComponent
+			acceleration="1.5"
+			is_water_worm="1"
+			gravity="4"
+			tail_gravity="40"
+			part_distance="10"
+			ground_check_offset="8"
+			hitbox_radius="5"
+			target_kill_radius="10"
+			target_kill_ragdoll_force="10"
+			ragdoll_filename=""
+			bite_damage="0"
+			eat_anim_wait_mult="0.05"
+			jump_cam_shake="6" 
+			>
+		</WormComponent>
+		
+		<SpriteComponent 
+			_enabled="1"
+			alpha="0" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_body.xml" 
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			has_special_scale="1"
+			special_scale_x="0.5"
+			special_scale_y="0.5"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_body4.png" 
+			offset_x="15" 
+			offset_y="10" 
+			z_index="1.005"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+			
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_body.xml" 
+			z_index="1.01"
+			update_transform="0"
+			next_rect_animation="eat" 
+			rect_animation="eat"
+			>
+		</SpriteComponent>
+			
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_body2.png" 
+			offset_x="22" 
+			offset_y="10" 
+			z_index="1.02"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_body2.png" 
+			offset_x="22" 
+			offset_y="10" 
+			z_index="1.03"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_body3.xml" 
+			z_index="1.04"
+			update_transform="0"
+			next_rect_animation="eat" 
+			rect_animation="eat"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_tail1.png" 
+			offset_x="17" 
+			offset_y="10" 
+			z_index="1.05"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_tail2.png" 
+			offset_x="17" 
+			offset_y="10" 
+			z_index="1.06"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_tail2.png" 
+			offset_x="17" 
+			offset_y="10" 
+			z_index="1.07"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+
+		<SpriteComponent 
+			_enabled="1"
+			alpha="1" 
+			image_file="mods/AdventureMode/files/alligator/alligator_temple_tail3.png" 
+			offset_x="11" 
+			offset_y="10" 
+			z_index="1.08"
+			update_transform="0"
+			next_rect_animation="" 
+			rect_animation="stand"
+			>
+		</SpriteComponent>
+		
+		<LuaComponent
+			script_damage_received="mods/AdventureMode/files/kill_parent_on_death.lua"
+			>
+		</LuaComponent>
+		
+	</Entity>
+   
+</Entity>

@@ -13,6 +13,20 @@ dofile_once("mods/AdventureMode/lib/coroutines.lua")
 dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("mods/AdventureMode/files/util.lua")
 local nxml = dofile_once("mods/AdventureMode/lib/nxml.lua")
+
+--set collapsed concrete strength
+local content = ModTextFileGetContent("data/materials.xml")
+local xml = nxml.parse(content)
+for element in xml:each_child() do
+  if element.attr.name == "concrete_collapsed" then
+    element.attr.durability = 5000
+  end
+end
+ModTextFileSetContent("data/materials.xml", tostring(xml))
+
+--add custom materials
+ModMaterialsFileAdd("mods/AdventureMode/files/materials/materials.xml")
+
 local content = ModTextFileGetContent("data/biome/_biomes_all.xml")
 local xml = nxml.parse(content)
 xml:add_children(nxml.parse_many([[
@@ -62,8 +76,11 @@ local starting_positions = {
   { x = 3460, y = -1179}, -- 15 Golem
   { x = 3817, y = -1171 }, -- 16 Hand with gem
   { x = 4400, y = -1020 }, -- 17 Lever door maze
+  { x = 5632, y = -668 }, -- 18 Wand Mistress
+  { x = 3874, y = -864 }, -- 19 Water area, alligator testing
+  { x = 5669, y = 412 }, -- 20 Rebirth Room
 }
-local starting_position = 4
+local starting_position = 17
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"

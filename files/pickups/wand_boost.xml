@@ -1,0 +1,25 @@
+<Entity>
+
+  <Base file="mods/AdventureMode/files/pickups/base.xml">
+
+    <SpriteComponent
+      image_file="mods/AdventureMode/files/pickups/wand_boost.png"
+      offset_x="5"
+      offset_y="5"
+    ></SpriteComponent>
+
+    <UIInfoComponent
+      name="Wand Powerup"
+    ></UIInfoComponent>
+
+    <ItemComponent
+      item_name="Wand Powerup"
+    ></ItemComponent>
+	
+	<LuaComponent 
+		script_item_picked_up="mods/AdventureMode/files/pickups/wand_boost_pickup.lua"
+  ></LuaComponent>
+
+  </Base>
+
+</Entity>

@@ -1,14 +1,15 @@
-<Entity tags="ui_use_raw_name" name="Undead Creep">
+<Entity tags="ui_use_raw_name,skull_creep,miniboss" name="Undead Creep">
 
 	<LimbBossComponent
 		state = "1">
 	</LimbBossComponent>
 
 	<PhysicsAIComponent
+		_enabled="0"
 		target_vec_max_len="24.0"
-		force_coeff="16.0"
+		force_coeff="8"
+		force_max="100"
 		force_balancing_coeff="0.9"
-		force_max="200"
 		torque_coeff="50"
 		torque_balancing_coeff="1"
 		torque_max="50.0"
@@ -18,6 +19,7 @@
 	</PhysicsAIComponent>
 
 	<PhysicsBodyComponent 
+		_enabled="0" 
 		force_add_update_areas="1"
 		allow_sleep="1" 
 		angular_damping="0.02" 
@@ -36,7 +38,7 @@
 	
 	<Base file="data/entities/base_enemy_flying.xml" >
 		<AnimalAIComponent 
-			_enabled="1" 
+			_enabled="0" 
 			escape_if_damaged_probability="0"
 			food_material="blood"
 			attack_ranged_enabled="1"
@@ -66,7 +68,7 @@
 
 	<DamageModelComponent 
 		_enabled="1"
-		hp="30" 
+		hp="60" 
 		air_needed="0" 
 		falling_damages="0" 
 		fire_damage_amount="0.2" 
@@ -123,6 +125,7 @@
 		</CharacterPlatformingComponent>
 
 		<CameraBoundComponent
+			_enabled="0"
 			max_count="30"
 			distance="160000"
 			>
@@ -151,6 +154,56 @@
 	</Base>
 	
 	<SpriteComponent 
+		_tags="health_bar_back,ui,no_hitbox" 
+		_enabled="1" 
+		alpha="1" 
+		has_special_scale="1" 
+		image_file="data/ui_gfx/health_slider_back.png" 
+		is_text_sprite="0" 
+		next_rect_animation="" 
+		offset_x="12" 
+		offset_y="35" 
+		rect_animation="" 
+		special_scale_x="1" 
+		special_scale_y="1" 
+		ui_is_parent="0" 
+		update_transform="1" 
+		update_transform_rotation="0"
+		visible="1" 
+		z_index="-9000"
+		 >
+	</SpriteComponent>
+
+	<SpriteComponent 
+		_tags="health_bar,ui,no_hitbox" 
+		_enabled="1" 
+		alpha="1" 
+		has_special_scale="1" 
+		image_file="data/ui_gfx/health_slider_front.png" 
+		is_text_sprite="0" 
+		next_rect_animation="" 
+		offset_x="11" 
+		offset_y="35" 
+		rect_animation="" 
+		update_transform_rotation="0"
+		special_scale_x="1" 
+		special_scale_y="1" 
+		ui_is_parent="0" 
+		update_transform="1" 
+		visible="1" 
+		z_index="-9000"
+		 >
+	</SpriteComponent>
+
+	<HealthBarComponent>
+	</HealthBarComponent>
+	
+		<LuaComponent
+		script_death="mods/AdventureMode/files/creep_skull/death_cutscene.lua"
+		>
+	</LuaComponent>
+	
+	<SpriteComponent 
         _tags="character" 
 		_enabled="1" 
 		alpha="1" 
@@ -175,6 +228,11 @@
 		auto_play="1">
 	</AudioLoopComponent>
 	
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/creep_skull/reset_health_on_player_death.lua"
+		execute_every_n_frame="5"
+	></LuaComponent>
+	
 	<Entity tags="mortal,teleportable_NOT,homing_target,enemy,worm,glue_NOT" name="Body">
 
 		<InheritTransformComponent/>
@@ -197,14 +255,13 @@
 		
 		<SpriteComponent 
 			_enabled="1" 
-			alpha="1" 
+			alpha="0" 
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.4"
 			 >
 		</SpriteComponent>
 
@@ -214,10 +271,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.4"
 			 >
 		</SpriteComponent>
 
@@ -227,10 +283,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.39"
 			 >
 		</SpriteComponent>
 
@@ -240,10 +295,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.38"
 			 >
 		</SpriteComponent>
 		
@@ -253,10 +307,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.37"
 			 >
 		</SpriteComponent>
 		
@@ -266,10 +319,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.36"
 			 >
 		</SpriteComponent>
 		
@@ -279,10 +331,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.359"
 			 >
 		</SpriteComponent>
 		
@@ -292,10 +343,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.358"
 			 >
 		</SpriteComponent>
 		
@@ -305,10 +355,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.357"
 			 >
 		</SpriteComponent>
 		
@@ -318,10 +367,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.356"
 			 >
 		</SpriteComponent>
 		
@@ -331,10 +379,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.355"
 			 >
 		</SpriteComponent>
 		
@@ -344,10 +391,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.354"
 			 >
 		</SpriteComponent>
 		
@@ -357,10 +403,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.353"
 			 >
 		</SpriteComponent>
 		
@@ -370,10 +415,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.352"
 			 >
 		</SpriteComponent>
 		
@@ -383,10 +427,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.351"
 			 >
 		</SpriteComponent>
 		
@@ -396,10 +439,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="29" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.3509"
 			 >
 		</SpriteComponent>
 
@@ -409,10 +451,9 @@
 			image_file="mods/AdventureMode/files/creep_skull/creep_vertebra_end.png" 
 			rect_animation="eat" 
 			next_rect_animation="eat" 
-			offset_x="14" 
+			offset_x="23" 
 			offset_y="20" 
 			update_transform="0"
-			z_index="-0.3508"
 			 >
 		</SpriteComponent>
 

@@ -13,7 +13,7 @@
   <AreaDamageComponent
     death_cause="Stabbed"
     damage_type="DAMAGE_MELEE"
-    damage_per_frame="0.001"
+    damage_per_frame="0.5"
     update_every_n_frame="2"
     aabb_min.x="-4"
     aabb_max.x="3"

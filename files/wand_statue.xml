@@ -1,0 +1,60 @@
+<Entity>
+
+	<LightComponent 
+		_enabled="1" 
+		radius="255"
+		fade_out_time="1.5" 
+		r="200"
+		g="255"
+		b="225"
+		offset_y="-55"
+	></LightComponent>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/statue_of_woman.png"
+    offset_x="44"
+    offset_y="106"
+  ></SpriteComponent>
+  
+<!--   <PixelSceneComponent
+    pixel_scene="mods/AdventureMode/files/wand_spawner.png"
+    offset_x="0"
+    offset_y="-60"
+  ></PixelSceneComponent> -->
+	
+	<AudioLoopComponent
+		file="data/audio/Desktop/fx.bank"
+		event_name="fx/fx_concentration"
+		calculate_material_lowpass="0"
+		auto_play="1" >
+	</AudioLoopComponent>
+
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/wand_statue_fx.lua"
+		execute_every_n_frame="1" >
+	</LuaComponent>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+	<Entity tags="cube_fx">
+		<Base file="mods/AdventureMode/files/wand_statue_fx.xml" />
+	</Entity>
+</Entity>

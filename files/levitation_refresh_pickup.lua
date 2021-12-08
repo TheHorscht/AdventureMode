@@ -18,4 +18,5 @@ function item_pickup(entity_item, entity_pickupper, item_name)
   ComponentSetValue2(item_comp, "next_frame_pickable", GameGetFrameNum() + 300)
   EntitySetComponentIsEnabled(pickup, sprite_comp, false)
   -- EntityAddComponent2(pickup, "next_frame_pickable")
+  EntityKill(entity_item)
 end

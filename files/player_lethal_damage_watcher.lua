@@ -8,6 +8,7 @@ local function remove_game_effects(entity_id)
     POISONED = true,
     HP_REGENERATION = true,
     HYDRATED = true,
+	BLOODY = true,
     INGESTION_DRUNK = true,
     TRIP = true,
     NIGHTVISION = true,
@@ -50,13 +51,18 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     local corpse = EntityLoad("mods/AdventureMode/files/player_corpse.xml", x, y)
     local player_vel_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "VelocityComponent")
     local character_data_component = EntityGetFirstComponentIncludingDisabled(entity_id, "CharacterDataComponent")
+	local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
     local vel_comp = EntityGetFirstComponentIncludingDisabled(corpse, "VelocityComponent")
     local vx, vy = ComponentGetValue2(player_vel_comp, "mVelocity")
     ComponentSetValue2(vel_comp, "mVelocity", vx, vy)
     ComponentSetValue2(character_data_component, "mVelocity", 0, 0)
     local disable_components = {
       "DamageModelComponent",
-      "SpriteComponent",
+	  "SpriteComponent",
+	  "HitboxComponent",
+	  "GenomeDataComponent",
+	  "SpriteStainsComponent",
+	  "StatusEffectDataComponent",
       "PlatformShooterPlayerComponent",
       "CharacterPlatformingComponent",
       "ItemPickUpperComponent",
@@ -64,16 +70,16 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       "InventoryGuiComponent",
       "SpriteParticleEmitterComponent",
     }
+	
     -- "ParticleEmitterComponent",
+	
     for i, comp_name in ipairs(disable_components) do
       entity_set_component_is_enabled(entity_id, comp_name, false)
     end
     EntitySetComponentsWithTagEnabled(entity_id, "jetpack", false)
 
     local active_item = get_active_item()
-    if active_item > 0 then
-      entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", false)
-    end
+    entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", false)
 
     -- Hide cape
     local cape_entity = EntityGetWithName("cape")
@@ -81,6 +87,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     
     -- Hide arm
     local arm_r_entity = EntityGetWithName("arm_r")
+	-- EntityKill(arm_r_entity)
     local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
     ComponentSetValue2(comp, "visible", false)
     EntityRefreshSprite(arm_r_entity, comp)
@@ -108,14 +115,19 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       remove_game_effects(entity_id)
 
       for i, comp_name in ipairs(disable_components) do
-        entity_set_component_is_enabled(entity_id, comp_name, true)
+          entity_set_component_is_enabled(entity_id, comp_name, true)
       end
-      local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
+	  
+	local sprite_comps = EntityGetComponent(entity_id, "SpriteComponent") or {}
+	for i, sprite_comp in ipairs(sprite_comps) do
+	
+		EntityRefreshSprite(entity_id, sprite_comp)
+		
+	end
+	
       ComponentSetValue2(damage_model_component, "hp", ComponentGetValue2(damage_model_component, "max_hp"))
 
-      if active_item > 0 then
-        entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", true)
-      end
+      entity_and_children_set_components_with_tag_enabled(active_item, "enabled_in_hand", true)
 
       -- Show cape
       EntitySetName(cape_entity, "cape")      
@@ -123,7 +135,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       EntityAddChild(entity_id, cape_entity)
       
       -- Show arm
-      local arm_r_entity = EntityGetWithName("arm_r")
+	  local arm_r_entity = EntityLoad("mods/AdventureMode/files/arm_r.xml", x, y)
       local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
       ComponentSetValue2(comp, "visible", true)
       EntityRefreshSprite(arm_r_entity, comp)

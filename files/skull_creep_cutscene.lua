@@ -27,7 +27,7 @@ async(function()
 		local physics_ai_component = EntityGetFirstComponentIncludingDisabled(skull, "PhysicsAIComponent")
 	  
 	  camera_tracking_shot(x, y, sx, sy, 0.01)
-
+	
 	  -- Clear pixel scene
 	  -- LoadPixelScene("mods/AdventureMode/files/temple_door_remover.png", "", door_x, door_y, "", true)
 	  -- Open door
@@ -42,7 +42,8 @@ async(function()
 	  EntitySetComponentIsEnabled( skull, physics_body_component, true )
 	  
 	  wait(40)
-
+	  
+	  EntityLoad("mods/AdventureMode/files/water_drain.xml", x - 272, y + 202)
 	  EntitySetComponentIsEnabled( skull, animal_ai_component, true )
 	  set_controls_enabled(true)
 	  local x, y = get_player_position()

@@ -11,4 +11,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
   for i, comp in ipairs(EntityGetComponentIncludingDisabled(entity_id, "ParticleEmitterComponent")) do
     EntitySetComponentIsEnabled(entity_id, comp, true)
   end
+  local damage_model_comp = EntityGetFirstComponentIncludingDisabled(entity_who_interacted, "DamageModelComponent")
+  local max_hp = ComponentGetValue2(damage_model_comp, "max_hp")
+  ComponentSetValue2(damage_model_comp, "hp", max_hp)
 end

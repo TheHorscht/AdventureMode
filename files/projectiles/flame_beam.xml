@@ -49,7 +49,7 @@
 	velocity_sets_rotation="1"
 	>
 	<damage_by_type
-		fire="0.04"
+		fire="0.4"
 		>
 	</damage_by_type>
     <config_explosion

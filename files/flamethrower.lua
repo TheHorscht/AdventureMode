@@ -10,7 +10,7 @@ EntitySetTransform(entity_id, x, y, r)
 
 local dir_x = math.cos(r)
 local dir_y = math.sin(r)
-shoot_projectile(entity_id, "mods/AdventureMode/files/projectiles/flame_beam.xml", x + dir_x * 7, y + dir_y * 7, dir_x * 200, dir_y * 200, true)
+shoot_projectile(entity_id, "mods/AdventureMode/files/projectiles/flame_beam.xml", x + dir_x * 7, y + dir_y * 7, dir_x * 300, dir_y * 300, true)
 
 -- if GameGetFrameNum() % 100 == 0 then --and math.abs(dir - actual_dir) < 0.5 then
 --   async(function()

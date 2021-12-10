@@ -61,6 +61,12 @@ if state.progress then
 end
 
 function interacting(entity_who_interacted, entity_interacted, interactable_name)
+
+  local x, y = EntityGetTransform( entity_who_interacted )
+
+  GlobalsSetValue("AdventureMode_respawn_x", x)
+  GlobalsSetValue("AdventureMode_respawn_y", y)
+  
   local state = get_state()
   if state.progress then
     return

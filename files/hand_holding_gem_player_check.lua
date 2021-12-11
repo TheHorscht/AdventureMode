@@ -60,7 +60,6 @@ if player then
     local px, py = EntityGetTransform(player)
     local max_distance = 170
     local dist2 = get_distance2(gx, gy, px, py)
-    print(math.sqrt(dist2))
     if dist2 > max_distance * max_distance then
       return
     end

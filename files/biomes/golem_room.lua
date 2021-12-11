@@ -1,6 +1,6 @@
 dofile_once("mods/AdventureMode/files/util.lua")
 
-RegisterSpawnFunction( 0xffff5a0f, "spawn_music_trigger" )
+-- RegisterSpawnFunction( 0xffff5a0f, "spawn_music_trigger" )
 RegisterSpawnFunction(0xffea238a, "spawn_golem_sleeping")
 
 function spawn_music_trigger( x, y )

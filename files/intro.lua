@@ -4,7 +4,14 @@ dofile_once("mods/AdventureMode/files/camera.lua")
 
 set_controls_enabled(false)
 sequence(function()
-  GamePlaySound("data/audio/Desktop/music04.bank", "music/wandcave/01", 0, 0)
+
+  local world_state = GameGetWorldStateEntity()
+  EntityAddComponent(world_state, "LuaComponent", {
+	  script_source_file="mods/AdventureMode/files/music_player.lua",
+  	  execute_every_n_frame=1,
+  	  execute_on_added=1
+  })
+  
   set_camera_manual(true)
   camera_set_position(400, -800)
   -- camera_tracking_shot(400, -800, 400, -580, 0.0025)
@@ -82,4 +89,13 @@ end
 ).onDone(function()
   set_camera_manual(false)
   set_controls_enabled(true)
+	-- local world_state = GameGetWorldStateEntity()
+    -- local variable_storage = EntityGetComponent(world_state, "VariableStorageComponent")
+	-- for k, v in pairs(variable_storage)do
+		-- local name = ComponentGetValue2(v, "name")
+
+		-- if(name == "current_music")then
+			-- current_music = ComponentSetValue2(v, "value_string", "	music/smokecave_not_yet_used/02") 
+		-- end
+	-- end
 end)

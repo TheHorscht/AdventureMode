@@ -10,7 +10,7 @@
 	</MagicConvertMaterialComponent>
 	
 	<LifetimeComponent
-	lifetime="60">
+	lifetime="10">
 	</LifetimeComponent>
 
 

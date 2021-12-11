@@ -81,6 +81,7 @@ local starting_positions = {
   { x = 5669, y = 412 }, -- 20 Rebirth Room
 }
 local starting_position = 17
+
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
   DESIGN_PLAYER_START_POS_X="%d"
@@ -95,6 +96,7 @@ ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 -- ModLuaFileAppend("data/scripts/gun/gun_actions.lua", "mods/AdventureMode/files/gun_actions_append.lua")
 
 function OnPlayerSpawned(player)
+  
   GlobalsSetValue("AdventureMode_DEBUG_starting_position", starting_position)
   local x, y = EntityGetTransform(player)
   
@@ -105,6 +107,14 @@ function OnPlayerSpawned(player)
     else
       GlobalsSetValue("AdventureMode_respawn_x", starting_positions[starting_position].x)
       GlobalsSetValue("AdventureMode_respawn_y", starting_positions[starting_position].y)
+	  
+	  local world_state = GameGetWorldStateEntity()
+	  EntityAddComponent(world_state, "LuaComponent", {
+		  script_source_file="mods/AdventureMode/files/music_player.lua",
+		  execute_every_n_frame=1,
+		  execute_on_added=1
+	  })
+	  
     end
     local world_state_entity = GameGetWorldStateEntity()
     local world_state_component = EntityGetFirstComponentIncludingDisabled(world_state_entity, "WorldStateComponent")

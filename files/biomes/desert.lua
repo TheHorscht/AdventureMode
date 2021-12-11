@@ -80,6 +80,8 @@ RegisterSpawnFunction(0xffbb1748, "spawn_wall_corridor")
 
 RegisterSpawnFunction(0xffff9301, "spawn_pickup_jetpack2")
 
+RegisterSpawnFunction(0xffbb2323, "spawn_music_trigger_spike")
+
 RegisterSpawnFunction(0xff155fb3, "spawn_wand_statue")
 
 RegisterSpawnFunction(0xff5011aa, "spawn_wand")
@@ -693,6 +695,10 @@ end
 
 function spawn_rebirth_finger(x, y)
   EntityLoad("mods/AdventureMode/files/rebirth_finger.xml", x, y)
+end
+
+function spawn_music_trigger_spike( x, y )
+	EntityLoad( "mods/AdventureMode/files/music_trigger_spikes.xml", x, y )
 end
 
 -- Regex to comment out function body:

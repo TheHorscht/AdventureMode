@@ -1,6 +1,6 @@
 <Biome>
   <Topology 
-    name="Golem Room"
+    name="_EMPTY_"
     lua_script="mods/AdventureMode/files/biomes/golem_room.lua"
     >
   </Topology>

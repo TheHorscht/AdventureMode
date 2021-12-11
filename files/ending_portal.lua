@@ -29,6 +29,20 @@ function collision_trigger(entity)
 		script_source_file="mods/AdventureMode/files/kill_player_on_timer.lua",
 		execute_every_n_frame = "450"
 	} )
+	
+	local world_state = GameGetWorldStateEntity()
+	local lua_comps = EntityGetComponent(world_state, "LuaComponent")
+	for i, lua_comp in ipairs(lua_comps) do
+
+		local script_source_file = ComponentGetValue2(lua_comp, "script_source_file")
+
+		if(script_source_file == "mods/AdventureMode/files/music_player.lua")then
+			EntityRemoveComponent( world_state, lua_comp )
+		end
+	end
+	
+	GameTriggerMusicFadeOutAndDequeueAll()
+
   BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map_original.png", "data/biome/_pixel_scenes_original.xml")
   EntityKill(entity)
 end

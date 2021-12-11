@@ -15,13 +15,12 @@ ComponentSetValue2(controls_component, "mAimingVectorNormalized", 5000, 0)
 ComponentSetValue2(controls_component, "mAimingVectorNonZeroLatest", 5000, 0)
 ComponentSetValue2(controls_component, "mMousePosition", 5000, 0)
 
-
 local number = GetValueNumber("number", 0)
 SetValueNumber("number", number + 1)
 
 if number == 2 then
 	EntityLoad("mods/AdventureMode/files/camera_fixer.xml")
-	-- LoadGameEffectEntityTo( entity_id, "data/entities/misc/effect_remove_fog_of_war.xml" )
+	LoadGameEffectEntityTo( entity_id, "data/entities/misc/effect_remove_fog_of_war.xml" )
 	
 	local general_z_index = 100
 

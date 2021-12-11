@@ -9,7 +9,7 @@ local character_data_component = EntityGetFirstComponentIncludingDisabled(entity
 local home_x, home_y = ComponentGetValue2(animal_ai_component, "mHomePosition")
 
 if home_x > x then
-	ComponentSetValue2(character_data_component, "mVelocity", -35, 0)
+	ComponentSetValue2(character_data_component, "mVelocity", 35, 0)
 	ComponentSetValue2(character_data_component, "is_on_ground", true)
 elseif home_x < x then
 	ComponentSetValue2(character_data_component, "mVelocity", -35, 0)

@@ -70,11 +70,13 @@ local dialog_active = {
                   -- ComponentSetValue2(animal_ai_component, "mHomePosition", x + 100, y)
                   ComponentSetValue2(animal_ai_component, "ai_state", 21)
                   local home_x, home_y = ComponentGetValue2(animal_ai_component, "mHomePosition")
+				  EntitySetComponentsWithTagEnabled( entity_id, "goto_home", true )
                   wait_until(function()
                     local x, y = EntityGetTransform(entity_id)
                     local dist2 = get_distance2(x, y, home_x, home_y)
                     return dist2 <= 150
                   end, 20)
+				  EntitySetComponentsWithTagEnabled( entity_id, "goto_home", false )
                   EntitySetComponentIsEnabled(entity_id, sprite_animator_component, false)
                   EntitySetComponentIsEnabled(entity_id, animal_ai_component, false)
                   EntitySetComponentIsEnabled(entity_id, character_data_comp, false)

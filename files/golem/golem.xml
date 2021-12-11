@@ -32,7 +32,7 @@
 			materials_how_much_damage="0.0"
 			ragdoll_filenames_file="data/ragdolls/peasant/filenames.txt"
 			fire_probability_of_ignition="0.0"
-			hp="1000"
+			hp="1000">
 			<damage_multipliers
 				radioactive="0"
 				ice="0"
@@ -43,7 +43,7 @@
 				explosion="0"
 				electricity="0">
 			</damage_multipliers>
-    ></DamageModelComponent>
+    </DamageModelComponent>
 
 		<PathFindingGridMarkerComponent
       marker_offset_y="-6"

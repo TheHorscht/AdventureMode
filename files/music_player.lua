@@ -40,24 +40,24 @@ end
 
 if current_biome == "_EMPTY_" then
 
-	if ( is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1536) == true ) then
-		--golem room and gem room
+	if is_inside_biome(2560, -1536) == true or is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1536) == true then
+		--statue corridor, golem room and gem room
 		current_music = "music/lavalake/enter"
 		
 	elseif is_inside_spear_biome(1536, -1024) == true or is_inside_spear_biome(1024, -1024) == true then
 		--Spike spear room
 		current_music = "music/coalmine/03"
 		
-	elseif is_inside_biome(2560, -1536) == true then
-		--Statue Corridor
-		current_music = "music/temple/enter"
+	-- elseif is_inside_biome(2560, -1536) == true then
+		-- --Statue Corridor
+		-- current_music = "ambience/temple"
 		
 	elseif is_inside_biome(4096, -1074) == true or is_inside_biome(3584, -1024) == true then
 		--Lever Labyrinth
 		current_music = "music/excavationsite/01"
 		
-	elseif is_inside_biome(4608, -1024) == true or is_inside_biome(3072, -1024) == true or is_inside_biome(2560, -1536) == true then
-		--no music in maze room and gunpowder room or statue room please
+	elseif is_inside_biome(4608, -1024) == true or is_inside_biome(3072, -1024) == true then
+		--no music in maze room and gunpowder room please
 		current_music = "no_please"
 		
 	elseif is_inside_biome(5632, -1024) == true or is_inside_biome(5120, -1024) == true then

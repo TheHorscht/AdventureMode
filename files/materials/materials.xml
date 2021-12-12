@@ -61,8 +61,25 @@
 	>
   </CellDataChild>
   
+  <CellDataChild
+  	_parent="rock_magic_bottom"
+  	_inherit_reactions="0"
+  	name="rock_magic_bottom2" 
+	ui_name="$mat_rock_magic_bottom"
+	wang_color="ff696f20"
+	durability="12"
+	hp="400000"
+	audio_physics_material_wall="rock"
+	audio_physics_material_solid="rock"
+	>
+  	<Graphics
+	texture_file="data/materials_gfx/magic_gate.png"
+	color="ffabb344" >
+    </Graphics>
+  </CellDataChild>
+  
   <Reaction probability="100"
-	input_cell1="magic_liquid_custom" 			input_cell2="rock_magic_bottom"
+	input_cell1="magic_liquid_custom" 			input_cell2="rock_magic_bottom2"
 	output_cell1="magic_liquid_custom" 			output_cell2="magic_liquid_custom" 
 	>
   </Reaction>

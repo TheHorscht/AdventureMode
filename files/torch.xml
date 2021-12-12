@@ -258,6 +258,18 @@
     area_aabb.max_x="1"
     area_aabb.max_y="1"
   ></MaterialAreaCheckerComponent>
+  
+  <MaterialAreaCheckerComponent
+    _tags="enabled_in_hand,enabled_in_world,enabled_in_inventory"
+    look_for_failure="0"
+    kill_after_message="0"
+    material="poison_permanent"
+    material2="poison_permanent"
+    area_aabb.min_x="0"
+    area_aabb.min_y="0"
+    area_aabb.max_x="1"
+    area_aabb.max_y="1"
+  ></MaterialAreaCheckerComponent>
 
   <LuaComponent
     _tags="enabled_in_hand,enabled_in_world,enabled_in_inventory"

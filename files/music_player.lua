@@ -78,7 +78,7 @@ if current_biome == "_EMPTY_" then
 		--Alligator area
 		current_music = "music/rainforest/03"
 		
-	elseif is_inside_biome(6144, -1024) == true then
+	elseif is_inside_biome(6144, -1024) == true or is_inside_biome(6656, -1024) == true or is_inside_biome(7168, -1024) == true then
 		--gas cave
 		current_music = "music/smokecave/03"
 		

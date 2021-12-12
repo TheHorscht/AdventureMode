@@ -78,6 +78,26 @@
     </Graphics>
   </CellDataChild>
   
+  <CellDataChild
+  	_parent="poison"
+	_inherit_reactions="0"
+	ui_name="$mat_poison"
+	name="poison_permanent"
+	wang_color="44183774"
+	>
+	<StatusEffects>
+		<Stains>
+		</Stains>
+		<Ingestion>
+		</Ingestion>
+	</StatusEffects>
+  </CellDataChild>
+  
+  <Reaction probability="5"
+   input_cell1="poison_permanent" 			input_cell2="air"
+   output_cell1="poison_permanent" 		output_cell2="poison_gas" >
+  </Reaction>
+  
   <Reaction probability="100"
 	input_cell1="magic_liquid_custom" 			input_cell2="rock_magic_bottom2"
 	output_cell1="magic_liquid_custom" 			output_cell2="magic_liquid_custom" 

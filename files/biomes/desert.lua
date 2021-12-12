@@ -78,6 +78,7 @@ RegisterSpawnFunction(0xff304901, "spawn_portal_activator_02")
 
 RegisterSpawnFunction(0xffbb1748, "spawn_wall_corridor")
 
+RegisterSpawnFunction(0xff881cb3, "floating_box_spawner")
 RegisterSpawnFunction(0xffff9301, "spawn_pickup_jetpack2")
 
 RegisterSpawnFunction(0xffbb2323, "spawn_music_trigger_spike")
@@ -477,6 +478,10 @@ end
 
 function spawn_wall_corridor(x, y)
   EntityLoad("mods/AdventureMode/files/wall_corridor.xml", x, y)
+end
+
+function floating_box_spawner(x, y)
+  EntityLoad("mods/AdventureMode/files/floating_box_spawner.xml", x, y)
 end
 
 function spawn_pickup_jetpack2(x, y)

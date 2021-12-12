@@ -38,9 +38,15 @@ function is_inside_spear_biome(bx, by)
 	end
 end
 
+function is_inside_biome_water(bx, by)
+	if ( x > bx and x < bx + 512 ) and ( y > by and y < by + 599 ) then
+		return true
+	end
+end
+
 if current_biome == "_EMPTY_" then
 
-	if is_inside_biome(2560, -1536) == true or is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1536) == true then
+	if is_inside_biome(2560, -1536) == true or is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1623) == true then
 		--statue corridor, golem room and gem room
 		current_music = "music/lavalake/enter"
 		
@@ -52,7 +58,7 @@ if current_biome == "_EMPTY_" then
 		-- --Statue Corridor
 		-- current_music = "ambience/temple"
 		
-	elseif is_inside_biome(4096, -1074) == true or is_inside_biome(3584, -1024) == true then
+	elseif is_inside_biome(4096, -1074) == true or is_inside_biome(3584, -1024) == true or is_inside_biome_water(3584, -1111) == true then
 		--Lever Labyrinth
 		current_music = "music/excavationsite/01"
 		
@@ -82,6 +88,10 @@ if current_biome == "_EMPTY_" then
 
 	end
 	
+else
+
+	current_music = "music/wandcave/01"
+
 end
 previous_music = GlobalsGetValue("previous_music", 0)
 GlobalsSetValue("previous_music", current_music)

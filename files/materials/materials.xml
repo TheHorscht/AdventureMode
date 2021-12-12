@@ -11,5 +11,70 @@
 	color="ffAAF06E" >
     </Graphics>
   </CellDataChild>
+  
+  <CellData
+	name="magic_liquid_custom"
+	ui_name="$mat_magic_liquid"
+  	tags="[liquid],[water],[magic_liquid],[impure]"
+	burnable="0"
+	density="5.23"
+	cell_type="liquid"
+	wang_color="ff983013"
+	generates_smoke="0"
+	liquid_gravity="0.8"
+	liquid_sand="0"
+	gfx_glow="150"
+	on_fire="0"
+	requires_oxygen="0"
+	audio_materialaudio_type="MAGICAL" 
+	>
+	<ParticleEffect
+		vel.y="2.86"
+		vel_random.min_x="-6"
+		vel_random.max_x="6"
+		vel_random.min_y="-2.9"
+		vel_random.max_y="3.2"
+		render_on_grid="1"
+		probability="0.6"
+		count.min="0"
+		count.max="1"
+	>
+	</ParticleEffect>
+	<Graphics 
+	color="80fffea2" >
+    </Graphics>
+  </CellData>
+  
+  <CellDataChild
+  	_parent="templebrick_static"
+	_inherit_reactions="1"
+	name="templebrick_gate_opener_eater"
+	wang_color="444d452c"
+	>
+  </CellDataChild>
+  
+  <CellDataChild
+  	_parent="templebrick_static"
+	_inherit_reactions="1"
+	name="templebrick_gate_opener_producer"
+	wang_color="4488711f"
+	>
+  </CellDataChild>
+  
+  <Reaction probability="100"
+	input_cell1="magic_liquid_custom" 			input_cell2="rock_magic_bottom"
+	output_cell1="magic_liquid_custom" 			output_cell2="magic_liquid_custom" 
+	>
+  </Reaction>
+  
+   <Reaction probability="90"
+   input_cell1="magic_liquid_custom" 	input_cell2="templebrick_gate_opener_eater"
+   output_cell1="smoke" 	output_cell2="templebrick_gate_opener_eater" >
+  </Reaction>
+  
+   <Reaction probability="20"
+   input_cell1="templebrick_gate_opener_producer" 	input_cell2="air"
+   output_cell1="templebrick_gate_opener_producer" 	output_cell2="magic_liquid_custom" >
+  </Reaction>
 
 </Materials>

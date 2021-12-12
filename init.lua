@@ -79,8 +79,9 @@ local starting_positions = {
   { x = 5632, y = -668 }, -- 18 Wand Mistress
   { x = 3874, y = -864 }, -- 19 Water area, alligator testing
   { x = 5669, y = 412 }, -- 20 Rebirth Room
+  { x = 3814, y = -1000 }, -- 21 Gate Opener Football test
 }
-local starting_position = 17
+local starting_position = 21
 
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers

@@ -1,0 +1,14 @@
+<Entity>
+
+  <CollisionTriggerComponent
+    required_tag="player_unit"
+    width="20"
+    height="80"
+  ></CollisionTriggerComponent>
+
+  <LuaComponent
+    script_collision_trigger_hit="mods/AdventureMode/files/warp_portals/03_activation_trigger.lua"
+    execute_every_n_frame="-1"
+  ></LuaComponent>
+
+</Entity>

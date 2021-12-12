@@ -75,6 +75,7 @@ RegisterSpawnFunction(0xff39e165, "spawn_warp_portal_05")
 RegisterSpawnFunction(0xff39e166, "spawn_warp_portal_06")
 
 RegisterSpawnFunction(0xff304901, "spawn_portal_activator_02")
+RegisterSpawnFunction(0xff426f78, "spawn_portal_activator_03")
 
 RegisterSpawnFunction(0xffbb1748, "spawn_wall_corridor")
 
@@ -441,6 +442,10 @@ end
 
 function spawn_portal_activator_02(x, y)
   EntityLoad("mods/AdventureMode/files/warp_portals/02_activation_trigger.xml", x, y)
+end
+
+function spawn_portal_activator_03(x, y)
+  EntityLoad("mods/AdventureMode/files/warp_portals/03_activation_trigger.xml", x, y)
 end
 
 function spawn_warp_portal_03(x, y)

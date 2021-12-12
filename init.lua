@@ -76,7 +76,7 @@ local starting_positions = {
   { x = 3460, y = -1179}, -- 15 Golem
   { x = 3817, y = -1171 }, -- 16 Hand with gem
   { x = 4400, y = -1020 }, -- 17 Lever door maze
-  { x = 5632, y = -668 }, -- 18 Wand Mistress
+  { x = 5560, y = -668 }, -- 18 Wand Mistress
   { x = 3874, y = -864 }, -- 19 Water area, alligator testing
   { x = 5669, y = 412 }, -- 20 Rebirth Room
   { x = 3814, y = -1000 }, -- 21 Gate Opener Puzzle

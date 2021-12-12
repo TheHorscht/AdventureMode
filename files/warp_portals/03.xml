@@ -3,7 +3,7 @@
   <Base file="mods/AdventureMode/files/portal_base.xml">
 
     <TeleportComponent
-      target.x="5632"
+      target.x="5560"
 		  target.y="-668"
     ></TeleportComponent>
 

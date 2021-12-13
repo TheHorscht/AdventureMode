@@ -2,8 +2,9 @@
 
   <CollisionTriggerComponent
     required_tag="player_unit"
-    width="20"
-    height="60"
+	radius="60"
+    width="40"
+    height="300"
     destroy_this_entity_when_triggered="0"
   ></CollisionTriggerComponent>
 

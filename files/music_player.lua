@@ -44,6 +44,8 @@ function is_inside_biome_water(bx, by)
 	end
 end
 
+no_music = false
+
 if current_biome == "_EMPTY_" then
 
 	if is_inside_biome(2560, -1536) == true or is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1623) == true then
@@ -96,7 +98,7 @@ end
 previous_music = GlobalsGetValue("previous_music", 0)
 GlobalsSetValue("previous_music", current_music)
 
-if current_biome ~= previous_biome or current_music ~= previous_music then
+if ( current_biome ~= previous_biome or current_music ~= previous_music ) then
 	GameTriggerMusicFadeOutAndDequeueAll()
 end
 

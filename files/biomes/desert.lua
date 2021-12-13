@@ -13,6 +13,7 @@ RegisterSpawnFunction(0xff37aab7, "spawn_puzzle_torch")
 RegisterSpawnFunction(0xff784249, "spawn_flamethrower_turret")
 RegisterSpawnFunction(0xffec2b42, "spawn_chain_torch")
 RegisterSpawnFunction(0xffd1b400, "spawn_slab_01")
+RegisterSpawnFunction(0xff885454, "spawn_sign")
 RegisterSpawnFunction(0xffd1b499, "spawn_pile_of_bones")
 RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
 RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
@@ -223,6 +224,10 @@ end
 
 function spawn_slab_01(x, y)
   EntityLoad("mods/AdventureMode/files/slab.xml", x, y)
+end
+
+function spawn_sign(x, y)
+  EntityLoad("mods/AdventureMode/files/sign.xml", x, y)
 end
 
 function spawn_pile_of_bones(x, y)

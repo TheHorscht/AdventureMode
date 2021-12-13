@@ -720,4 +720,3 @@ end
 -- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))([\s\S\n\r]*?)(end)
 -- $1--[[$2]]$3
 -- (function spawn_leverdoor_puzzle_lever_0\d\(x, y\))(--\[\[)([\s\S\n\r]*?)(\]\])(end)
--- $1$3$5

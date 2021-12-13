@@ -148,7 +148,7 @@ local dialog_wall_destroyed = {
       func = function(dialog)
         dialog.show({
           text = [[
-          {@delay 4}It's quite intriguing how you humans seek such
+          {@delay 4}It's quite intriguing how you seek such
           power and wealth.{@pause 40}
           {@delay 5}It's unwise to pursue such things.
           {@pause 20}Unless you want to suffer for it.

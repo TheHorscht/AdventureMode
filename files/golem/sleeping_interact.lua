@@ -20,6 +20,7 @@ function interacting(entity_who_interacted, entity_interacted, interactable_name
         func = function(dialog, stats)
           EntityKill(stats.get_item_with_name("red_gem"))
           local sprite_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteComponent")
+          GamePlaySound("mods/AdventureMode/files/audio/AdventureMode.bank", "golem_reform", x, y)
           ComponentSetValue2(sprite_component, "rect_animation", "wake")
           local sprite_particle_emitter_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteParticleEmitterComponent")
           local interactable_component = EntityGetFirstComponentIncludingDisabled(entity_id, "InteractableComponent")

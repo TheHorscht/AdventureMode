@@ -1,0 +1,30 @@
+<Entity>
+  
+  <MaterialAreaCheckerComponent
+    look_for_failure="1"
+    kill_after_message="0"
+    material="smoke_static"
+    material2="smoke_static"
+    area_aabb.min_x="0"
+    area_aabb.min_y="0"
+    area_aabb.max_x="0"
+    area_aabb.max_y="0"
+  ></MaterialAreaCheckerComponent>
+  
+<!--   <MaterialAreaCheckerComponent
+    look_for_failure="0"
+    kill_after_message="0"
+    material="smoke_static"
+    material2="smoke_static"
+    area_aabb.min_x="0"
+    area_aabb.min_y="0"
+    area_aabb.max_x="0"
+    area_aabb.max_y="0"
+  ></MaterialAreaCheckerComponent> -->
+
+  <LuaComponent
+	script_material_area_checker_failed="mods/AdventureMode/files/no_corpse_if_in_smoke.lua"
+    execute_every_n_frame="-1"
+  ></LuaComponent>
+
+</Entity>

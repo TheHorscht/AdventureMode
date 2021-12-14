@@ -1,0 +1,19 @@
+<Entity>
+  
+	<MagicConvertMaterialComponent
+        radius="333"
+        is_circle="0"
+        steps_per_frame="300"
+        to_material="air"
+        from_material="lava"
+        extinguish_fire="1"
+        kill_when_finished="1" >
+	</MagicConvertMaterialComponent>
+	
+	<LifetimeComponent
+	lifetime="10">
+	</LifetimeComponent>
+
+
+</Entity>
+

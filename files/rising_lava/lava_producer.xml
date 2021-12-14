@@ -1,0 +1,32 @@
+<Entity>
+
+	<ParticleEmitterComponent 
+		emitted_material_name="lava"
+		offset.x="0"
+		offset.y="0"
+		x_pos_offset_min="0"
+		x_pos_offset_max="0"
+		y_pos_offset_min="0"
+		y_pos_offset_max="0"
+		x_vel_min="0"
+		x_vel_max="0"
+		y_vel_min="0"
+		y_vel_max="0"
+		count_min="1"
+		count_max="1"
+		emission_interval_min_frames="0"
+		emission_interval_max_frames="0"
+		image_animation_file="mods/AdventureMode/files/rising_lava/particle_emitter.png"
+		image_animation_loop="1"
+		emit_cosmetic_particles="0"
+		create_real_particles="1"
+		>
+	</ParticleEmitterComponent>
+	
+	<LuaComponent
+		script_source_file="mods/AdventureMode/files/rising_lava/lava_rise.lua"
+		execute_every_n_frame="2"
+		>
+	</LuaComponent>
+
+</Entity>

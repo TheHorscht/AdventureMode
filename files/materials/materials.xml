@@ -93,6 +93,72 @@
 	</StatusEffects>
   </CellDataChild>
   
+  <CellDataChild
+  	_parent="slime"
+  	_inherit_reactions="0"
+  	name="endslime_custom" 
+	ui_name="Impermeable Slime"
+	tags="[static]"
+	wang_color="888AFF97" 
+	platform_type="0"
+	density="10"
+	durability="9999"
+	liquid_gravity="1.2"
+	liquid_sand="1"
+	liquid_static="1"
+	solid_static_type="1"
+	show_in_creative_mode="1"
+	>
+  	<Graphics
+		texture_file="data/materials_gfx/endslime.png"
+		color="88ab372c" >
+		<Edge>
+		 <EdgeGraphics 
+			overwrite="0" 
+			percent="0.3" 
+			require_same_material="0" 
+			require_same_material_type="1" 
+			type="EVERYWHERE" 
+			z="1" >
+			<Images>
+				<Image 
+					allow_random_rotation="1"
+					filename="data/materials_gfx/edge_files/edge_endslime_1.png" 
+				/>
+				<Image 
+					allow_random_rotation="1"
+					filename="data/materials_gfx/edge_files/edge_endslime_2.png" 
+				/>
+			</Images>
+		  </EdgeGraphics>
+		</Edge>
+    </Graphics>
+	<StatusEffects>
+		<Stains>
+		</Stains>
+		<Ingestion>
+		</Ingestion>
+	</StatusEffects>
+	<ParticleEffect
+		vel.y="-13.14"
+		vel_random.min_x="-11.71"
+		vel_random.max_x="11.71"
+		vel_random.min_y="-17.18"
+		vel_random.max_y="-2.8"
+		lifetime.min="0.9"
+		lifetime.max="1.6"
+		gravity.y="60"
+		render_on_grid="1"
+		airflow_force="0.5314"
+		airflow_scale="0.1371"
+		friction="0.0002"
+		probability="0.0045"
+		count.min="0"
+		count.max="1"
+	>
+	</ParticleEffect>
+  </CellDataChild>
+  
   <Reaction probability="5"
    input_cell1="poison_permanent" 			input_cell2="air"
    output_cell1="poison_permanent" 		output_cell2="poison_gas" >

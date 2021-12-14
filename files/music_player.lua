@@ -84,6 +84,10 @@ if current_biome == "_EMPTY_" then
 		--gas cave
 		current_music = "music/smokecave/03"
 		
+	elseif is_inside_biome(2560, -2048) == true or is_inside_biome(2048, -2048) == true or is_inside_biome(3072, -2048) == true then
+		--rising lava and smoke area
+		current_music = "music/coalmine/_02_used_in_credits"
+		
 	else
 
 		current_music = "music/wandcave/01"

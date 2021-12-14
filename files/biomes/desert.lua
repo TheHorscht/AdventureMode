@@ -92,7 +92,6 @@ RegisterSpawnFunction(0xffc37114, "spawn_bullet")
 RegisterSpawnFunction(0xff11a4c3, "spawn_arrow")
 RegisterSpawnFunction(0xff4b11c3, "spawn_arrow_bullet")
 RegisterSpawnFunction(0xffd90ee6, "spawn_bullet_heavy")
-RegisterSpawnFunction(0xffc31717, "spawn_rocket")
 
 RegisterSpawnFunction(0xff23aa27, "spawn_tesla_coil")
 
@@ -103,6 +102,9 @@ RegisterSpawnFunction(0xffa26d18, "spawn_phantoms")
 RegisterSpawnFunction(0xff78bb19, "spawn_alchemists")
 
 RegisterSpawnFunction(0xff07e6b1, "spawn_breathless_perk")
+
+RegisterSpawnFunction(0xff200bc3, "spawn_rising_lava_trigger")
+RegisterSpawnFunction(0xffc31717, "spawn_rocket")
 
 RegisterSpawnFunction(0xff22a6b3, "alligator_spawner")
 RegisterSpawnFunction(0xff52881c, "spawn_alligator1")
@@ -507,7 +509,7 @@ function spawn_bullet(x, y)
   CreateItemActionEntity( "LIGHT_BULLET", x, y )
 end
 
-function shop_spell( x, y, card_id, cost, is_stealable )
+function shop_spell( x, y, card_id, cost, is_lava_stopper, is_stealable )
 	-- this makes the shop items deterministic
 	SetRandomSeed( x, y )
 
@@ -611,6 +613,11 @@ function shop_spell( x, y, card_id, cost, is_stealable )
 	EntityAddComponent( eid, "LuaComponent", { 
 		script_item_picked_up="data/scripts/items/shop_effect.lua",
 		} )
+	if is_lava_stopper == 1 then
+		EntityAddComponent( eid, "LuaComponent", { 
+			script_item_picked_up="mods/AdventureMode/files/rising_lava/rocket_pickup.lua",
+		} )
+	end
 end
 
 function spawn_arrow(x, y)
@@ -623,10 +630,6 @@ end
 
 function spawn_bullet_heavy(x, y)
   shop_spell( x, y, "CHAIN_BOLT", 150 )
-end
-
-function spawn_rocket(x, y)
-  shop_spell( x, y, "ROCKET", 500 )
 end
 
 function spawn_tesla_coil(x, y)
@@ -674,6 +677,14 @@ end
 function spawn_breathless_perk(x, y)
   dofile_once("data/scripts/perks/perk.lua")
   perk_spawn( x, y, "BREATH_UNDERWATER" )	
+end
+
+function spawn_rising_lava_trigger(x, y)
+  EntityLoad("mods/AdventureMode/files/rising_lava/rising_lava_trigger.xml", x, y)
+end
+
+function spawn_rocket(x, y)
+  shop_spell( x, y, "ROCKET", 500, 1 )
 end
 
 function alligator_spawner(x, y)

@@ -81,8 +81,9 @@ local starting_positions = {
   { x = 5669, y = 412 }, -- 20 Rebirth Room
   { x = 3814, y = -1000 }, -- 21 Gate Opener Puzzle
   { x = 6055, y = -893 }, -- 22 Poison Challenge
+  { x = 2747, y = -1514 }, -- 23 rising lava Challenge
 }
-local starting_position = 22
+local starting_position = 1
 
 ModTextFileSetContent("mods/AdventureMode/_virtual/magic_numbers.xml", string.format([[
 <MagicNumbers
@@ -99,10 +100,15 @@ ModMagicNumbersFileAdd("mods/AdventureMode/_virtual/magic_numbers.xml")
 
 function OnPlayerSpawned(player)
 
+  local x, y = EntityGetTransform(player)
+  
+  if starting_position == 23 then
+	EntityLoad("mods/AdventureMode/files/pickups/jetpack2.xml", x, y)
+  end
+
   EntitySetDamageFromMaterial( player, "poison_permanent", 0.01 )
   
   GlobalsSetValue("AdventureMode_DEBUG_starting_position", starting_position)
-  local x, y = EntityGetTransform(player)
   
   if GlobalsGetValue("AdventureMode_player_initialized", "0") == "0" then
     GlobalsSetValue("AdventureMode_player_initialized", "1")
@@ -225,9 +231,9 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
-if GuiButton(gui, new_id(), 2, 200, "D") then
-debug_menu_open = not debug_menu_open
-end
+-- if GuiButton(gui, new_id(), 2, 200, "D") then
+-- debug_menu_open = not debug_menu_open
+-- end
   -- 
 
   if debug_menu_open then

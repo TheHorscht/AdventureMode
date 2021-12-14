@@ -1,0 +1,18 @@
+<Entity>
+
+  <CollisionTriggerComponent
+    required_tag="player_unit"
+	radius="40"
+    width="14"
+    height="200"
+    destroy_this_entity_when_triggered="0"
+  ></CollisionTriggerComponent>
+
+  <LuaComponent
+    script_collision_trigger_hit="mods/AdventureMode/files/rising_lava/rising_lava_trigger.lua"
+    execute_every_n_frame="-1"
+  ></LuaComponent>
+
+  <!-- <Base file="mods/AdventureMode/files/aabb_visualizer.xml" /> -->
+
+</Entity>

@@ -7,6 +7,7 @@
     wang_color="ffed4d49"
     audio_physics_material_wall="meat"
     audio_physics_material_solid="meat"
+	solid_on_collision_material=""
     audio_is_soft="1"
     show_in_creative_mode="0"
 	>

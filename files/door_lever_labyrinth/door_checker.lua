@@ -30,6 +30,10 @@ if PhysicsBody_comp then
       offsets[2].x = 4
       offsets[2].y = 17
     end
+    -- Remove all old PhysicsJointComponents before adding new ones
+    for i, comp in ipairs(EntityGetComponentIncludingDisabled(entity_id, "PhysicsJointComponent") or {}) do
+      EntityRemoveComponent(entity_id, comp)
+    end
     EntityAddComponent2(entity_id, "PhysicsJointComponent", {
       nail_to_wall = true, breakable = false, grid_joint = true, pos_y = offsets[1].y, pos_x = offsets[1].x,
     })

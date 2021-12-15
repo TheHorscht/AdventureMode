@@ -1,0 +1,24 @@
+<Entity>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/slabs/slab.png"
+    offset_x="8"
+    offset_y="19"
+    >
+  </SpriteComponent>
+
+  <InteractableComponent
+    radius="8"
+    ui_text="Press $0 to read"
+  ></InteractableComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/slabs/slab_gem_hand_interact.lua"
+    script_interacting="mods/AdventureMode/files/slabs/slab_gem_hand_interact.lua"
+    execute_every_n_frame="1"
+    execute_on_added="1"
+    enable_coroutines="1"
+    >
+  </LuaComponent>
+
+</Entity>

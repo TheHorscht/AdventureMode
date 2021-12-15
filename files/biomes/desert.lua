@@ -13,6 +13,7 @@ RegisterSpawnFunction(0xff37aab7, "spawn_puzzle_torch")
 RegisterSpawnFunction(0xff784249, "spawn_flamethrower_turret")
 RegisterSpawnFunction(0xffec2b42, "spawn_chain_torch")
 RegisterSpawnFunction(0xffd1b400, "spawn_slab_01")
+RegisterSpawnFunction(0xffd1b900, "spawn_slab_02")
 RegisterSpawnFunction(0xff885454, "spawn_sign")
 RegisterSpawnFunction(0xffd1b499, "spawn_pile_of_bones")
 RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
@@ -225,7 +226,11 @@ function spawn_chain_torch(x, y)
 end
 
 function spawn_slab_01(x, y)
-  EntityLoad("mods/AdventureMode/files/slab.xml", x, y)
+  EntityLoad("mods/AdventureMode/files/slabs/slab.xml", x, y)
+end
+
+function spawn_slab_02(x, y)
+  EntityLoad("mods/AdventureMode/files/slabs/slab_2.xml", x, y)
 end
 
 function spawn_sign(x, y)
@@ -476,7 +481,7 @@ function spawn_warp_portal_06(x, y)
 end
 
 function spawn_hand_holding_gem(x, y)
-  EntityLoad("mods/AdventureMode/files/slab_gem_hand.xml", x + 60, y)
+  EntityLoad("mods/AdventureMode/files/slabs/slab_gem_hand.xml", x + 60, y)
   EntityLoad("mods/AdventureMode/files/hand_holding_gem.xml", x, y)
 end
 

@@ -1,7 +1,7 @@
 <Entity>
 
   <SpriteComponent
-    image_file="mods/AdventureMode/files/slab.png"
+    image_file="mods/AdventureMode/files/slabs/slab.png"
     offset_x="8"
     offset_y="19"
     >
@@ -13,8 +13,8 @@
   ></InteractableComponent>
 
   <LuaComponent
-    script_source_file="mods/AdventureMode/files/slab_interact.lua"
-    script_interacting="mods/AdventureMode/files/slab_interact.lua"
+    script_source_file="mods/AdventureMode/files/slabs/slab_2_interact.lua"
+    script_interacting="mods/AdventureMode/files/slabs/slab_2_interact.lua"
     execute_every_n_frame="1"
     execute_on_added="1"
     enable_coroutines="1"

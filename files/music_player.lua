@@ -44,11 +44,23 @@ function is_inside_biome_water(bx, by)
 	end
 end
 
+function is_inside_biome_rising_lava(bx, by)
+	if ( x > bx and x < bx + 512 ) and ( y > by and y < by + 612 ) then
+		return true
+	end
+end
+
+function is_inside_biome_statues(bx, by)
+	if ( x > bx and x < bx + 512 ) and ( y > by and y < by + 412 ) then
+		return true
+	end
+end
+
 no_music = false
 
 if current_biome == "_EMPTY_" then
 
-	if is_inside_biome(2560, -1536) == true or is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1623) == true then
+	if is_inside_biome_statues(2560, -1436) == true or is_inside_biome(3072, -1536) == true or is_inside_biome(3584, -1623) == true then
 		--statue corridor, golem room and gem room
 		current_music = "music/lavalake/enter"
 		
@@ -84,7 +96,7 @@ if current_biome == "_EMPTY_" then
 		--gas cave
 		current_music = "music/smokecave/03"
 		
-	elseif is_inside_biome(2560, -2048) == true or is_inside_biome(2048, -2048) == true or is_inside_biome(3072, -2048) == true then
+	elseif is_inside_biome_rising_lava(2560, -2048) == true or is_inside_biome_rising_lava(2048, -2048) == true or is_inside_biome_rising_lava(3072, -2048) == true then
 		--rising lava and smoke area
 		current_music = "music/coalmine/_02_used_in_credits"
 		

@@ -1,0 +1,26 @@
+<Entity>
+
+  <SpriteComponent
+    image_file="mods/AdventureMode/files/skeletons/lying.png"
+    offset_x="10"
+    offset_y="7"
+    has_special_scale="1"
+    special_scale_x="-1"
+    >
+  </SpriteComponent>
+
+  <InteractableComponent
+    radius="8"
+    ui_text="Press $0 to interact"
+  ></InteractableComponent>
+
+  <LuaComponent
+    script_source_file="mods/AdventureMode/files/skeletons/gas_cave_02_interact.lua"
+    script_interacting="mods/AdventureMode/files/skeletons/gas_cave_02_interact.lua"
+    execute_every_n_frame="1"
+    execute_on_added="1"
+    enable_coroutines="1"
+    >
+  </LuaComponent>
+
+</Entity>

@@ -20,6 +20,8 @@ RegisterSpawnFunction(0xffbbbbc2, "spawn_spike_corridor")
 RegisterSpawnFunction(0xffaaaa01, "spawn_spike_corridor_skeleton_01")
 RegisterSpawnFunction(0xffaaaa02, "spawn_spike_corridor_skeleton_02")
 RegisterSpawnFunction(0xffaaaa03, "spawn_maze_skeleton_01")
+RegisterSpawnFunction(0xff18bbbb, "spawn_gas_cave_skeleton_01")
+RegisterSpawnFunction(0xff5518bb, "spawn_gas_cave_skeleton_02")
 RegisterSpawnFunction(0xffea238a, "spawn_golem_sleeping")
 for i=1, 10 do
   RegisterSpawnFunction(0xff427800 + i, "spawn_lever_puzzle_lever_" .. string.format("%.2d", i))
@@ -255,6 +257,14 @@ end
 
 function spawn_maze_skeleton_01(x, y)
   EntityLoad("mods/AdventureMode/files/skeletons/maze_01.xml", x, y)
+end
+
+function spawn_gas_cave_skeleton_01(x, y)
+  EntityLoad("mods/AdventureMode/files/skeletons/gas_cave.xml", x, y)
+end
+
+function spawn_gas_cave_skeleton_02(x, y)
+  EntityLoad("mods/AdventureMode/files/skeletons/gas_cave_02.xml", x, y)
 end
 
 function spawn_golem_sleeping(x, y)

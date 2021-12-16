@@ -17,6 +17,7 @@
 {f4321978-2d48-49b9-a6ac-639bec61eb86} event:/bones_rattle
 {d87afe1e-fb21-4d38-9124-195757f82919} event:/bones_rattle_full
 {7903b264-1034-415a-aff0-5748979091c4} event:/camel_death
+{a3f53718-004c-4119-8f00-4cff801bd54e} event:/death_sound
 {c093dd6a-f9ed-4646-a8e0-dee74a379d34} event:/golem_reform
 {1e02a3dc-d997-48ba-95ef-06a4a7daf651} event:/golem_speak
 {fefa3831-2c5c-4ad4-8791-5fca407a7edd} event:/rattle_me_bones

@@ -14,6 +14,9 @@ dofile_once("data/scripts/lib/utilities.lua")
 dofile_once("mods/AdventureMode/files/util.lua")
 local nxml = dofile_once("mods/AdventureMode/lib/nxml.lua")
 
+-- Overwrite death sound to disable it
+GamePlaySound("mods/AdventureMode/files/audio/death.bank", "dummy_sound", 0, 0)
+
 --set collapsed concrete strength
 local content = ModTextFileGetContent("data/materials.xml")
 local xml = nxml.parse(content)

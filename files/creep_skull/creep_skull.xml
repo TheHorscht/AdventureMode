@@ -88,6 +88,18 @@
 		ragdollify_child_entity_sprites="1" 
 		ragdollify_root_angular_damping="2"
 		>
+		<damage_multipliers
+			fire="1" 
+			drill="1"
+			slice="1"
+			melee="1"
+			projectile="1"
+			radioactive="1"
+			explosion="1"
+			electricity="1"
+			poison="1"
+			physics_hit="1"	>
+		</damage_multipliers>
 	</DamageModelComponent>
 
 		<SpriteComponent 

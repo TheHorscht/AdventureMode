@@ -276,7 +276,6 @@ for i=1,10 do
   local num_string = string.format("%.2d", i)
   _G["spawn_lever_puzzle_statue_" .. num_string] = function(x, y)
     local direction = lever_puzzle_solution[i] == 1 and "right" or "left"
-    print("Spawning \"mods/AdventureMode/files/lever_puzzle/statue_pointing_" .. direction .. ".xml\"")
     EntityLoad("mods/AdventureMode/files/lever_puzzle/statue_pointing_" .. direction .. ".xml", x, y)
   end
   _G["spawn_lever_puzzle_lever_" .. num_string] = function(x, y)

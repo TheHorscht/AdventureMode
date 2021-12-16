@@ -50,6 +50,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     GamePlaySound("data/audio/Desktop/event_cues.bank", "event_cues/game_over/create", x, y)
     local player_vel_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "VelocityComponent")
     local character_data_component = EntityGetFirstComponentIncludingDisabled(entity_id, "CharacterDataComponent")
+    local damage_model_component = EntityGetFirstComponentIncludingDisabled(entity_id, "DamageModelComponent")
     local corpse_spawner = EntityLoad("mods/AdventureMode/files/player_corpse_spawner.xml", x, y)
     local vx, vy = ComponentGetValue2(player_vel_comp, "mVelocity")
     set_var_store_float(corpse_spawner, "vel_x", vx)

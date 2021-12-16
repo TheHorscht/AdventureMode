@@ -5,10 +5,8 @@ dofile_once("data/scripts/status_effects/status_list.lua")
 local function remove_game_effects(entity_id)
   local undetectable = {
     ALCOHOLIC = true,
-    POISONED = true,
     HP_REGENERATION = true,
     HYDRATED = true,
-	BLOODY = true,
     INGESTION_DRUNK = true,
     TRIP = true,
     NIGHTVISION = true,
@@ -18,9 +16,18 @@ local function remove_game_effects(entity_id)
     INGESTION_FREEZING = true,
     INGESTION_ON_FIRE = true,
     CURSE_CLOUD = true,
+    ADVENTUREMODE_SADNESS = true,
+    ADVENTUREMODE_CANNIBALISM = true,
+  }
+  -- Some game effects have different IDs in the status list than the GameEffectComponents for some reason...
+  local convert_ids = {
+    POISONED = "POISON"
   }
   for i, effect in ipairs(status_effects) do
     if not undetectable[effect.id] then
+      if convert_ids[effect.id] then
+        effect.id = convert_ids[effect.id]
+      end
       local comp = GameGetGameEffect(entity_id, effect.id)
       if comp > 0 then
         ComponentSetValue2(comp, "frames", 0)
@@ -59,11 +66,9 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     ComponentSetValue2(character_data_component, "mVelocity", 0, 0)
     local disable_components = {
       "DamageModelComponent",
-	  "SpriteComponent",
-	  "HitboxComponent",
-	  "GenomeDataComponent",
-	  "SpriteStainsComponent",
-	  "StatusEffectDataComponent",
+      "SpriteComponent",
+      "HitboxComponent",
+      "GenomeDataComponent",
       "PlatformShooterPlayerComponent",
       "CharacterPlatformingComponent",
       "ItemPickUpperComponent",
@@ -71,8 +76,6 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       "InventoryGuiComponent",
       "SpriteParticleEmitterComponent",
     }
-	
-    -- "ParticleEmitterComponent",
 	
     for i, comp_name in ipairs(disable_components) do
       entity_set_component_is_enabled(entity_id, comp_name, false)
@@ -90,7 +93,6 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
     
     -- Hide arm
     local arm_r_entity = EntityGetWithName("arm_r")
-	-- EntityKill(arm_r_entity)
     local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
     ComponentSetValue2(comp, "visible", false)
     EntityRefreshSprite(arm_r_entity, comp)
@@ -110,24 +112,61 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
 
     -- Reset all game effects
     remove_game_effects(entity_id)
+    -- Remove SpriteStainsComponent and StatusEffectDataComponent to get rid of stains and effects
+    -- Later re-add them on respawn. To do that, we save the values so we can re-set them to the same values later when adding the new component
+    local sprite_stains_component = EntityGetFirstComponentIncludingDisabled(entity_id, "SpriteStainsComponent")
+    local fade_stains_towards_srite_top, sprite_id, stain_shaken_drop_chance_multiplier
+    if sprite_stains_component then
+      fade_stains_towards_srite_top = ComponentGetValue2(sprite_stains_component, "fade_stains_towards_srite_top")
+      sprite_id = ComponentGetValue2(sprite_stains_component, "sprite_id")
+      stain_shaken_drop_chance_multiplier = ComponentGetValue2(sprite_stains_component, "stain_shaken_drop_chance_multiplier")
+      EntityRemoveComponent(entity_id, sprite_stains_component)
+    end
+
+    local status_effect_data_component = EntityGetFirstComponentIncludingDisabled(entity_id, "StatusEffectDataComponent")
+    if status_effect_data_component then
+      EntityRemoveComponent(entity_id, status_effect_data_component)
+    end
+
+    -- Empty stomach
+    local Ingestion_comp = EntityGetFirstComponentIncludingDisabled(entity_id, "IngestionComponent")
+    if Ingestion_comp then
+      EntityRemoveComponent(entity_id, Ingestion_comp)
+      EntityAddComponent2(entity_id, "IngestionComponent", {
+        ingestion_capacity=7500,
+        overingestion_damage=0.002,
+        blood_healing_speed=0.0016,
+      })
+    end
 
     set_controls_enabled(false)
 
     async(function()
       wait(180)
       remove_game_effects(entity_id)
-
       for i, comp_name in ipairs(disable_components) do
           entity_set_component_is_enabled(entity_id, comp_name, true)
       end
 	  
-	local sprite_comps = EntityGetComponent(entity_id, "SpriteComponent") or {}
-	for i, sprite_comp in ipairs(sprite_comps) do
+      local sprite_comps = EntityGetComponent(entity_id, "SpriteComponent") or {}
+      for i, sprite_comp in ipairs(sprite_comps) do
+        EntityRefreshSprite(entity_id, sprite_comp)
+      end
 	
-		EntityRefreshSprite(entity_id, sprite_comp)
+      -- Re-add components if they were removed (which they should, but it never hurts to double check)
+      if sprite_stains_component then
+        EntityAddComponent2(entity_id, "SpriteStainsComponent", {
+          fade_stains_towards_srite_top=fade_stains_towards_srite_top,
+          sprite_id=sprite_id,
+          stain_shaken_drop_chance_multiplier=stain_shaken_drop_chance_multiplier
+        })
+      end
 		
-	end
-	
+      if status_effect_data_component then
+        EntityAddComponent2(entity_id, "StatusEffectDataComponent", {})
+      end
+
+      -- Heal to full hp
       ComponentSetValue2(damage_model_component, "hp", ComponentGetValue2(damage_model_component, "max_hp"))
 
       if active_item > 0 then

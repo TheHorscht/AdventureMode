@@ -140,7 +140,7 @@ function damage_received(damage, message, entity_thats_responsible, is_fatal, pr
       EntityAddChild(entity_id, cape_entity)
       
       -- Show arm
-	  local arm_r_entity = EntityLoad("mods/AdventureMode/files/arm_r.xml", x, y)
+      local arm_r_entity = EntityGetWithName("arm_r")
       local comp = EntityGetFirstComponentIncludingDisabled(arm_r_entity, "SpriteComponent")
       ComponentSetValue2(comp, "visible", true)
       EntityRefreshSprite(arm_r_entity, comp)

@@ -234,10 +234,9 @@ function OnWorldPreUpdate()
   gui = gui or GuiCreate()
   GuiStartFrame(gui)
 
--- if GuiButton(gui, new_id(), 2, 200, "D") then
--- debug_menu_open = not debug_menu_open
--- end
-  -- 
+  -- if GuiButton(gui, new_id(), 2, 200, "D") then
+  --   debug_menu_open = not debug_menu_open
+  -- end
 
   if debug_menu_open then
     GuiLayoutBeginVertical(gui, 1, 20)
@@ -258,6 +257,13 @@ function OnWorldPreUpdate()
     if GuiButton(gui, new_id(), 0, 0, "Die") then
       local player = EntityGetWithTag("player_unit")[1]
       EntityInflictDamage(player, 999, "DAMAGE_MELEE", "", "NORMAL", 0, 0)
+    end
+    if GuiButton(gui, new_id(), 0, 0, "Ending teleport") then
+      dofile_once("mods/AdventureMode/files/ending_portal.lua")
+      local player = EntityGetWithTag("player_unit")[1]
+      if player then
+        do_teleport(player)
+      end
     end
     if GuiButton(gui, new_id(), 0, 0, "Reload world") then
       BiomeMapLoad_KeepPlayer("data/biome_impl/biome_map.png")

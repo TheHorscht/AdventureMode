@@ -276,5 +276,12 @@
     script_material_area_checker_success="mods/AdventureMode/files/torch_material_checker.lua"
     execute_every_n_frame="-1"
   ></LuaComponent>
+  
+	<LuaComponent
+		_tags="enabled_in_world"
+		script_source_file="mods/AdventureMode/files/torch_float.lua"
+		execute_every_n_frame="1"
+		>
+	</LuaComponent>
 
 </Entity>

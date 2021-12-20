@@ -13,4 +13,9 @@
     value_string="mods/AdventureMode/files/leverdoor_puzzle.lua;lever_02_switched"
   ></VariableStorageComponent>
 
+  <VariableStorageComponent
+    name="instant_activation"
+    value_bool="1"
+  ></VariableStorageComponent>
+
 </Entity>

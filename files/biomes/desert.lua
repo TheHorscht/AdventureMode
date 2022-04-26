@@ -40,6 +40,9 @@ RegisterSpawnFunction(0xffff7bef, "spawn_respawn_statue")
 RegisterSpawnFunction(0xff11c7e8, "spawn_respawn_point_save_trigger")
 RegisterSpawnFunction(0xffdbcb91, "spawn_levitation_refresh_pickup")
 
+RegisterSpawnFunction(0xff31ac76, "spawn_gazer")
+RegisterSpawnFunction(0xffdd9b1a, "spawn_rock")
+
 RegisterSpawnFunction(0xff517700, "spawn_leverdoor_puzzle_lever_01")
 RegisterSpawnFunction(0xff517701, "spawn_leverdoor_puzzle_lever_02")
 RegisterSpawnFunction(0xff517702, "spawn_leverdoor_puzzle_lever_03")
@@ -341,6 +344,13 @@ end
 
 function spawn_respawn_statue(x, y)
   EntityLoad("mods/AdventureMode/files/respawn_statue/statue.xml", x, y)
+end
+
+function spawn_gazer(x, y)
+  EntityLoad("mods/AdventureMode/files/boss/lasershooter.xml", x, y)
+end
+function spawn_rock(x, y)
+  EntityLoad("data/entities/props/physics_stone_02.xml", x, y)
 end
 
 function spawn_leverdoor_puzzle_lever_01(x, y)

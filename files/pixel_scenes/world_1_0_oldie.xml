@@ -30,9 +30,9 @@
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/14_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/14.plz" pos_x="4608" pos_y="-2048" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/hmmm/world_1_0/15_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/hmmm/world_1_0/15.png" pos_x="4608" pos_y="-1536" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/15_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/15.plz" pos_x="4608" pos_y="-1465" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/16_background.png" colors_filename="mods/AdventureMode/files/pixel_scenes/hmmm/world_1_0/16_visual.png" material_filename="mods/AdventureMode/files/pixel_scenes/hmmm/world_1_0/16.png" pos_x="4608" pos_y="-1024" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/16_background.png" colors_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/16_visual.png" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/16.png" pos_x="4608" pos_y="-1024" skip_biome_checks="1" >
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/17_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/17.png" pos_x="4608" pos_y="-512" skip_biome_checks="1" >
     </PixelScene>
@@ -42,9 +42,9 @@
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/20_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/20.plz" pos_x="5120" pos_y="-2048" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/21_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/hmmm/world_1_0/21.png" pos_x="5120" pos_y="-1536" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/21_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/21.png" pos_x="5120" pos_y="-1536" skip_biome_checks="1" >
     </PixelScene>
-    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/22_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/hmmm/world_1_0/22.png" pos_x="5120" pos_y="-1024" skip_biome_checks="1" >
+    <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/22_background.png" colors_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/22_visual.png" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/22.png" pos_x="5120" pos_y="-1024" skip_biome_checks="1" >
     </PixelScene>
     <PixelScene background_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/23_background.png" colors_filename="" material_filename="mods/AdventureMode/files/pixel_scenes/world_1_0/23.png" pos_x="5120" pos_y="-512" skip_biome_checks="1" >
     </PixelScene>
